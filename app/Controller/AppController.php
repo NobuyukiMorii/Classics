@@ -31,4 +31,19 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+	public $components = array(
+		'Auth'=>array(
+			'authError' => 'ログインしてください。'
+		)
+	);
+
+	//コンポーネントの宣言
+	public function beforeFilter(){
+    	//addはログインしなくてもアクセスを許可
+    	$this->Auth->allow('add');
+    	//エラーメッセージ
+        $this->Auth->AuthError = "あなたはログインしていません。";
+        $this->Auth->loginError = "ログインに失敗しました。";
+	}
+
 }
