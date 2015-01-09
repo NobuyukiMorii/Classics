@@ -34,7 +34,8 @@ class AppController extends Controller {
 	public $components = array(
 		'Auth'=>array(
 			'authError' => 'ログインしてください。'
-		)
+		),
+		'DebugKit.Toolbar'
 	);
 
 	//コンポーネントの宣言
