@@ -25,10 +25,12 @@ class UsersController extends AppController {
 			}
 		}
 	}
+
 	//ログアウト
 	public function logout(){
 		$this->Auth->logout();
 	}
+	
 	//ユーザー登録画面
 	public function add(){
 		if(!empty($this->data)){
