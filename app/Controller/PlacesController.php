@@ -9,7 +9,6 @@ class PlacesController extends AppController {
 		$this->set('data',$data);
 	}
 
-
 }
 
 ?>
