@@ -7,12 +7,7 @@ class UsersController extends AppController {
 	public $name = 'Users';
 	//使うコンポーネントの名前を書く
     public $components = array(
-        'Session',
-        'Auth' => array(
-        	//ログイン・ログアウト後のリダイレクト先を指定する
-            'loginRedirect' => array('controller' => 'Places', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'Users', 'action' => 'login', 'home'),
-        )
+        'Session'
     );
 
 	//ログイン機能の実装
@@ -29,8 +24,9 @@ class UsersController extends AppController {
 	//ログアウト
 	public function logout(){
 		$this->Auth->logout();
+		$this->redirect(array('action'=>'login'));
 	}
-	
+
 	//ユーザー登録画面
 	public function add(){
 		if(!empty($this->data)){

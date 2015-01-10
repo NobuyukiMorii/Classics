@@ -35,16 +35,18 @@ class AppController extends Controller {
 	public $helpers = array('Html', 'Form');
 	//コンポーネントの設定
 	public $components = array(
-		'Auth'=>array(
-			'authError' => 'ログインしてください。'
-		),
+        'Auth' => array(
+        	//ログイン・ログアウト後のリダイレクト先を指定する
+        	'authError' => 'ログインしてください。',
+            'loginRedirect' => array('controller' => 'places', 'action' => 'index')
+        ),
 		'DebugKit.Toolbar'
 	);
 
-	//コンポーネントの宣言
+	//ビフォアーフィルターの設定
 	public function beforeFilter(){
     	//addはログインしなくてもアクセスを許可
-    	$this->Auth->allow('add');
+    	$this->Auth->allow('add','logout');
     	//エラーメッセージ
         $this->Auth->AuthError = "あなたはログインしていません。";
         $this->Auth->loginError = "ログインに失敗しました。";
