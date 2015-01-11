@@ -1,5 +1,5 @@
 <?php
-// app/Controller/PlaceController.php
+// app/Controller/PlacesController.php
 class PlacesController extends AppController {
 	public $name = 'Places';
 	public $uses = array('Place' , 'User');
