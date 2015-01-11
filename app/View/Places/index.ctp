@@ -1,24 +1,10 @@
-<h1>送信フォーム</h1>
+<h1>トップページ</h1>
+<br>
+<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'add')); ?> >※投稿する</a>
+
 <table>
-	<?php
-	for($i = 0; $i <count($data); $i++){
-		$arr = $data[$i]['Place'];
-		echo "<tr><td>{$arr['id']}</td>";
-		echo "<td>{$arr['name']}</td>";
-		echo "<td>{$arr['comments']}</td>";
-		echo "<td>{$arr['username']}</td></tr>";
-	}
-	?>
-</table>
-
-
-追加用
-<?php
-echo $this->form->create('Place',array('type'=>'post','action'=>'addRecord'));
-echo $this->Form->text("Place.name");
-echo $this->Form->text("Place.comments");
-echo $this->Form->text('Place.username');
-echo $this->Form->submit('送信');
-echo $this->Form->end();
-?>
-
+	<tr>
+		<th>ユーザー名</th><th>タイトル</th><th>
+	</tr>
+	<?php pr($data) ?>
+	
