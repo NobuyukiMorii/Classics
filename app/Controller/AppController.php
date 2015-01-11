@@ -36,6 +36,8 @@ class AppController extends Controller {
 
 	//コンポーネントの設定
 	public $components = array(
+        //Sessionの設定
+        'Session' ,
         //Authの設定
         'Auth' => array(
             //ログインしていない時のエラーメッセージを指定

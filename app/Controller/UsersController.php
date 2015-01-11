@@ -8,10 +8,6 @@ class UsersController extends AppController {
 	//使用するモデルを指定する
 	public $uses = array('Place' , 'User');
 
-	//使うコンポーネントの名前を書く
-    public $components = array(
-        'Session'
-    );
     //ログインしていないユーザーのアクセスを許可するメソッドを指定
 	public function beforeFilter() {
 	    parent::beforeFilter();

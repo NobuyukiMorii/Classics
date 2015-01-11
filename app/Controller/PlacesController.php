@@ -26,19 +26,26 @@ class PlacesController extends AppController {
 	}
 
 	//場所情報の編集画面
-    public function edit($param){
-		//更新の処理
-		if(!empty($this->data)){
-            if ($data = $this->Place->save($this->data)) {
+    public function edit($param = null){
+
+		//もしパラメータがついてたら、フォームのバリュを設定して
+		//もそうじゃなくて、ポストされたら、セーブする。かつ、編集画面にリダイレクトする
+    	if(isset($param)){
+        	$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
+        	$data = $data[0];
+        	$this->set('data' , $data); 		
+    	} 
+
+    	if($this->request->isPost()){
+    		$data = $this->Place->save($this->data); 
+    		if($data){
             	$this->set('data' , $data);
                 $this->Session->setFlash(__('場所情報の更新が完了しました。'));
-            } else {
-                $this->Session->setFlash(__('場所情報の更新に失敗しました。'));
-            }
-        } else {
-        	$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
-        	$this->set(compact('param' , 'data'));
-        }
+                $this->redirect(array('action'=>'show' , $data['Place']['id']));	
+    		} else {
+				$this->Session->setFlash(__('場所情報の更新に失敗しました。'));
+    		} 
+    	}
     }
 
 
