@@ -17,7 +17,7 @@
 		//場所の名前
 		echo 
 				"<td>
-					<a href=".$this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/{$arr['Place']['id']}>{$arr['Place']['name']}</a>
+					<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/{$arr['Place']['id']}>{$arr['Place']['name']}</a>
 				</td>"; 
 		//場所の名前
 		echo 
