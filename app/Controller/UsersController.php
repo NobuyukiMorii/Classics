@@ -1,5 +1,5 @@
 <?php
-
+// app/Controller/UserController.php
 App::uses('Controller', 'Controller');
 
 class UsersController extends AppController {
