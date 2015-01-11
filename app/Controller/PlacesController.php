@@ -49,7 +49,9 @@ class PlacesController extends AppController {
     	} 
 
     	if($this->request->isPost()){
-    		$data = $this->Place->save($this->data); 
+    		$data = $this->data;
+    		$data['Place']['users_id'] = $this->Auth->user('id');
+    		$data = $this->Place->save($data); 
     		if($data){
             	$this->set('data' , $data);
                 $this->Session->setFlash(__('場所情報の更新が完了しました。'));
