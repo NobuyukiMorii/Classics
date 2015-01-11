@@ -39,10 +39,7 @@ class AppController extends Controller {
         //Authの設定
         'Auth' => array(
             //ログインしていない時のエラーメッセージを指定
-        	'authError' => 'ログインしてください。',
-                        //ログイン後のリダイレクト先を指定
-            'loginRedirect' => array('controller' => 'Places', 'action' => 'index'),
-            'logoutRedirect' => array('controller' => 'Users', 'action' => 'login'),
+        	'authError' => 'ログインしてください。'
         ),
         //デバッグキット使う
 		'DebugKit.Toolbar'

@@ -10,21 +10,19 @@ class UsersController extends AppController {
 
 	//使うコンポーネントの名前を書く
     public $components = array(
-        'Session',
-
+        'Session'
     );
-
-    //ログインしていなくてもアクセス出来るメソッドを指定
-    public function beforeFilter() {
-        parent::beforeFilter();
-        $this->Auth->allow('add','logout');
-    }
-
+    //ログインしていないユーザーのアクセスを許可するメソッドを指定
+	public function beforeFilter() {
+	    parent::beforeFilter();
+	    // ユーザー自身による登録とログアウトを許可する
+	    $this->Auth->allow('add', 'logout', 'login');
+	}
 	//ログイン機能の実装
 	public function login(){
 		if($this->request->isPost()){
 			if($this->Auth->login()){
-				$this->redirect($this->Auth->redirect());
+				$this->redirect(array('controller' => 'Places' , 'action' => 'index'));
 			} else {
 				$this->Session->setFlash('ユーザー名かパスワードが違います。','default',array(),'auth');
 			}
