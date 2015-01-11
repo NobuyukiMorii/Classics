@@ -4,11 +4,24 @@ class PlacesController extends AppController {
 	public $name = 'Places';
 	public $uses = array('Place' , 'User');
 
+	//場所情報を全県だし
 	public function index(){
-		$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
-		$this->set('data',$data);
-	}
 
+		if($this->request->isPost()){
+
+			if(!empty($this->data['Place']['name'])){
+				$data = $this->Place->find('all' , array('conditions' => array('Place.name' => $this->data['Place']['name'])));
+				$this->set('data');
+			} else {
+				$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
+				$this->set('data' , $data);	
+			}
+		} else {
+			$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
+			$this->set('data' , $data);
+		}
+	}
+	//場所情報を追加する
 	public function add(){
 		if($this->request->isPost()){
 			$record = $this->data['Place'];
@@ -20,6 +33,7 @@ class PlacesController extends AppController {
 		}
 	}
 
+	//場所情報を１件検索する
 	public function show($param){
 		$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
 		$this->set('data',$data);
@@ -28,8 +42,6 @@ class PlacesController extends AppController {
 	//場所情報の編集画面
     public function edit($param = null){
 
-		//もしパラメータがついてたら、フォームのバリュを設定して
-		//もそうじゃなくて、ポストされたら、セーブする。かつ、編集画面にリダイレクトする
     	if(isset($param)){
         	$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
         	$data = $data[0];

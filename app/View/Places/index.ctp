@@ -33,3 +33,9 @@
 	}
 	?>
 </table>
+
+<?php
+echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
+echo $this->Form->input('name');
+echo $this->Form->end('送信');
+?>
