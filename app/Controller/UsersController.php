@@ -48,7 +48,8 @@ class UsersController extends AppController {
 
 	//ユーザー確認画面（みんな見れる）
 	public function show($param){
-		$data = $this->User->find('all' , array('conditions' => array('User.id' => $param)));
+		$data = $this->Place->find('all' , array('conditions' => array('Place.users_id' => $param)));
+		
 		$this->set('data' , $data);
 	}
 
