@@ -46,26 +46,48 @@ class UsersController extends AppController {
 		}
 	}
 
-	//ユーザー詳細情報確認画面
+	//ユーザー確認画面（みんな見れる）
 	public function show($param){
 		$data = $this->User->find('all' , array('conditions' => array('User.id' => $param)));
 		$this->set('data' , $data);
 	}
 
-	//ユーザー編集画面
-    public function edit() {
+	//ユーザー確認画面（ログインユーザーのみ）
+	public function profile(){
+		$id = $this->Auth->user('id');
+		if(!empty($id)){
+            $data = $this->User->find('all' , array('conditions' => array('User.id' => $id)));
+            if($data){
+            	$this->set('data' , $data);
+            } 
+        } else {
+            $this->Session->setFlash(__('ログインしなおして下さい。'));
+            $this->redirect(array('controller' => 'Users' , 'action' => 'login'));
+        }
+	}
+
+	//ユーザー編集画面（ログインユーザーのみ）
+    public function edit(){
+    	$info = $this->data;
+		$info['User']['id'] = $this->Auth->user('id');
+
 		if(!empty($this->data)){
-			$info = $this->data;
-			$info['User']['id'] = $this->Auth->user('id');
-            if ($this->User->save($info)) {
+            if ($data[0] = $this->User->save($info)) {
+            	$this->set('data' , $data);
                 $this->Session->setFlash(__('ユーザー情報の更新が完了しました。'));
-                $this->redirect(array('controller' => 'Places' , 'action' => 'index'));
             } else {
                 $this->Session->setFlash(__('ユーザー情報の更新に失敗しました。'));
             }
+        } else {
+        	$data = $this->User->find('all' , array('conditions' => array('User.id' => $info['User']['id'])));
+        	$this->set('data' , $data);
         }
     }
 
+    //退会するメソッド（ログインユーザーのみ）
+    public function delete(){
 
+
+    }
 
 }
