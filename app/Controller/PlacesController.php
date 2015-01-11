@@ -25,6 +25,22 @@ class PlacesController extends AppController {
 		$this->set('data',$data);
 	}
 
+	//場所情報の編集画面
+    public function edit($param){
+		//更新の処理
+		if(!empty($this->data)){
+            if ($data = $this->Place->save($this->data)) {
+            	$this->set('data' , $data);
+                $this->Session->setFlash(__('場所情報の更新が完了しました。'));
+            } else {
+                $this->Session->setFlash(__('場所情報の更新に失敗しました。'));
+            }
+        } else {
+        	$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
+        	$this->set(compact('param' , 'data'));
+        }
+    }
+
 
 }
 
