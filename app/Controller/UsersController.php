@@ -52,6 +52,20 @@ class UsersController extends AppController {
 		$this->set('data' , $data);
 	}
 
+	//ユーザー編集画面
+    public function edit() {
+		if(!empty($this->data)){
+			$info = $this->data;
+			$info['User']['id'] = $this->Auth->user('id');
+            if ($this->User->save($info)) {
+                $this->Session->setFlash(__('ユーザー情報の更新が完了しました。'));
+                $this->redirect(array('controller' => 'Places' , 'action' => 'index'));
+            } else {
+                $this->Session->setFlash(__('ユーザー情報の更新に失敗しました。'));
+            }
+        }
+    }
+
 
 
 }
