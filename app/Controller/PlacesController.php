@@ -20,7 +20,10 @@ class PlacesController extends AppController {
 		}
 	}
 
-
+	public function show($param){
+		$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
+		$this->set('data',$data);
+	}
 
 
 }
