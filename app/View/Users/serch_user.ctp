@@ -18,3 +18,9 @@
 	}
 	?>
 </table>
+
+<?php
+echo $this->Form->create('User',array('action' => 'serchUser' , 'type' => 'post' , 'novalidate' => true));
+echo $this->Form->input('username');
+echo $this->Form->end('Serch');
+?>
