@@ -5,10 +5,18 @@ App::uses('Controller', 'Controller');
 class UsersController extends AppController {
 	//コントローラーの名前を書く
 	public $name = 'Users';
+
 	//使うコンポーネントの名前を書く
     public $components = array(
-        'Session'
+        'Session',
+
     );
+
+    //ログインしていなくてもアクセス出来るメソッドを指定
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('add','logout');
+    }
 
 	//ログイン機能の実装
 	public function login(){
@@ -26,7 +34,7 @@ class UsersController extends AppController {
 		$this->Auth->logout();
 		$this->redirect(array('action'=>'login'));
 	}
-
+	
 	//ユーザー登録画面
 	public function add(){
 		if(!empty($this->data)){

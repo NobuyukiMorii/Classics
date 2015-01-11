@@ -19,7 +19,7 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::uses('Controller', 'Controller');
+App::uses('Controller' , 'Controller');
 
 /**
  * Application Controller
@@ -32,24 +32,26 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 	//ヘルパーの設定
-	public $helpers = array('Html', 'Form');
+	public $helpers = array('Html' , 'Form');
+
 	//コンポーネントの設定
 	public $components = array(
+        //Authの設定
         'Auth' => array(
-        	//ログイン・ログアウト後のリダイレクト先を指定する
+            //ログインしていない時のエラーメッセージを指定
         	'authError' => 'ログインしてください。',
-            'loginRedirect' => array('controller' => 'places', 'action' => 'index')
+                        //ログイン後のリダイレクト先を指定
+            'loginRedirect' => array('controller' => 'Places', 'action' => 'index'),
+            'logoutRedirect' => array('controller' => 'Users', 'action' => 'login'),
         ),
+        //デバッグキット使う
 		'DebugKit.Toolbar'
 	);
 
 	//ビフォアーフィルターの設定
 	public function beforeFilter(){
-    	//addはログインしなくてもアクセスを許可
-    	$this->Auth->allow('add','logout');
     	//エラーメッセージ
         $this->Auth->AuthError = "あなたはログインしていません。";
-        $this->Auth->loginError = "ログインに失敗しました。";
 	}
 
 }
