@@ -87,7 +87,7 @@ class UsersController extends AppController {
 
     //退会するメソッド（ログインユーザーのみ）
     public function delete(){
-
+    	//退会者のユーザーネームを統一化し、パスワードはランダムにする
     	$data = null;
     	$data['User']['id'] = $this->Auth->user('id');
     	$data['User']['username'] = "退会者" ;
@@ -101,8 +101,12 @@ class UsersController extends AppController {
 		if(!$flg){
 			$this->Session->setFlash(__('退会出来ませんでした。もう一度退会ボタンを押して下さい。'));
 		}
+    }
 
-
+    //全ユーザーを表示する画面を作成する
+    public function showAllMember(){
+    	$data = $this->User->find('all');
+    	$this->set('data' , $data);
     }
 
 }
