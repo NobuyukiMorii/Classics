@@ -2,7 +2,7 @@
 // app/Controller/PlacesController.php
 class PlacesController extends AppController {
 	public $name = 'Places';
-	public $uses = array('Place' , 'User');
+	public $uses = array('Place' , 'User' , 'Post');
 
 	//場所情報を全県だし
 	public function index(){
