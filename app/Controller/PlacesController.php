@@ -9,6 +9,18 @@ class PlacesController extends AppController {
 		$this->set('data',$data);
 	}
 
+	public function add(){
+		if($this->request->isPost()){
+			$record = $this->data['Place'];
+			$record['users_id'] =  $this->Auth->user('id');
+			$flg = $this->Place->save($record);
+			if($flg){
+				$this->redirect(array('action'=>'index'));
+			}
+		}
+	}
+
+
 
 
 }

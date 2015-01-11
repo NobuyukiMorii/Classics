@@ -5,8 +5,14 @@ class Place extends AppModel {
 
 	public $validate = array(
 		'name' => array(
-			'rule' => 'notEmpty' ,
-			'message' => 'タイトルは必ず入力して下さい。'
+			array(
+				'rule' => 'notEmpty' ,
+				'message' => 'タイトルは必ず入力して下さい。'
+			),
+			array(
+                'rule' => 'isUnique',
+                'message' => 'この場所は既に登録されています'
+			)
 		),
 		'comment' => array(
 			'rule' => 'notEmpty' ,
