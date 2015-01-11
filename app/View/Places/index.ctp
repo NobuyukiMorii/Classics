@@ -4,7 +4,23 @@
 
 <table>
 	<tr>
-		<th>ユーザー名</th><th>タイトル</th><th>
+		<th>ユーザー名</th><th>場所</th><th>
 	</tr>
-	<?php pr($data) ?>
-	
+	<?php
+	for($i = 0; $i < count($data); $i++){
+		$arr = $data[$i];
+		echo "<tr>";
+		//場所情報
+		echo 
+				"<td>
+					<a href=".$this->Html->url(array('controller' => 'Places' , 'action' => 'show'))."/{$arr['Place']['id']}>{$arr['Place']['name']}</a>
+				</td>";	
+		//ユーザー情報
+		echo 
+				"<td>
+					<a href=".$this->Html->url(array('controller' => 'Places' , 'action' => 'show2'))."/{$arr['User']['id']}>{$arr['User']['username']}</a>
+				</td>";
+		echo "</tr>";
+	}
+	?>
+</table>
