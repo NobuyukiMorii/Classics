@@ -28,15 +28,21 @@ class PlacesController extends AppController {
 			$record['users_id'] =  $this->Auth->user('id');
 			$flg = $this->Place->save($record);
 			if($flg){
-				$this->redirect(array('action'=>'index'));
+				$this->redirect(array('action' => 'index'));
 			}
 		}
 	}
 	
 	//場所情報を１件検索する
 	public function show($param){
-		$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
-		$this->set('data',$data);
+		$data = $this->Post->find('all' , array('conditions' => array('Post.places_id' => $param)));
+		
+		if(!empty($data)){
+			$this->set('data' , $data);
+		} else {
+			$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
+			$this->set('data' , $data);
+		}
 	}
 
 	//場所情報の編集画面
