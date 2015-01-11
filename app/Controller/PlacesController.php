@@ -32,7 +32,7 @@ class PlacesController extends AppController {
 			}
 		}
 	}
-
+	
 	//場所情報を１件検索する
 	public function show($param){
 		$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
