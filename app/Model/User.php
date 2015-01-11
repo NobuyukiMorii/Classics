@@ -6,13 +6,13 @@ class User extends AppModel {
         'username' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'A username is required'
+                'message' => 'ユーザー名は必ず入力して下さい。'
             )
         ),
         'password' => array(
             'required' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'A password is required'
+                'message' => 'パスワードが違います。'
             )
         )
     );

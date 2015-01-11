@@ -8,3 +8,5 @@ echo $this->Form->input('password');
 echo $this->Form->end('Login');
 
 ?>
+
+<a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'add')); ?> >※ユーザー登録する</a>

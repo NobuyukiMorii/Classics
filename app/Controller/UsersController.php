@@ -87,13 +87,19 @@ class UsersController extends AppController {
 
     //退会するメソッド（ログインユーザーのみ）
     public function delete(){
-    	$flg = $this->User->delete($this->Auth->user('id'));
+
+    	$data = null;
+    	$data['User']['id'] = $this->Auth->user('id');
+    	$data['User']['username'] = "退会者" ;
+    	$data['User']['password'] = rand(1, 5);
+
+    	$flg = $this->User->save($data);
 		if($flg){
 			$this->Session->setFlash(__('退会しました。'));
 			$this->redirect(array('controller' => 'Users' , 'action' => 'login'));
 		} 
 		if(!$flg){
-			$this->Session->setFlash(__('退会出来ませんでした。もう一度退会ボタンを教えて下さい。'));
+			$this->Session->setFlash(__('退会出来ませんでした。もう一度退会ボタンを押して下さい。'));
 		}
 
 
