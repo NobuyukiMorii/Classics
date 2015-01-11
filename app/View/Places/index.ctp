@@ -23,7 +23,7 @@
 		//ユーザー情報
 		echo 
 				"<td>
-					<a href=".$this->Html->url(array('controller' => 'Places' , 'action' => 'show2')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
+					<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
 				</td>";
 		echo "</tr>";
 	}

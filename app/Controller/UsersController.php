@@ -5,6 +5,8 @@ App::uses('Controller', 'Controller');
 class UsersController extends AppController {
 	//コントローラーの名前を書く
 	public $name = 'Users';
+	//使用するモデルを指定する
+	public $uses = array('Place' , 'User');
 
 	//使うコンポーネントの名前を書く
     public $components = array(
@@ -44,6 +46,12 @@ class UsersController extends AppController {
 				$this->redirect(array('action'=>'login'));
 			}
 		}
+	}
+
+	//ユーザー詳細情報確認画面
+	public function show($param){
+		$data = $this->User->find('all' , array('conditions' => array('User.id' => $param)));
+		$this->set('data' , $data);
 	}
 
 
