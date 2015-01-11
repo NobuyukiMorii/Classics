@@ -71,6 +71,7 @@ class UsersController extends AppController {
     	$info = $this->data;
 		$info['User']['id'] = $this->Auth->user('id');
 
+		//更新の処理
 		if(!empty($this->data)){
             if ($data[0] = $this->User->save($info)) {
             	$this->set('data' , $data);
@@ -86,6 +87,14 @@ class UsersController extends AppController {
 
     //退会するメソッド（ログインユーザーのみ）
     public function delete(){
+    	$flg = $this->User->delete($this->Auth->user('id'));
+		if($flg){
+			$this->Session->setFlash(__('退会しました。'));
+			$this->redirect(array('controller' => 'Users' , 'action' => 'login'));
+		} 
+		if(!$flg){
+			$this->Session->setFlash(__('退会出来ませんでした。もう一度退会ボタンを教えて下さい。'));
+		}
 
 
     }
