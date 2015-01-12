@@ -37,3 +37,11 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 	}
 	?>
 </table>
+
+<?php
+	echo $this->Form->create('Post',array('type' => 'post', 'action' => 'add'));
+	echo '名前：' . $this->Form->text('Post.comment');
+	echo $this->Form->error('Post.comment');
+	echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden'));
+	echo $this->Form->end("送信");
+?>
