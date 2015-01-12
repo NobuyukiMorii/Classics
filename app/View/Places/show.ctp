@@ -18,7 +18,7 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 		<th>コメント</th><th>ユーザー名</th><th>
 	</tr>
 	<?php
-	if(!empty($data['Post'])){
+	if (isset($data[0]['Post']['id'])) {
 		for($i = 0; $i < count($data); $i++){
 			$arr = $data[$i];
 			echo "<tr>";
