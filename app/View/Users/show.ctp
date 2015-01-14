@@ -4,7 +4,7 @@
 
 <table>
 <?php
-echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'profile')) . "/{$data[0]['User']['id']}>{$data[0]['User']['username']}</a></td></tr>";
+echo "<tr><td>ユーザー名</td><td>{$data[0]['User']['username']}</td></tr>";
 ?>
 </table>
 
