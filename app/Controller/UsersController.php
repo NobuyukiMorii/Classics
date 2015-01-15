@@ -7,6 +7,8 @@ class UsersController extends AppController {
 	public $name = 'Users';
 	//使用するモデルを指定する
 	public $uses = array('Place' , 'User');
+	//ヘルパーの設定
+	public $helpers = array('UploadPack.Upload');
 
     //ログインしていないユーザーのアクセスを許可するメソッドを指定
 	public function beforeFilter() {
@@ -44,9 +46,12 @@ class UsersController extends AppController {
 
 	//ユーザー確認画面（みんな見れる）
 	public function show($param){
-		$data = $this->Place->find('all' , array('conditions' => array('Place.users_id' => $param)));
-		
-		$this->set('data' , $data);
+		//場所情報のデータ
+		$data_place = $this->Place->find('all' , array('conditions' => array('Place.users_id' => $param)));
+		//ユーザー情報のデータ
+		$data_user = $this->User->find('all' ,  array('conditions' => array('User.id' => $param)));
+		//データをビューに渡す
+		$this->set(compact('data_place' , 'data_user'));
 	}
 
 	//ユーザー確認画面（ログインユーザーのみ）

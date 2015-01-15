@@ -1,6 +1,8 @@
 <?php
 // app/Model/User.php
 class User extends AppModel {
+    //モデル名を宣言
+    public $name = 'User';
     //バリデート
     public $validate = array(
         'username' => array(
@@ -22,5 +24,13 @@ class User extends AppModel {
             AuthComponent::password($this->data['User']['password']);
         return true;
     }
-
+    //UploadPackの設定
+    public $actsAs = array(
+        'UploadPack.Upload' => array(
+            'avatar' => array(
+                'quality' => 95 ,
+                'styles' => array('thumb' => '85x85')
+            )
+        ),
+    );
 }
