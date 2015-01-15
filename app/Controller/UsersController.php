@@ -107,22 +107,14 @@ class UsersController extends AppController {
 
     //全ユーザーを表示する画面を作成する
     public function serchUser(){
-    	if(isset($data)){
-    		$data = $this->data['User']['username'];
-    	}
-
-    	if(!empty($data)){
-    		if(isset($data)){
-	    		$data = $this->User->find('all' , array('conditions' => array('User.username' => $this->data['User']['username']) , 'validate' => false));
-	    		$this->set('data' , $data);
-	    	} else {
+		if(isset($this->data)){
+			if(!empty($this->data['User']['username'])){
+    			$data = $this->User->find('all' , array('conditions' => array('User.username like ?' => array("%{$this->data['User']['username']}%")) , 'validate' => false));
+    			$this->set('data' , $data);
+    		} else {
 				$data = $this->User->find('all' , array('validate' => false));
-    			$this->set('data' , $data);	    		
-	    	}
-    	}
-    	if(empty($data)){
-    		$data = $this->User->find('all' , array('validate' => false));
-    		$this->set('data' , $data);
+				$this->set('data' , $data);
+			}	    		
     	}
     }
 }
