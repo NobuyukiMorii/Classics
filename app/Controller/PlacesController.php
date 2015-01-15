@@ -6,12 +6,10 @@ class PlacesController extends AppController {
 
 	//場所情報を全県だし
 	public function index(){
-
 		if($this->request->isPost()){
-
 			if(!empty($this->data['Place']['name'])){
-				$data = $this->Place->find('all' , array('conditions' => array('Place.name' => $this->data['Place']['name'])));
-				$this->set('data');
+				$data = $this->Place->find('all' , array('conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%"))));
+				$this->set('data' , $data);
 			} else {
 				$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
 				$this->set('data' , $data);	
