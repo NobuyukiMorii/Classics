@@ -8,7 +8,7 @@
 
 <table>
 	<tr>
-		<th>場所</th><th>コメント</th><th>ユーザー名</th><th>
+		<th>場所</th><th>コメント</th><th>ユーザー名</th><th>画像</th>
 	</tr>
 	<?php
 	for($i = 0; $i < count($data); $i++){
@@ -29,6 +29,8 @@
 				"<td>
 					<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
 				</td>";
+		//画像
+		echo 	"<td>" .  $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb')) . "</td>";
 		echo "</tr>";
 	}
 	?>
