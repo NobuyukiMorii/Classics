@@ -13,7 +13,8 @@
 		echo 
 				"<td>
 					<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
-				</td>"; 
+				</td>";
+		echo "<td>画像</td><td>" .  $this->Upload->uploadImage($arr['User'] , 'User.avatar', array('style' => 'thumb')) . "</td>";
 		echo "</tr>";
 	}
 	?>

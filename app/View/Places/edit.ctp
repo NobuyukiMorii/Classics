@@ -3,7 +3,17 @@
 <?php
 echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/{$data['Place']['id']}>閲覧する</a>";
 ?>
-
+<table>
+<?php
+	$arr = $data;
+	echo "<tr><td>名前</td><td>{$arr['Place']['name']}</td></tr>";
+	echo "<tr><td>コメント</td><td>{$arr['Place']['comment']}</td></tr>";
+	echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a></td></tr>";
+	echo "<tr>
+			<td>画像</td><td>" .  $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
+		</tr>";
+?>
+</table>
 
 <?php
 	$arr = $data;
