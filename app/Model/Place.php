@@ -29,5 +29,14 @@ class Place extends AppModel {
 			'foreignKey' => 'users_id'
 		)
 	);
+    //UploadPackの設定
+    public $actsAs = array(
+        'UploadPack.Upload' => array(
+            'avatar' => array(
+                'quality' => 95 ,
+                'styles' => array('thumb' => '85x85')
+            )
+        ),
+    );
 
 }

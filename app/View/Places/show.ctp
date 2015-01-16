@@ -6,6 +6,9 @@
 echo "<tr><td>名前</td><td>{$data[0]['Place']['name']}</td></tr>";
 echo "<tr><td>コメント</td><td>{$data[0]['Place']['comment']}</td></tr>";
 echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$data[0]['User']['id']}>{$data[0]['User']['username']}</a></td></tr>";
+echo "<tr>
+		<td>画像</td><td>" .  $this->Upload->uploadImage($data[0], 'Place.avatar', array('style' => 'thumb')) . "</td>
+	</tr>";
 ?>
 </table>
 

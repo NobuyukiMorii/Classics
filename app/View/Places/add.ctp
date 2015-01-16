@@ -3,10 +3,11 @@
 <br>
 
 <?php
-	echo $this->Form->create('Place',array('type' => 'post', 'action' => 'add'));
+	echo $this->Form->create('Place',array('type' => 'file' , 'action' => 'add'));
 	echo '名前：' . $this->Form->text('Place.name');
 	echo $this->Form->error('Place.name');
 	echo 'コメント：' . $this->Form->textarea('Place.comment');
 	echo $this->Form->error('Place.comment');
+	echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
 	echo $this->Form->end("送信");
 ?>

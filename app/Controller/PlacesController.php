@@ -1,8 +1,12 @@
 <?php
 // app/Controller/PlacesController.php
 class PlacesController extends AppController {
+	//モデルの名前
 	public $name = 'Places';
+	//利用するモデルの指定
 	public $uses = array('Place' , 'User' , 'Post');
+	//ヘルパーの指定
+	public $helpers = array('UploadPack.Upload');
 
 	//場所情報を全県だし
 	public function index(){

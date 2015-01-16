@@ -20,9 +20,9 @@ class PostsController extends AppController {
 
 		$data = $this->Post->Save($data);
 		if($data){
-            $this->Session->setFlash(__('場所情報の更新が完了しました。'));
+            $this->Session->setFlash(__('投稿しました。'));
 		} else {
-			$this->Session->setFlash(__('場所情報の更新に失敗しました。'));
+			$this->Session->setFlash(__('投稿に失敗しました。'));
 		}
 		$this->redirect(array('controller' => 'Places' , 'action'=>'show' , $data['Post']['places_id']));
 	}
