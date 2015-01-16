@@ -35,16 +35,21 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 					"<td>
 						<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
 					</td>";
+			//画像
+			echo 
+					"<td>" .  $this->Upload->uploadImage($arr, 'Post.avatar', array('style' => 'thumb')) . "</td>";
 			echo "</tr>";
 		}
 	}
 	?>
 </table>
 
+投稿画面
 <?php
-	echo $this->Form->create('Post',array('type' => 'post', 'action' => 'add'));
+	echo $this->Form->create('Post',array('type' => 'file', 'action' => 'add'));
 	echo '名前：' . $this->Form->text('Post.comment');
 	echo $this->Form->error('Post.comment');
 	echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden'));
+	echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
 	echo $this->Form->end("送信");
 ?>

@@ -1,9 +1,13 @@
 <?php
 // app/Controller/PlaceController.php
 class PostsController extends AppController {
+	//モデル名の指定
 	public $name = 'Posts';
+	//モデルの指定
 	public $uses = array('Place' , 'User' ,'Post');
-
+	//ヘルパーの指定
+	public $helpers = array('UploadPack.Upload');
+	
 	public function index(){
 		$data = $this->Post->find('all');
 		pr($data);

@@ -21,5 +21,14 @@ class Post extends AppModel {
 		),
 
 	);
+    //UploadPackの設定
+    public $actsAs = array(
+        'UploadPack.Upload' => array(
+            'avatar' => array(
+                'quality' => 95 ,
+                'styles' => array('thumb' => '85x85')
+            )
+        ),
+    );
 
 }
