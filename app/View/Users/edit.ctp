@@ -12,7 +12,7 @@ echo "</tr>";
 
 <?php
 echo $this->Form->create('User',array('type' => 'file' , 'action' => 'edit'));
-echo $this->Form->input('username');
+echo $this->Form->input('username' , array('default' => $data[0]['User']['username']));
 echo $this->Form->input('password');
 echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
 echo $this->Form->end('Edit');
