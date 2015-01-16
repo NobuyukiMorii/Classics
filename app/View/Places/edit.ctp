@@ -7,11 +7,12 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 
 <?php
 	$arr = $data;
-	echo $this->Form->create('Place',array('type' => 'post', 'action' => 'edit' , 'novalidate' => true));
+	echo $this->Form->create('Place',array('type' => 'file' , 'action' => 'edit' , 'novalidate' => true));
 	echo $this->Form->text('Place.id' , array('value' => $arr['Place']['id'] , 'type' => 'hidden'));
 	echo '名前：' . $this->Form->text('Place.name' , array('value' => $arr['Place']['name']));
 	echo $this->Form->error('Place.name');
 	echo 'コメント：' . $this->Form->textarea('Place.comment' , array('value' => $arr['Place']['comment']));
 	echo $this->Form->error('Place.comment');
+	echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
 	echo $this->Form->end("送信");
 ?>
