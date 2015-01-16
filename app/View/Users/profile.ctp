@@ -4,7 +4,10 @@
 
 <table>
 <?php
-echo "<tr><td>名前</td><td>{$data[0]['User']['username']}</td></tr>";
+echo "<tr>";
+echo "<td>名前</td><td>{$data[0]['User']['username']}</td>";
+echo "<td>画像</td><td>" .  $this->Upload->uploadImage($data[0] , 'User.avatar', array('style' => 'thumb')) . "</td>";
+echo "</tr>";
 ?>
 </table>
 
