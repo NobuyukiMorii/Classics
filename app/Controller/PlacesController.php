@@ -17,20 +17,20 @@ class PlacesController extends AppController {
 
 	//場所情報を全件だし
 	public function index(){
-		if($this->request->isPost()){
+		if(isset($this->data)){
 			if(!empty($this->data['Place']['name'])){
-				$data = $this->Place->find('all' , array('conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%"))));
-			} else {
-				$data = $this->Place->find('all' , array('order' => 'Place.id desc'));	
-			}
-		} else {
-			$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
-		}
+			    $this->paginate = array(
+   					'conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%"))
+				);
+    		}
+    	}
+    	$data = $this->paginate('Place');
+
     	//検索結果が該当なしの場合
     	if($data == array()){
-    		$this->Session->setFlash(__('該当のユーザーが見つかりませんでした。'));
+    		$this->Session->setFlash(__('該当の場所が見つかりませんでした。'));
     	}
-		$this->set('data' , $this->paginate());
+		$this->set('data' , $data);
 	}
 	//場所情報を追加する
 	public function add(){
