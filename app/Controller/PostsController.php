@@ -29,28 +29,36 @@ class PostsController extends AppController {
 		} else {
 			$this->Session->setFlash(__('投稿に失敗しました。'));
 		}
-		//wifiスピードの平均を計算
+		//アップデート対象となる投稿情報を取得
 		$past_post = $this->Post->find(
 			'all' , 
 			array(
-				'conditions' => array('Post.places_id' => $data['Post']['places_id']) ,
-				'fields' => array('Post.wifi_speed')
+				'conditions' => array('Post.places_id' => $data['Post']['places_id'] , 'NOT' => array('Post.wifi_speed' => 0)) ,
+				'fields' => array('Post.wifi_speed' , 'Post.payment')
 			)
 		);
-		$wifi_sum_speed = 0;
+		//アップデート対象レコードの平均を計算
+		$wifi_speed_sum = 0;
+		$payment_sum = 0;
 		for($i = 0; $i <count($past_post); $i++){
-			$wifi_sum_speed += $past_post[$i]['Post']['wifi_speed'];
+			//wifiスピードの合計値
+			$wifi_speed_sum += $past_post[$i]['Post']['wifi_speed'];
+			//支払額の合計値
+			$payment_sum += $past_post[$i]['Post']['payment'];
 		}
-		$wifi_average_speed = round( $wifi_sum_speed / count($past_post) , 2);
-		//Placeへのwifi_average_speedの保存
+		$wifi_speed_average = round($wifi_speed_sum / count($past_post) , 2);
+		$payment_average = round($payment_sum / count($past_post) , 2);
+
+		//Placeへのwifi_speed_averageの保存
 		$update_place = $this->Place->find('all' , array('conditions' => array('Place.id' => $data['Post']['places_id'])));
 		$this->Place->id = $update_place[0]['Place']['id'];
-		$flg = $this->Place->saveField('wifi_average_speed' , $wifi_average_speed);
-
-		if($flg = false){
+		$flg1 = $this->Place->saveField('wifi_speed_average' , $wifi_speed_average);
+		$flg2 = $this->Place->saveField('payment_average' , $payment_average);
+		//エラー表示
+		if($flg1 == false || $flg2 == false){
 			$this->Session->setFlash(__('wifiスピードの更新に失敗しました。'));
 		}
-		
+
 		$this->redirect(array('controller' => 'Places' , 'action'=>'show' , $data['Post']['places_id']));
 	}
 

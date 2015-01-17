@@ -8,7 +8,7 @@
 
 <table>
 	<tr>
-		<th>画像</th><th>場所</th><th>wifi</th><th>wifi speed</th><th>ジャンル</th><th>紹介文</th><th>開店時間</th><th>閉店時間</th><th>ユーザー名</th><th>登録日</th>
+		<th>画像</th><th>場所</th><th>wifi</th><th>wifi speed</th><th>ジャンル</th><th>予算</th><th>紹介文</th><th>開店時間</th><th>閉店時間</th><th>ユーザー名</th><th>登録日</th>
 	</tr>
 	<?php
 	for($i = 0; $i < count($data); $i++){
@@ -60,6 +60,11 @@
 				echo "<td>不明</td>";
 				break;
 		}
+		//ジャンル
+		echo 
+				"<td>
+					{$arr['Place']['payment_average']}
+				</td>";			
 		//紹介文
 		echo 
 				"<td>

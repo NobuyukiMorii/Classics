@@ -49,6 +49,8 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 			break;
 	}
 	//wifiの平均スピード
+	echo "<tr><td>wifiスピード</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
+	echo "<tr><td>予算</td><td>{$arr['Place']['payment_average']}</td></tr>";
 	echo "<tr><td>開店時間</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
 	echo "<tr><td>開店時間</td><td>{$arr['Place']['open_time']}</td></tr>";
 	echo "<tr><td><閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
