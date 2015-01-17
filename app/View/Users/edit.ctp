@@ -5,7 +5,7 @@
 <?php
 echo "<tr>";
 echo "<td>名前</td><td>{$data[0]['User']['username']}</td>";
-if($data[0]['User']['avatar_file_name'] != null){
+if(isset($data[0]['User']['avatar_file_name'])) {
 	echo "<td>画像</td><td>" .  $this->Upload->uploadImage($data[0], 'User.avatar', array('style' => 'thumb')) . "</td>";
 } else {
 	echo "<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
