@@ -1,5 +1,21 @@
-<h1>詳細確認画面</h1>
+<h1>投稿兼詳細確認画面</h1>
 <a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?> >トップ画面に戻る</a>
+
+投稿画面
+<?php
+	echo $this->Form->create('Post',array('type' => 'file', 'action' => 'add'));
+	echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden'));
+	echo '感想：' . $this->Form->text('Post.comment');
+	echo $this->Form->error('Post.comment');
+	echo 'wifiスピード（0.00の形式で入力してください）：' . $this->Form->text('Post.wifi_speed');
+	echo $this->Form->error('Post.wifi_speed');
+	echo $this->Form->error('Post.time_zone');
+	echo '<br>利用料金（１人）：<br>' . $this->Form->text('Post.payment');
+	echo '利用した時間帯：<br>' . $this->Form->select('Post.time_zone' , array(0 => "0時" , 1 => "1時" , 2 => "2時" , 3 => "3時" , 4 => "4時" , 5 => "5時" , 6 => "6時" , 7 => "7時" , 8 => "8時" , 9=> "9時" , 10 => "10時" ,11 => "11時" , 12 =>"12時" , 13 => "13時" , 14 => "14時" , 15 => "15時" , 16 => "16時" , 17 => "17時" , 18 => "18時" , 19 => "19時" , 20 => "20時" , 21 => "21時" , 22 => "22時" ,23 => "23時") ,array('value' => 12 , 'legend' => false));
+	echo $this->Form->error('Post.payment');
+	echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
+	echo $this->Form->end("送信");
+?>
 
 <table>
 <?php
@@ -87,13 +103,3 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 	}
 	?>
 </table>
-
-投稿画面
-<?php
-	echo $this->Form->create('Post',array('type' => 'file', 'action' => 'add'));
-	echo '名前：' . $this->Form->text('Post.comment');
-	echo $this->Form->error('Post.comment');
-	echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden'));
-	echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
-	echo $this->Form->end("送信");
-?>
