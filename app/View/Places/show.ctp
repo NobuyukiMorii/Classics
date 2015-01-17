@@ -1,7 +1,7 @@
 <h1>投稿兼詳細確認画面</h1>
 <a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?> >トップ画面に戻る</a>
 
-投稿画面
+<h1>投稿画面</h1>
 <?php
 	echo $this->Form->create('Post',array('type' => 'file', 'action' => 'add'));
 	echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden'));

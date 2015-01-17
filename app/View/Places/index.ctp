@@ -43,7 +43,7 @@
 		//wifiのスピード
 		echo 
 				"<td>
-					0.00mbp
+					{$arr['Place']['wifi_average_speed']}
 				</td>";
 		//ジャンル
 		switch ($arr['Place']['genre']) {

@@ -48,6 +48,8 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 			echo "<tr><td>wifi</td><td>不明</td></tr>";
 			break;
 	}
+	//wifiの平均スピード
+	echo "<tr><td>開店時間</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
 	echo "<tr><td>開店時間</td><td>{$arr['Place']['open_time']}</td></tr>";
 	echo "<tr><td><閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
 ?>
