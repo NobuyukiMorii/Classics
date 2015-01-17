@@ -3,18 +3,52 @@
 
 <table>
 <?php
-echo "<tr><td>名前</td><td>{$data[0]['Place']['name']}</td></tr>";
-echo "<tr><td>コメント</td><td>{$data[0]['Place']['comment']}</td></tr>";
-echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$data[0]['User']['id']}>{$data[0]['User']['username']}</a></td></tr>";
-	if($data[0]['Place']['avatar_file_name'] != null){
+$arr = $data;
+	$arr = $data[0];
+	if($arr['Place']['avatar_file_name'] != null){
 		echo "<tr>
-				<td>画像</td><td>" .  $this->Upload->uploadImage($data[0]['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
+				<td>画像</td><td>" .  $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
 			</tr>";
 	} else {
 		echo "<tr>
 		 		<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>
 		 	</tr>";
 	}
+	echo "<tr><td>名前</td><td>{$arr['Place']['name']}</td></tr>";
+	echo "<tr><td>紹介文</td><td>{$arr['Place']['comment']}</td></tr>";
+	echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a></td></tr>";
+	//ジャンル
+	switch ($arr['Place']['genre']) {
+		case 0:
+			echo "<tr><td>ジャンル</td><td>カフェ</td></tr>";
+			break;
+		case 1:
+			echo "<tr><td>ジャンル</td><td>バー</td></tr>";
+			break;
+		case 2:
+			echo "<tr><td>ジャンル</td><td>レストラン</td></tr>";
+			break;
+		default:
+			echo "<tr><td>ジャンル</td><td>不明</td></tr>";
+			break;
+	}
+	//wifi
+	switch ($arr['Place']['wifi_existence']) {
+		case 0:
+			echo "<tr><td>wifi</td><td>なし</td></tr>";
+			break;
+		case 1:
+			echo "<tr><td>wifi</td><td>あり</td></tr>";
+			break;
+		case 2:
+			echo "<tr><td>wifi</td><td>不明</td></tr>";
+			break;
+		default:
+			echo "<tr><td>wifi</td><td>不明</td></tr>";
+			break;
+	}
+	echo "<tr><td>開店時間</td><td>{$arr['Place']['open_time']}</td></tr>";
+	echo "<tr><td><閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
 ?>
 </table>
 
