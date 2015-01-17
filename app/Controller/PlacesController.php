@@ -26,6 +26,10 @@ class PlacesController extends AppController {
 		} else {
 			$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
 		}
+    	//検索結果が該当なしの場合
+    	if($data == array()){
+    		$this->Session->setFlash(__('該当のユーザーが見つかりませんでした。'));
+    	}
 		$this->set('data' , $this->paginate());
 	}
 	//場所情報を追加する
