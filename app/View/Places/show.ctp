@@ -63,6 +63,8 @@ $arr = $data;
 			echo "<tr><td>wifi</td><td>不明</td></tr>";
 			break;
 	}
+	//wifiの平均スピード
+	echo "<tr><td>wifiスピード</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
 	echo "<tr><td>開店時間</td><td>{$arr['Place']['open_time']}</td></tr>";
 	echo "<tr><td><閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
 ?>
@@ -74,13 +76,25 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 
 <table>
 	<tr>
-		<th>コメント</th><th>ユーザー名</th><th>
+		<th>写真</th><th>wifiスピード</th><th>感想</th><th>ユーザー名</th><th>投稿日</th>
 	</tr>
 	<?php
 	if (isset($data[0]['Post']['id'])) {
 		for($i = 0; $i < count($data); $i++){
 			$arr = $data[$i];
 			echo "<tr>";
+			//画像
+			if($arr['Post']['avatar_file_name'] != null){
+				echo "<td>" .  $this->Upload->uploadImage($arr, 'Post.avatar', array('style' => 'thumb')) . "</td>";
+			} else {
+				echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
+			}
+			//wifiのスピード
+			echo 
+					"<td>
+						{$arr['Post']['wifi_speed']}
+					</td>"; 
+
 			//投稿内容
 			echo 
 					"<td>
@@ -91,12 +105,11 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 					"<td>
 						<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
 					</td>";
-			//画像
-			if($arr['Post']['avatar_file_name'] != null){
-				echo "<td>" .  $this->Upload->uploadImage($arr, 'Post.avatar', array('style' => 'thumb')) . "</td>";
-			} else {
-				echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
-			}
+			//登校日
+			echo 
+					"<td>
+						{$arr['Post']['created']}
+					</td>";
 			echo "</tr>";
 
 		}
