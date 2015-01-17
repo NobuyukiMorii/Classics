@@ -41,26 +41,10 @@
 				break;
 		}
 		//wifiのスピード
-		switch ($arr['Place']['wifi_existence']) {
-			case 0:
-				echo "<td>星１つ</td>";
-				break;
-			case 1:
-				echo "<td>星２つ</td>";
-				break;
-			case 2:
-				echo "<td>星３つ</td>";
-				break;
-			case 3:
-				echo "<td>星４つ</td>";
-				break;
-			case 4:
-				echo "<td>星５つ</td>";
-				break;
-			default:
-				echo "><td>不明</td>";
-				break;
-		}
+		echo 
+				"<td>
+					0.00mbp
+				</td>";
 		//ジャンル
 		switch ($arr['Place']['genre']) {
 			case 0:
