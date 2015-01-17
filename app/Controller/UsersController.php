@@ -120,7 +120,6 @@ class UsersController extends AppController {
 				);
     		} 
     	}
-
     	$data = $this->paginate('User');
     	$this->set('data' , $data);
     }
