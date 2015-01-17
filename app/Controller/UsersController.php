@@ -118,9 +118,13 @@ class UsersController extends AppController {
 			    $this->paginate = array(
    					'conditions' => array('User.username like ?' => array("%{$this->data['User']['username']}%"))
 				);
-    		} 
+    		}
     	}
     	$data = $this->paginate('User');
+    	//検索結果が該当なしの場合
+    	if($data == array()){
+    		$this->Session->setFlash(__('該当のユーザーが見つかりませんでした。'));
+    	}
     	$this->set('data' , $data);
     }
 }
