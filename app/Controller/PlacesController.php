@@ -46,11 +46,18 @@ class PlacesController extends AppController {
 	
 	//場所情報を１件検索する
 	public function show($param){
-		$data = $this->Post->find('all' , array('conditions' => array('Post.places_id' => $param)));
-		
+		//投稿の情報にページネーションをかけて渡す
+		$this->paginate = array(
+				'conditions' => array('Post.places_id' => $param),
+				'limit' => 6
+		);
+		$data = $this->paginate('Post');
+		//投稿情報があった場合とない場合に分岐
 		if(!empty($data)){
+			//投稿情報と場所情報を渡す
 			$this->set('data' , $data);
 		} else {
+			//場所情報のみを渡す
 			$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
 			$this->set('data' , $data);
 		}

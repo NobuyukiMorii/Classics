@@ -67,7 +67,7 @@ $arr = $data;
 	echo "<tr><td>wifiスピード</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
 	echo "<tr><td>予算</td><td>{$arr['Place']['payment_average']}</td></tr>";
 	echo "<tr><td>開店時間</td><td>{$arr['Place']['open_time']}</td></tr>";
-	echo "<tr><td><閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
+	echo "<tr><td>閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
 ?>
 </table>
 
@@ -117,3 +117,9 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 	}
 	?>
 </table>
+
+<?php
+echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
+echo $this->Paginator->numbers(array('separator' => ''));
+echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
+?>
