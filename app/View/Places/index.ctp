@@ -41,6 +41,14 @@
 </table>
 
 <?php
+echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
+echo $this->Paginator->numbers(array('separator' => ''));
+echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
+?>
+
+
+
+<?php
 echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
 echo $this->Form->input('name');
 echo $this->Form->end('送信');

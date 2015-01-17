@@ -24,6 +24,12 @@
 </table>
 
 <?php
+echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
+echo $this->Paginator->numbers(array('separator' => ''));
+echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
+?>
+
+<?php
 echo $this->Form->create('User',array('action' => 'serchUser' , 'type' => 'post' , 'novalidate' => true));
 echo $this->Form->input('username');
 echo $this->Form->end('Serch');

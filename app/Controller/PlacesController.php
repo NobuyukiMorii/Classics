@@ -7,6 +7,13 @@ class PlacesController extends AppController {
 	public $uses = array('Place' , 'User' , 'Post');
 	//ヘルパーの指定
 	public $helpers = array('UploadPack.Upload');
+	//ページネーションの設定
+	public $paginate = array(
+        'Place' => array(
+            'limit' => 8, 
+            'order' => array('id' => 'asc')
+        )
+    );
 
 	//場所情報を全件だし
 	public function index(){
@@ -19,7 +26,7 @@ class PlacesController extends AppController {
 		} else {
 			$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
 		}
-		$this->set('data' , $data);
+		$this->set('data' , $this->paginate());
 	}
 	//場所情報を追加する
 	public function add(){

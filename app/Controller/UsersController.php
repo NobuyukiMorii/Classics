@@ -9,7 +9,13 @@ class UsersController extends AppController {
 	public $uses = array('Place' , 'User');
 	//ヘルパーの設定
 	public $helpers = array('UploadPack.Upload');
-
+	//ページネーションの設定
+	public $paginate = array(
+        'User' => array(
+            'limit' => 8, 
+            'order' => array('id' => 'asc')
+        )
+    );
     //ログインしていないユーザーのアクセスを許可するメソッドを指定
 	public function beforeFilter() {
 	    parent::beforeFilter();
@@ -109,12 +115,13 @@ class UsersController extends AppController {
     public function serchUser(){
 		if(isset($this->data)){
 			if(!empty($this->data['User']['username'])){
-    			$data = $this->User->find('all' , array('conditions' => array('User.username like ?' => array("%{$this->data['User']['username']}%")) , 'validate' => false));
-    			$this->set('data' , $data);
-    		} else {
-				$data = $this->User->find('all' , array('validate' => false));
-				$this->set('data' , $data);
-			}	    		
+			    $this->paginate = array(
+   					'conditions' => array('User.username like ?' => array("%{$this->data['User']['username']}%"))
+				);
+    		} 
     	}
+
+    	$data = $this->paginate('User');
+    	$this->set('data' , $data);
     }
 }
