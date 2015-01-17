@@ -9,9 +9,15 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 	echo "<tr><td>名前</td><td>{$arr['Place']['name']}</td></tr>";
 	echo "<tr><td>コメント</td><td>{$arr['Place']['comment']}</td></tr>";
 	echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a></td></tr>";
-	echo "<tr>
-			<td>画像</td><td>" .  $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
-		</tr>";
+	if($arr['Place']['avatar_file_name'] != null){
+		echo "<tr>
+				<td>画像</td><td>" .  $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
+			</tr>";
+	} else {
+		echo "<tr>
+		 		<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>
+		 	</tr>";
+	}
 ?>
 </table>
 

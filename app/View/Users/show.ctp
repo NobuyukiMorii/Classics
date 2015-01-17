@@ -3,10 +3,14 @@
 
 <table>
 <?php
-echo "<tr>
-		<td>画像</td><td>" .  $this->Upload->uploadImage($data_user[0], 'User.avatar', array('style' => 'thumb')) . "</td>
-		<td>ユーザー名</td><td>{$data_user[0]['User']['username']}</td>
-	</tr>";
+echo "<tr>";
+echo "<td>ユーザー名</td><td>{$data_user[0]['User']['username']}</td>";
+if($data_user[0]['User']['avatar_file_name'] != null){
+	echo "<td>" .  $this->Upload->uploadImage($data_user[0] , 'User.avatar', array('style' => 'thumb')) . "</td>";
+} else {
+	echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
+}
+echo "</tr>";
 ?>
 </table>
 

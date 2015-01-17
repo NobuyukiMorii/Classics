@@ -8,20 +8,18 @@ class PlacesController extends AppController {
 	//ヘルパーの指定
 	public $helpers = array('UploadPack.Upload');
 
-	//場所情報を全県だし
+	//場所情報を全件だし
 	public function index(){
 		if($this->request->isPost()){
 			if(!empty($this->data['Place']['name'])){
 				$data = $this->Place->find('all' , array('conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%"))));
-				$this->set('data' , $data);
 			} else {
-				$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
-				$this->set('data' , $data);	
+				$data = $this->Place->find('all' , array('order' => 'Place.id desc'));	
 			}
 		} else {
 			$data = $this->Place->find('all' , array('order' => 'Place.id desc'));
-			$this->set('data' , $data);
 		}
+		$this->set('data' , $data);
 	}
 	//場所情報を追加する
 	public function add(){
@@ -69,7 +67,6 @@ class PlacesController extends AppController {
     		} 
     	}
     }
-
 
 }
 

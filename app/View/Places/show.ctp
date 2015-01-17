@@ -6,9 +6,15 @@
 echo "<tr><td>名前</td><td>{$data[0]['Place']['name']}</td></tr>";
 echo "<tr><td>コメント</td><td>{$data[0]['Place']['comment']}</td></tr>";
 echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$data[0]['User']['id']}>{$data[0]['User']['username']}</a></td></tr>";
-echo "<tr>
-		<td>画像</td><td>" .  $this->Upload->uploadImage($data[0], 'Place.avatar', array('style' => 'thumb')) . "</td>
-	</tr>";
+	if($data[0]['Place']['avatar_file_name'] != null){
+		echo "<tr>
+				<td>画像</td><td>" .  $this->Upload->uploadImage($data[0]['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
+			</tr>";
+	} else {
+		echo "<tr>
+		 		<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>
+		 	</tr>";
+	}
 ?>
 </table>
 
@@ -36,9 +42,13 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 						<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
 					</td>";
 			//画像
-			echo 
-					"<td>" .  $this->Upload->uploadImage($arr, 'Post.avatar', array('style' => 'thumb')) . "</td>";
+			if($arr['Post']['avatar_file_name'] != null){
+				echo "<td>" .  $this->Upload->uploadImage($arr, 'Post.avatar', array('style' => 'thumb')) . "</td>";
+			} else {
+				echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
+			}
 			echo "</tr>";
+
 		}
 	}
 	?>
