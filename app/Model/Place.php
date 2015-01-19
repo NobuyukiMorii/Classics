@@ -17,6 +17,28 @@ class Place extends AppModel {
 		'comment' => array(
 			'rule' => 'notEmpty' ,
 			'message' => '内容は必ず入力して下さい。'
+		),
+		'genre' => array(
+			array(
+				'rule' => 'notEmpty' ,
+				'message' => '内容は必ず入力して下さい。'
+			),
+			array(
+				'rule' => 'alphaNumeric' ,
+				'message' => 'ラジオボタンから選択して下さい。'
+			)
+		),
+		'wifi_existence' => array(
+			'rule' => 'notEmpty' ,
+			'message' => '内容は必ず入力して下さい。'
+		),
+		'open_time' => array(
+			'rule' => 'time',
+			'message' => 'HH:MM形式で入力して下さい。'		
+		),
+		'close_time' => array(
+			'rule' => 'time',
+			'message' => 'HH:MM形式で入力して下さい。'		
 		)
 	);
 	//場所情報は、ユーザー情報に属する

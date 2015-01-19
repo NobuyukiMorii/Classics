@@ -3,6 +3,27 @@
 class Post extends AppModel {
 	public $name = 'Post';
 
+	//バリデーションの設定
+
+	public $validate = array(
+		'comment' => array(
+			'rule' => 'notEmpty' ,
+			'message' => '内容は必ず入力して下さい。'
+		),
+		'wifi_speed' => array(
+			'rule' => array('range', 0, 999),
+			'message' => '０〜９９９までの範囲で入力して下さい'
+		),
+		'time_zone' => array(
+			'rule' => 'alphaNumeric' ,
+			'message' => 'ラジオボタンから選択して下さい。'
+		),
+		'payment' => array(
+			'rule' => 'alphaNumeric' ,
+			'message' => 'ラジオボタンから選択して下さい。'
+		)	
+	);
+
 	//場所情報は、ユーザー情報に属する
 	public $belongsTo = array(
 		"Place" => array(
