@@ -16,6 +16,7 @@ class PostsController extends AppController {
 	public function add(){
 		$data = $this->data;
 		$data['Post']['users_id'] = $this->Auth->user('id');
+		$places_id = $data['Post']['places_id'];
 
 		if(empty($this->data['Post']['comment'])){
 			$this->Session->setFlash(__('コメントは必ず入力して下さい。'));
@@ -28,6 +29,7 @@ class PostsController extends AppController {
             $this->Session->setFlash(__('投稿しました。'));
 		} else {
 			$this->Session->setFlash(__('投稿に失敗しました。'));
+			$this->redirect(array('controller' => 'Places' , 'action'=>'show' , $places_id));
 		}
 		//アップデート対象となる投稿情報を取得
 		$past_post = $this->Post->find(
@@ -46,7 +48,12 @@ class PostsController extends AppController {
 			//支払額の合計値
 			$payment_sum += $past_post[$i]['Post']['payment'];
 		}
-		$wifi_average_speed = round($wifi_speed_sum / count($past_post) , 2);
+		//0で割らないための処理
+		if(count($past_post) !== 0){
+			$wifi_average_speed = round($wifi_speed_sum / count($past_post) , 2);
+		} else {
+
+		}
 		$payment_average = round($payment_sum / count($past_post) , 2);
 
 		//Placeへのwifi_average_speedの保存
