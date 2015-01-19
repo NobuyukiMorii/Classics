@@ -1,5 +1,6 @@
 <h1>場所情報</h1>
 <a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?> >トップ画面に戻る</a>
+<a href="javascript:history.back();">一つ前のページへ戻る</a>
 <?php
 echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/{$data['Place']['id']}>閲覧する</a>";
 ?>

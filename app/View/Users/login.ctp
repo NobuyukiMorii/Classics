@@ -1,3 +1,5 @@
+<a href="javascript:history.back();">一つ前のページへ戻る</a>
+
 <?php
 if($this->Session->check('Message.auth'))
 echo $this->Session->flash('auth');
