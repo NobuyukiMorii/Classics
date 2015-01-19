@@ -6,7 +6,7 @@ class UsersController extends AppController {
 	//コントローラーの名前を書く
 	public $name = 'Users';
 	//使用するモデルを指定する
-	public $uses = array('Place' , 'User');
+	public $uses = array('Place' , 'User' , 'Post');
 	//ヘルパーの設定
 	public $helpers = array('UploadPack.Upload');
 	//ページネーションの設定
@@ -53,21 +53,29 @@ class UsersController extends AppController {
 	//ユーザー確認画面（みんな見れる）
 	public function show($param){
 		//場所情報のデータ
+		$this->Place->unbindModel(array('belongsTo' => array('User')));
 		$data_place = $this->Place->find('all' , array('conditions' => array('Place.users_id' => $param)));
 		//ユーザー情報のデータ
 		$data_user = $this->User->find('all' ,  array('conditions' => array('User.id' => $param)));
+		//投稿情報
+		$this->Post->unbindModel(array('belongsTo' => array('Place' , 'User')));
+		$data_post = $this->Post->find('all' , array('conditions' => array('Post.users_id' => $param)));
 		//データをビューに渡す
-		$this->set(compact('data_place' , 'data_user'));
+		$this->set(compact('data_place' , 'data_user' , 'data_post'));
 	}
 
 	//ユーザー確認画面（ログインユーザーのみ）
 	public function profile(){
 		$id = $this->Auth->user('id');
 		if(!empty($id)){
-            $data = $this->User->find('all' , array('conditions' => array('User.id' => $id)));
-            if($data){
-            	$this->set('data' , $data);
-            } 
+			$data_place = $this->Place->find('all' , array('conditions' => array('Place.users_id' => $id)));
+			//ユーザー情報のデータ
+			$data_user = $this->User->find('all' ,  array('conditions' => array('User.id' => $id)));
+			//投稿情報
+			$this->Post->unbindModel(array('belongsTo' => array('Place' , 'User')));
+			$data_post = $this->Post->find('all' , array('conditions' => array('Post.users_id' => $id)));
+			//データをビューに渡す
+			$this->set(compact('data_place' , 'data_user' , 'data_post'));
         } else {
             $this->Session->setFlash(__('ログインしなおして下さい。'));
             $this->redirect(array('controller' => 'Users' , 'action' => 'login'));
