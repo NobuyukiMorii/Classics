@@ -11,19 +11,40 @@ class PlacesController extends AppController {
 	public $paginate = array(
         'Place' => array(
             'limit' => 8, 
-            'order' => array('id' => 'asc')
+            'order' => array('wifi_average_speed' => 'DESC')
         )
     );
 
 	//場所情報を全件だし
 	public function index(){
-		if(isset($this->data)){
-			if(!empty($this->data['Place']['name'])){
-			    $this->paginate = array(
-   					'conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%"))
-				);
-    		}
-    	}
+
+		if(!empty($this->data)){
+			//フォームが送信された場合の処理
+			if($this->data['Place']['flg'] === "name_form"){
+				//名前が検索条件だった場合
+				if($this->data['Place']['name'] !== ""){
+					//名前が入力されていた場合
+					$this->paginate = array('conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%")));
+		    	} else {
+		    		//名前が入寮されていなかった場合
+		    		//何も条件指定しないで全検索
+		    	}
+			} elseif ($this->data['Place']['flg'] === "other_form"){
+				//それ以外の項目が検索条件だった場合
+					$conditions = array(
+					  	array( 'and' => 
+					  		array(
+					  				'Place.genre' => $this->data['Place']['genre'],
+					  				'Place.wifi_average_speed >=' => $this->data['Place']['wifi_average_speed'],
+					  		)
+					  	)
+					);
+					$this->paginate = array('conditions' => $conditions);
+			} 
+		} else {
+			//フォームが送信されていな場合
+			//何も条件指定しないで全検索
+		}
     	$data = $this->paginate('Place');
 
     	//検索結果が該当なしの場合

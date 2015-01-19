@@ -105,6 +105,15 @@ echo $this->Paginator->next('next' , array(), null, array('class' => 'next disab
 
 <?php
 echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
-echo $this->Form->input('name');
+echo '名前：<br>' . $this->Form->input('Place.name');
+echo $this->Form->text('Place.flg' , array('value' => "name_form" , 'type' => 'hidden'));
+echo $this->Form->end('送信');
+?>
+
+<?php
+echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
+echo 'ジャンル：<br>' . $this->Form->radio('Place.genre' , array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他') ,array('value' => 0 , 'legend' => false));
+echo '<br>wifiスピード：<br>' . $this->Form->radio('Place.wifi_average_speed' , array(0,1,2,3,4,5) ,array('value' => 0 , 'legend' => false));
+echo $this->Form->text('Place.flg' , array('value' => "other_form" , 'type' => 'hidden'));
 echo $this->Form->end('送信');
 ?>

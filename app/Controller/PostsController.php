@@ -46,13 +46,13 @@ class PostsController extends AppController {
 			//支払額の合計値
 			$payment_sum += $past_post[$i]['Post']['payment'];
 		}
-		$wifi_speed_average = round($wifi_speed_sum / count($past_post) , 2);
+		$wifi_average_speed = round($wifi_speed_sum / count($past_post) , 2);
 		$payment_average = round($payment_sum / count($past_post) , 2);
 
-		//Placeへのwifi_speed_averageの保存
+		//Placeへのwifi_average_speedの保存
 		$update_place = $this->Place->find('all' , array('conditions' => array('Place.id' => $data['Post']['places_id'])));
 		$this->Place->id = $update_place[0]['Place']['id'];
-		$flg1 = $this->Place->saveField('wifi_speed_average' , $wifi_speed_average);
+		$flg1 = $this->Place->saveField('wifi_average_speed' , $wifi_average_speed);
 		$flg2 = $this->Place->saveField('payment_average' , $payment_average);
 		//エラー表示
 		if($flg1 == false || $flg2 == false){
