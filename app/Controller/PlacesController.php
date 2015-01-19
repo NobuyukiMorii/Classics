@@ -40,12 +40,22 @@ class PlacesController extends AppController {
 					  	)
 					);
 					$this->paginate = array('conditions' => $conditions);
+					//ビューのラジオの初期値をセットする
+					$this->set('value_genre' , $this->data['Place']['genre']);
+					$this->set('value_wifi_average_speed' , $this->data['Place']['wifi_average_speed']);
 			} 
 		} else {
 			//フォームが送信されていな場合
 			//何も条件指定しないで全検索
 		}
+		//検索結果のレコードがあるかないかの判定
     	$data = $this->paginate('Place');
+    	if($data == array()){
+    		$record = false;
+    	} else {
+    		$record = true;
+    	}
+    	$this->set('record' , $record);
 
     	//検索結果が該当なしの場合
     	if($data == array()){

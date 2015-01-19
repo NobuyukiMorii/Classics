@@ -7,9 +7,13 @@
 <a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'delete')); ?> >※退会する</a>
 
 <table>
-	<tr>
+	<?php
+	if($record == true){
+	echo "<tr>
 		<th>画像</th><th>場所</th><th>wifi</th><th>wifi speed</th><th>ジャンル</th><th>予算</th><th>紹介文</th><th>開店時間</th><th>閉店時間</th><th>ユーザー名</th><th>登録日</th>
-	</tr>
+		</tr>";
+	}
+	?>
 	<?php
 	for($i = 0; $i < count($data); $i++){
 		$arr = $data[$i];
@@ -96,24 +100,36 @@
 </table>
 
 <?php
-echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
-echo $this->Paginator->numbers(array('separator' => ''));
-echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
+
+if($record == true){
+	//レコードがある時だけ表示する
+	echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ''));
+	echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
+}
 ?>
 
 
 
 <?php
 echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
-echo '名前：<br>' . $this->Form->input('Place.name');
+echo '名前：<br>' . $this->Form->input('Place.name' , array('label' => false));
 echo $this->Form->text('Place.flg' , array('value' => "name_form" , 'type' => 'hidden'));
 echo $this->Form->end('送信');
 ?>
 
 <?php
 echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
-echo 'ジャンル：<br>' . $this->Form->radio('Place.genre' , array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他') ,array('value' => 0 , 'legend' => false));
-echo '<br>wifiスピード：<br>' . $this->Form->radio('Place.wifi_average_speed' , array(0,1,2,3,4,5) ,array('value' => 0 , 'legend' => false));
+if(empty($value_genre)){
+	echo 'ジャンル：<br>' . $this->Form->radio('Place.genre' , array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他') ,array('value' => 0 , 'legend' => false));
+} else {
+	echo 'ジャンル：<br>' . $this->Form->radio('Place.genre' , array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他') ,array('value' => $value_genre , 'legend' => false));
+}
+if(empty($value_wifi_average_speed)){
+	echo '<br>wifiスピード：<br>' . $this->Form->radio('Place.wifi_average_speed' , array(0,1,2,3,4,5) ,array('value' => 0 , 'legend' => false));
+} else {
+	echo '<br>wifiスピード：<br>' . $this->Form->radio('Place.wifi_average_speed' , array(0,1,2,3,4,5) ,array('value' => $value_wifi_average_speed , 'legend' => false));
+}
 echo $this->Form->text('Place.flg' , array('value' => "other_form" , 'type' => 'hidden'));
 echo $this->Form->end('送信');
 ?>
