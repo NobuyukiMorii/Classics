@@ -51,10 +51,8 @@
 				<a class="brand" href="#"><?php echo __('CakePHP'); ?></a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li class="active"><a href="#">CebuWifinder</a></li>
-						<li><a href="#about">サービスについて</a></li>
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'profile')); ?>>プロフィール</a></li>
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'serchUser')); ?>>セブの仲間達</a></li>
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->

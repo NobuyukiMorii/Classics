@@ -48,12 +48,15 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="#"><?php echo __('CakePHP'); ?></a>
+				<a class="brand" href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?>><?php echo __('Cebu Wifinder.jp'); ?></a>
 				<div class="nav-collapse">
 					<ul class="nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#about">About</a></li>
-						<li><a href="#contact">Contact</a></li>
+						<li><a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'add')); ?>>Wifiスポットを登録する</a></li>
+						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'profile')); ?>>プロフィール</a></li>
+						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'serchUser')); ?>>セブの仲間達</a></li>
+						<li><a href="#about">サービスについて</a></li>
+						<li><a href="#contact">お問い合わせ</a></li>
+						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'logout')); ?>>ログアウトする</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
 			</div>
@@ -61,8 +64,6 @@
 	</div>
 
 	<div class="container">
-
-		<h1>Bootstrap starter template</h1>
 
 		<?php echo $this->Session->flash(); ?>
 

@@ -4,6 +4,7 @@
 
 <p>ユーザー情報<p>
 <a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'edit')); ?> >プロフィールを変更する</a><br>
+<a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'delete')); ?> >※退会する</a><br>
 <?php
 echo "<tr>";
 echo "<td>ユーザー名</td><td>{$data_user[0]['User']['username']}</td>";
