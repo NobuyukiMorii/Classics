@@ -51,6 +51,10 @@ class AppController extends Controller {
 	public function beforeFilter(){
     	//エラーメッセージ
         $this->Auth->AuthError = "あなたはログインしていません。";
+        //スマートフォン判定
+        if($this->RequestHandler->isMobile()) {
+            $this->theme = 'Mobile';
+        }
 	}
 
 }
