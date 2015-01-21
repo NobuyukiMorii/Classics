@@ -135,4 +135,13 @@ class UsersController extends AppController {
     	}
     	$this->set('data' , $data);
     }
+
+    //問い合わせ画面
+    public function inquiry(){
+    	//ビューを表示するためにメソッドのみ用意
+    }
+    //サイト紹介画面
+    public function service_information(){
+    	//ビューを表示するためにメソッドのみ用意
+    }
 }
