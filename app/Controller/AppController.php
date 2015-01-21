@@ -32,7 +32,13 @@ App::uses('Controller' , 'Controller');
  */
 class AppController extends Controller {
 	//ヘルパーの設定
-	public $helpers = array('Html' , 'Form');
+    public $helpers = array(
+      'Session',
+      'Html' => array('className' => 'TwitterBootstrap.BootstrapHtml'),
+      'Form' => array('className' => 'TwitterBootstrap.BootstrapForm'),
+      'Paginator' => array('className' => 'TwitterBootstrap.BootstrapPaginator'),
+    );
+    public $layout = 'TwitterBootstrap.default';
 
 	//コンポーネントの設定
 	public $components = array(
@@ -44,7 +50,9 @@ class AppController extends Controller {
         	'authError' => 'ログインしてください。'
         ),
         //デバッグキット使う
-		'DebugKit.Toolbar'
+		'DebugKit.Toolbar',
+        //モバイル判定を行う
+        'RequestHandler'
 	);
 
 	//ビフォアーフィルターの設定
