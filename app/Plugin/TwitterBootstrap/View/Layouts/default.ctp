@@ -61,7 +61,7 @@
 				</div><!--/.nav-collapse -->
 			</div>
 		</div>
-	</div>
+	</div><!-- /navbar -->
 
 	<div class="container">
 
@@ -71,6 +71,12 @@
 
 	</div> <!-- /container -->
 
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Place sticky footer content here.</p>
+      </div>
+    </footer><!-- /footer -->
+    
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
