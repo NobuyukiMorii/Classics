@@ -56,7 +56,7 @@ class Place extends AppModel {
         'UploadPack.Upload' => array(
             'avatar' => array(
                 'quality' => 95 ,
-                'styles' => array('thumb' => '85x85')
+                'styles' => array('thumb' => '170x170')
             )
         ),
     );
