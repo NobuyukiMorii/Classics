@@ -70,6 +70,20 @@ input[type=radio] {
     </div>
   </div>
 </div>
+
+<div class="pagination">                         
+  <ul>                                           
+    <?php 
+    	if($record == true){
+		//レコードがある時だけ表示する
+    	echo $this->Paginator->prev(__('prev'), array('tag' => 'li'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+		echo $this->Paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li','first' => 1, 'ellipsis' => '<li class="disabled"><a>...</a></li>'));                             
+		echo $this->Paginator->next(__('next'), array('tag' => 'li','currentClass' => 'disabled'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+		}
+	?>
+  </ul>                                          
+</div>
+
 <hr>
 <?php
 for($i = 0; $i < count($data); $i++){
@@ -127,7 +141,7 @@ for($i = 0; $i < count($data); $i++){
 			      					echo '</div>';	
 			      				echo '</div>';
 			      				echo '<div class="span7">';
-			      					echo '<p>1) あ、このぺんかそれぺんですか？それでも、あなたがすきです。雨でも晴れでも、行きましょう！誰でもが行うことが出来るよ。新しい車は好きですが、高い車は好きじゃないね。あなたは、これが好きですか？昨日、私達はマクドナルドでハンバーガーを多く食べた。僕たちの友人が来たから、ビールを飲んだ。ここからあの病院まで、１０キロメートルくらいでしょう。<strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>:' . $arr['Place']['modified'] . '更新）</strong></p>';
+			      					echo '<p>' . $arr['Place']['comment'] . '<strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>:' . $arr['Place']['modified'] . '更新）</strong></p>';
 			      				echo '</div>';
 			    			echo '</div>';
 			  			echo '</div>';
@@ -141,15 +155,17 @@ for($i = 0; $i < count($data); $i++){
 }
 ?>
 
-
-
-
-<?php
-
-if($record == true){
-	//レコードがある時だけ表示する
-	echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
-	echo $this->Paginator->numbers(array('separator' => ''));
-	echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
-}
-?>
+<div class="text-center">
+	<div class="pagination">                         
+	  <ul>                                           
+	    <?php 
+	    	if($record == true){
+			//レコードがある時だけ表示する
+	    	echo $this->Paginator->prev(__('prev'), array('tag' => 'li'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+			echo $this->Paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li','first' => 1, 'ellipsis' => '<li class="disabled"><a>...</a></li>'));                             
+			echo $this->Paginator->next(__('next'), array('tag' => 'li','currentClass' => 'disabled'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+			}
+		?>
+	  </ul>                                          
+	</div>
+</div>
