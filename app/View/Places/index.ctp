@@ -1,132 +1,155 @@
-<div class="row">
-	<div class="span8">
-		<table>
-			<?php
-			if($record == true){
-			echo "<tr>
-				<th>画像</th><th>場所</th><th>wifi</th><th>wifi speed</th><th>ジャンル</th><th>予算</th><th>紹介文</th><th>開店時間</th><th>閉店時間</th><th>ユーザー名</th><th>登録日</th>
-				</tr>";
-			}
-			?>
-			<?php
-			for($i = 0; $i < count($data); $i++){
-				$arr = $data[$i];
-				echo "<tr>";
-				//画像
-				if($arr['Place']['avatar_file_name'] != null){
-					echo 	"<td>" .  $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb')) . "</td>";
-				} else {
-					echo 	"<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
-				}
-				//場所の名前
-				echo 
-						"<td>
-							<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/{$arr['Place']['id']}>{$arr['Place']['name']}</a>
-						</td>";
-				//wifiの有無
-				switch ($arr['Place']['wifi_existence']) {
-					case 0:
-						echo "<td>なし</td>";
-						break;
-					case 1:
-						echo "<td>あり</td>";
-						break;
-					case 2:
-						echo "<td>不明</td>";
-						break;
-					default:
-						echo "><td>不明</td>";
-						break;
-				}
-				//wifiのスピード
-				echo 
-						"<td>
-							{$arr['Place']['wifi_average_speed']}
-						</td>";
-				//ジャンル
-				switch ($arr['Place']['genre']) {
-					case 0:
-						echo "<td>カフェ</td>";
-						break;
-					case 1:
-						echo "<td>バー</td>";
-						break;
-					case 2:
-						echo "<td>レストラン</td>";
-						break;
-					default:
-						echo "<td>不明</td>";
-						break;
-				}
-				//ジャンル
-				echo 
-						"<td>
-							{$arr['Place']['payment_average']}
-						</td>";			
-				//紹介文
-				echo 
-						"<td>
-							{$arr['Place']['comment']}
-						</td>";	
-				//開店時間
-				echo 
-						"<td>
-							{$arr['Place']['open_time']}
-						</td>";
-				//閉店時間		
-				echo 
-						"<td>
-							{$arr['Place']['close_time']}
-						</td>";
-				//最後に更新したユーザー
-				echo 
-						"<td>
-							<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
-						</td>";
-				//最終更新日
-				echo 
-						"<td>
-							{$arr['Place']['modified']}
-						</td>";	
-				echo "</tr>";
-			}
-			?>
-		</table>
+<style>
+input[type=radio] {
+    margin:0px;
+    width:20px;
+}
+.radio-horizontal label{
+    display: inline-block;
+}
+</style>
 
+<div class="container-fluid">
+  <div class="row-fluid">
+  	<div class="span6">
+  		<?php echo $this->Html->image('CebuWifi.png', array('alt' => 'CebuWifi'));?>
+  	</div>
+    <div class="span3">
 		<?php
-
-		if($record == true){
-			//レコードがある時だけ表示する
-			echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
-			echo $this->Paginator->numbers(array('separator' => ''));
-			echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
-		}
-		?>
-
-	</div>
-
-	<div class="span4">
-		<?php
+		echo '<h4>場所名で検索</h4>';
 		echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
-		echo '名前：<br>' . $this->Form->input('Place.name' , array('label' => false));
+		echo $this->Form->input('Place.name' , array('label' => false));
 		echo $this->Form->text('Place.flg' , array('value' => "name_form" , 'type' => 'hidden'));
 		echo $this->Form->end('送信');
 		?>
-
+    </div>
+    <div class="span3">
 		<?php
+		echo '<h4>Wifiのスピードとジャンルで検索</h4>';
 		echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
 		if(empty($value_genre)){
-			echo 'ジャンル：<br>' . $this->Form->radio('Place.genre' , array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他') ,array('value' => 0 , 'legend' => false));
+			echo $this->Form->input('Place.genre', array(
+				'label' => false,
+				'type' => 'radio',
+				'div' => 'radio-horizontal',
+				'options' => array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他'),
+				'value' => 0,
+				'style' => 'float:none;',
+			));
 		} else {
-			echo 'ジャンル：<br>' . $this->Form->radio('Place.genre' , array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他') ,array('value' => $value_genre , 'legend' => false));
+			echo $this->Form->input('Place.genre', array(
+				'label' => false,
+				'type' => 'radio',
+				'div' => 'radio-horizontal',
+				'options' => array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他'),
+				'value' => $value_genre ,
+				'style' => 'float:none;',
+			));
 		}
 		if(empty($value_wifi_average_speed)){
-			echo '<br>wifiスピード：<br>' . $this->Form->radio('Place.wifi_average_speed' , array(0,1,2,3,4,5) ,array('value' => 0 , 'legend' => false));
+			echo $this->Form->input('Place.wifi_average_speed', array(
+				'label' => false,
+				'type' => 'radio',
+				'div' => 'radio-horizontal',
+				'options' => array(0,1,2,3,4,5),
+				'value' => 3 ,
+				'style' => 'float:none;',
+			));
 		} else {
-			echo '<br>wifiスピード：<br>' . $this->Form->radio('Place.wifi_average_speed' , array(0,1,2,3,4,5) ,array('value' => $value_wifi_average_speed , 'legend' => false));
+			echo $this->Form->input('Place.wifi_average_speed', array(
+				'label' => false,
+				'type' => 'radio',
+				'div' => 'radio-horizontal',
+				'options' => array(0,1,2,3,4,5),
+				'value' => $value_wifi_average_speed ,
+				'style' => 'float:none;',
+			));
 		}
 		echo $this->Form->text('Place.flg' , array('value' => "other_form" , 'type' => 'hidden'));
 		echo $this->Form->end('送信');
 		?>
-	</div>
+    </div>
+  </div>
 </div>
+<hr>
+<?php
+for($i = 0; $i < count($data); $i++){
+	$arr = $data[$i];
+	echo '<div class="row">';
+	  	echo '<div class="span9">';
+	    	echo '<div class="row">';
+	      		echo "<div class='span2'>";
+	      			//Photo
+					if($arr['Place']['avatar_file_name'] != null){
+						echo 	$this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb'));
+					} else {
+						echo 	"<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
+					}
+	      		echo "</div>";
+	      		echo '<div class="span7">';
+					echo '<div class="row">';
+			  			echo '<div class="span9">';
+			    			echo '<div class="row">';
+			      				echo '<div class="span7">';
+			      					echo '<div class="row">';
+			      						echo '<h3><a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a></h3>';
+			      					echo '</div>';	
+			      				echo '</div>';
+			      				echo '<div class="span2">';
+			      					echo '<h5 style="text-align:right;">';
+  									switch ($arr['Place']['genre']) {
+										case 0:
+											echo "カフェ";
+											break;
+										case 1:
+											echo "バー";
+											break;
+										case 2:
+											echo "レストラン";
+											break;
+										default:
+											echo "不明";
+											break;
+									}
+									echo '</h5>';
+			      				echo '</div>';
+			    			echo '</div>';
+
+			    			echo '<div class="row">';
+			      				echo '<div class="span2">';
+			      					echo '<div class="row">';
+			      						echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
+			      					echo '</div>';
+			      					echo '<div class="row">';
+			      						echo "<dl>";
+											echo "<dt>" . $arr['Place']['payment_average'] . "peso</dt>";
+											echo "<dt>" . $arr['Place']['open_time'] . ' - ' . $arr['Place']['close_time'] . "</dt>";
+										echo "</dl>";
+			      					echo '</div>';	
+			      				echo '</div>';
+			      				echo '<div class="span7">';
+			      					echo '<p>1) あ、このぺんかそれぺんですか？それでも、あなたがすきです。雨でも晴れでも、行きましょう！誰でもが行うことが出来るよ。新しい車は好きですが、高い車は好きじゃないね。あなたは、これが好きですか？昨日、私達はマクドナルドでハンバーガーを多く食べた。僕たちの友人が来たから、ビールを飲んだ。ここからあの病院まで、１０キロメートルくらいでしょう。<strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>:' . $arr['Place']['modified'] . '更新）</strong></p>';
+			      				echo '</div>';
+			    			echo '</div>';
+			  			echo '</div>';
+					echo '</div>';
+	      		echo '</div>';
+	    	echo '</div>';
+	 	echo '</div>';
+	echo '</div>';
+	echo '<hr>';
+
+}
+?>
+
+
+
+
+<?php
+
+if($record == true){
+	//レコードがある時だけ表示する
+	echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
+	echo $this->Paginator->numbers(array('separator' => ''));
+	echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
+}
+?>

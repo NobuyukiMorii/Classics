@@ -48,7 +48,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?>><?php echo __('Cebu Wifinder.jp'); ?></a>
+				<a class="brand" href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?>><?php echo __('Cebu Wifi'); ?></a>
 				<div class="nav-collapse">
 					<ul class="nav">
 						<li><a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'add')); ?>>Wifiスポットを登録する</a></li>
