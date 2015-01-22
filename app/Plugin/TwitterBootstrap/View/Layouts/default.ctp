@@ -70,12 +70,6 @@
 		<?php echo $this->fetch('content'); ?>
 
 	</div> <!-- /container -->
-
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-      </div>
-    </footer><!-- /footer -->
     
 	<!-- Le javascript
     ================================================== -->
