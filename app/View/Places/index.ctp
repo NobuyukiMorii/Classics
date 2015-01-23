@@ -51,7 +51,7 @@ input[type=radio] {
 				'type' => 'radio',
 				'div' => 'radio-horizontal',
 				'options' => array(0,1,2,3,4,5),
-				'value' => 3 ,
+				'value' => 0,
 				'style' => 'float:none;',
 			));
 		} else {
@@ -60,7 +60,7 @@ input[type=radio] {
 				'type' => 'radio',
 				'div' => 'radio-horizontal',
 				'options' => array(0,1,2,3,4,5),
-				'value' => $value_wifi_average_speed ,
+				'value' => $value_wifi_average_speed,
 				'style' => 'float:none;',
 			));
 		}
@@ -136,12 +136,12 @@ for($i = 0; $i < count($data); $i++){
 			      					echo '<div class="row">';
 			      						echo "<dl>";
 											echo "<dt>" . $arr['Place']['payment_average'] . "peso</dt>";
-											echo "<dt>" . $arr['Place']['open_time'] . ' - ' . $arr['Place']['close_time'] . "</dt>";
+											echo "<dt>" . date("H:i", strtotime($arr['Place']['open_time'])) . ' - ' . date("H:i", strtotime($arr['Place']['close_time'])) . "</dt>";
 										echo "</dl>";
 			      					echo '</div>';	
 			      				echo '</div>';
 			      				echo '<div class="span7">';
-			      					echo '<p>' . $arr['Place']['comment'] . '<strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>:' . $arr['Place']['modified'] . '更新）</strong></p>';
+			      					echo '<p>' . $arr['Place']['comment'] . '<strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . '）</strong></p>';
 			      				echo '</div>';
 			    			echo '</div>';
 			  			echo '</div>';
