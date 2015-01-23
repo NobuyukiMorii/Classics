@@ -1,122 +1,205 @@
-<h1>投稿画面</h1>
-<?php
-	echo $this->Form->create('Post',array('type' => 'file', 'action' => 'add'));
-	echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden'));
-	echo '感想：' . $this->Form->text('Post.comment');
-	echo $this->Form->error('Post.comment');
-	echo 'wifiスピード（0.00の形式で入力してください）：' . $this->Form->text('Post.wifi_speed');
-	echo $this->Form->error('Post.wifi_speed');
-	echo $this->Form->error('Post.time_zone');
-	echo '<br>利用料金（１人）：<br>' . $this->Form->text('Post.payment');
-	echo '利用した時間帯：<br>' . $this->Form->select('Post.time_zone' , array(0 => "0時" , 1 => "1時" , 2 => "2時" , 3 => "3時" , 4 => "4時" , 5 => "5時" , 6 => "6時" , 7 => "7時" , 8 => "8時" , 9=> "9時" , 10 => "10時" ,11 => "11時" , 12 =>"12時" , 13 => "13時" , 14 => "14時" , 15 => "15時" , 16 => "16時" , 17 => "17時" , 18 => "18時" , 19 => "19時" , 20 => "20時" , 21 => "21時" , 22 => "22時" ,23 => "23時") ,array('value' => 12 , 'legend' => false));
-	echo $this->Form->error('Post.payment');
-	echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
-	echo $this->Form->end("送信");
-?>
+<div class="bs-docs-grid">
+	<div class="row-fluid show-grid">
+	  	<div class="span7">
+			<?php
+			$arr = $data;
+				$arr = $data[0];
 
-<table>
-<?php
-$arr = $data;
-	$arr = $data[0];
-	if($arr['Place']['avatar_file_name'] != null){
-		echo "<tr>
-				<td>画像</td><td>" .  $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
-			</tr>";
-	} else {
-		echo "<tr>
-		 		<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>
-		 	</tr>";
-	}
-	echo "<tr><td>名前</td><td>{$arr['Place']['name']}</td></tr>";
-	echo "<tr><td>紹介文</td><td>{$arr['Place']['comment']}</td></tr>";
-	echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a></td></tr>";
-	//ジャンル
-	switch ($arr['Place']['genre']) {
-		case 0:
-			echo "<tr><td>ジャンル</td><td>カフェ</td></tr>";
-			break;
-		case 1:
-			echo "<tr><td>ジャンル</td><td>バー</td></tr>";
-			break;
-		case 2:
-			echo "<tr><td>ジャンル</td><td>レストラン</td></tr>";
-			break;
-		default:
-			echo "<tr><td>ジャンル</td><td>不明</td></tr>";
-			break;
-	}
-	//wifi
-	switch ($arr['Place']['wifi_existence']) {
-		case 0:
-			echo "<tr><td>wifi</td><td>なし</td></tr>";
-			break;
-		case 1:
-			echo "<tr><td>wifi</td><td>あり</td></tr>";
-			break;
-		case 2:
-			echo "<tr><td>wifi</td><td>不明</td></tr>";
-			break;
-		default:
-			echo "<tr><td>wifi</td><td>不明</td></tr>";
-			break;
-	}
-	//wifiの平均スピード
-	echo "<tr><td>wifiスピード</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
-	echo "<tr><td>予算</td><td>{$arr['Place']['payment_average']}</td></tr>";
-	echo "<tr><td>開店時間</td><td>{$arr['Place']['open_time']}</td></tr>";
-	echo "<tr><td>閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
-?>
-</table>
 
-<?php
-echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'edit')) . "/{$data[0]['Place']['id']}>編集する</a>";
-?>
+				echo '<div class="hero-unit">';
+					echo '<div class="bs-docs-grid">';
+						echo '<div class="row-fluid show-grid">';
+							echo '<div class="span3">';
+								if($arr['Place']['avatar_file_name'] != null){
+									echo $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb'));
+								} else {
+									echo "<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
+								}
+								echo '<p>';
+									echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'edit')) . "/" . $data[0]['Place']['id'] . " class='btn btn-primary'>";
+										echo '編集する &raquo;';
+									echo '</a>';
+								echo '</p>';
+							echo '</div>';
+							echo '<div class="span9">';
+								echo '<div class="bs-docs-grid">';
+									echo '<div class="row-fluid show-grid">';
+										echo '<h1>';
+											echo $arr['Place']['name'];
+										echo '</h1>';
+									echo '</div>';
+									echo '<div class="row-fluid show-grid">';
+										echo '<div class="span8">';
+											echo '<h1>';
+												echo $arr['Place']['wifi_average_speed'];
+											echo 'Mbps</h1>';
+										echo '</div>';
+										echo '<div class="span4">';
+											echo '<dl>';
+												echo '<dt>';
+													//ジャンル
+													switch ($arr['Place']['genre']) {
+														case 0:
+															echo "カフェ";
+															break;
+														case 1:
+															echo "バー";
+															break;
+														case 2:
+															echo "レストラン";
+															break;
+														default:
+															echo "不明";
+															break;
+													}
+												echo '</dt>';
+												echo '<dt>';
+													echo date("H:i", strtotime($arr['Place']['open_time']));
+													echo "-";
+													echo date("H:i", strtotime($arr['Place']['close_time']));
+												echo '</dt>';
+												echo '<dt>';
+													echo $arr['Place']['payment_average'].'peso';
+												echo '</dt>';
+											echo '</dl>';
+										echo '</div>';
+									echo '</div>';
+								echo '</div>';
+							echo '</div>';
+						echo '</div>';
+					echo '</div>';
+					echo '<div class="bs-docs-grid">';
+					echo $arr['Place']['comment'];
+					echo '</div>';
+					echo '<div class="bs-docs-grid">';
+						echo "<a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>";
+					echo '</div>';
+					echo '<div class="bs-docs-grid">';
+						echo date("Y/m/d H:i", strtotime($arr['Post']['created']));
+					echo '</div>';
+      			echo '</div>';
 
-<table>
-	<tr>
-		<th>写真</th><th>wifiスピード</th><th>感想</th><th>ユーザー名</th><th>投稿日</th>
-	</tr>
-	<?php
-	if (isset($data[0]['Post']['id'])) {
-		for($i = 0; $i < count($data); $i++){
-			$arr = $data[$i];
-			echo "<tr>";
-			//画像
-			if($arr['Post']['avatar_file_name'] != null){
-				echo "<td>" .  $this->Upload->uploadImage($arr, 'Post.avatar', array('style' => 'thumb')) . "</td>";
-			} else {
-				echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
+
+				
+				echo $arr['Place']['comment'];
+
+				//wifi
+				switch ($arr['Place']['wifi_existence']) {
+					case 0:
+						echo "<tr><td>wifi</td><td>なし</td></tr>";
+						break;
+					case 1:
+						echo "<tr><td>wifi</td><td>あり</td></tr>";
+						break;
+					case 2:
+						echo "<tr><td>wifi</td><td>不明</td></tr>";
+						break;
+					default:
+						echo "<tr><td>wifi</td><td>不明</td></tr>";
+						break;
+				}
+				//wifiの平均スピード
+
+				echo $arr['Place']['payment_average'];
+				echo $arr['Place']['open_time'];
+				echo $arr['Place']['close_time'];
+			?>
+
+	
+			<?php
+			echo "<hr>";
+			if (isset($data[0]['Post']['id'])) {
+				for($i = 0; $i < count($data); $i++){
+					$arr = $data[$i];
+
+					echo '<div class="bs-docs-grid">';
+						echo '<div class="row-fluid show-grid">';
+							echo '<div class="span3">';
+								//Photo
+								if($arr['Post']['avatar_file_name'] != null){
+									echo "<td>" .  $this->Upload->uploadImage($arr, 'Post.avatar', array('style' => 'thumb')) . "</td>";
+								} else {
+									echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'></td>";
+								}
+							echo '</div>';
+							echo '<div class="span9">';
+								echo '<div class="row-fluid show-grid">';
+									echo '<div class="span5">';
+										echo '<h3>' . $arr['Post']['wifi_speed'] . 'Mbps</h3>';
+										echo "<dl>";
+										echo "<dt>" . $arr['Post']['payment'] . "peso</dt>";
+										echo "<dt>" . $arr['Post']['time_zone'] . "</dt>";
+										echo "</dl>";
+									echo '</div>';
+									echo '<div class="span7">';
+										echo '<p>' . $arr['Post']['comment'] . '<br><strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Post']['created'])) . '）</strong></p>';
+									echo '</div>';
+								echo '</div>';
+							echo '</div>';
+						echo '</div>';
+					echo '</div>';
+					echo '<hr>';
+				}
 			}
-			//wifiのスピード
-			echo 
-					"<td>
-						{$arr['Post']['wifi_speed']}
-					</td>"; 
+			?>
+	  	</div>
+	  	<div class="span5">
+			<?php echo $this->Form->create('Post', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'add')); ?>
+				<fieldset>
+					<legend>感想フォーム</legend>
+					<?php echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden')); ?>
+					<?php echo $this->Form->input('Post.comment', array(
+						'label' => '感想',
+						'type' => 'textarea',
+						'class' => 'input-xlarge',
+						'cols' => 80,
+						'rows' => 10,
+					)); ?>
+					<?php echo $this->Form->error('Post.comment');?>
+					<?php echo $this->Form->input('Post.wifi_speed', array(
+						'label' => 'Wifiスピード（Mbps）',
+						'type' => 'text',
+						'class' => 'input-xlarge',
+						'helpBlock' => '10.00の形式でご入力下さい。'
+					)); ?>
+					<?php echo $this->Form->error('Post.wifi_speed');?>
+					<?php echo $this->Form->input('Post.time_zone', array(
+						'label' => '利用時間',
+						'type' => 'select',
+						'class' => 'input-xlarge',
+						'value' => 22,
+						'options' => array(0 => "0時" , 1 => "1時" , 2 => "2時" , 3 => "3時" , 4 => "4時" , 5 => "5時" , 6 => "6時" , 7 => "7時" , 8 => "8時" , 9=> "9時" , 10 => "10時" ,11 => "11時" , 12 =>"12時" , 13 => "13時" , 14 => "14時" , 15 => "15時" , 16 => "16時" , 17 => "17時" , 18 => "18時" , 19 => "19時" , 20 => "20時" , 21 => "21時" , 22 => "22時" ,23 => "23時")
+					)); ?>
+					<?php echo $this->Form->error('Post.time_zone');?>
+					<?php echo $this->Form->input('Post.payment', array(
+						'label' => '使った金額（１人）',
+						'type' => 'text',
+						'class' => 'input-xlarge',
+						'helpBlock' => '10.00の形式でご入力下さい。'
+					)); ?>
+					<?php echo $this->Form->error('Post.payment'); ?>
+					<?php echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));?>
+					<div class="form-actions">
+						<?php echo $this->Form->submit('登録する', array(
+							'div' => false,
+							'class' => 'btn btn-primary',
+						)); ?>
+					</div>
+				</fieldset>
+			<?php echo $this->Form->end(); ?>
+	  	</div>
+	</div>
+</div>
 
-			//投稿内容
-			echo 
-					"<td>
-						{$arr['Post']['comment']}
-					</td>"; 
-			//ユーザー情報
-			echo 
-					"<td>
-						<a href=".$this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>
-					</td>";
-			//登校日
-			echo 
-					"<td>
-						{$arr['Post']['created']}
-					</td>";
-			echo "</tr>";
-
-		}
-	}
-	?>
-</table>
-
-<?php
-echo $this->Paginator->prev('prev' , array(), null, array('class' => 'prev disabled'));
-echo $this->Paginator->numbers(array('separator' => ''));
-echo $this->Paginator->next('next' , array(), null, array('class' => 'next disabled'));
-?>
+<div class="text-center">
+	<div class="pagination">                         
+	  <ul>                                           
+	    <?php 
+			//レコードがある時だけ表示する
+	    	echo $this->Paginator->prev(__('prev'), array('tag' => 'li'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+			echo $this->Paginator->numbers(array('separator' => '','currentTag' => 'a', 'currentClass' => 'active','tag' => 'li','first' => 1, 'ellipsis' => '<li class="disabled"><a>...</a></li>'));                             
+			echo $this->Paginator->next(__('next'), array('tag' => 'li','currentClass' => 'disabled'), null, array('tag' => 'li','class' => 'disabled','disabledTag' => 'a'));
+		?>
+	  </ul>                                          
+	</div>
+</div>
