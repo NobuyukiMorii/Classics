@@ -1,12 +1,5 @@
-<style>
-input[type=radio] {
-    margin:0px;
-    width:20px;
-}
-.radio-horizontal label{
-    display: inline-block;
-}
-</style>
+<!-- ラジオボタンを横並びに設定 -->
+<?php echo $this->Html->css( 'radio-horizon'); ?>
 
 <?php echo $this->Form->create('Place', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'add')); ?>
 	<fieldset>

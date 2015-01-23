@@ -1,7 +1,3 @@
-<h1>投稿兼詳細確認画面</h1>
-<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?> >トップ画面に戻る</a>
-<a href="javascript:history.back();">一つ前のページへ戻る</a>
-
 <h1>投稿画面</h1>
 <?php
 	echo $this->Form->create('Post',array('type' => 'file', 'action' => 'add'));

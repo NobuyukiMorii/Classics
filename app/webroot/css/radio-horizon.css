@@ -1,0 +1,7 @@
+input[type=radio] {
+    margin:0px;
+    width:20px;
+}
+.radio-horizontal label{
+    display: inline-block;
+}
