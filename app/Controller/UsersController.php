@@ -92,6 +92,7 @@ class UsersController extends AppController {
             if ($data[0] = $this->User->save($info)) {
             	$this->set('data' , $data);
                 $this->Session->setFlash(__('ユーザー情報の更新が完了しました。'));
+                $this->redirect(array('controller' => 'Users' , 'action' => 'profile'));
             } else {
                 $this->Session->setFlash(__('ユーザー情報の更新に失敗しました。'));
             }
