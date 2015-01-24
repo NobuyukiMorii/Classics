@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
   	<div class="span6">
-  		<?php echo $this->Html->image('CebuWifi.png', array('alt' => 'CebuWifi'));?>
+  		<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index'));?>><?php echo $this->Html->image('CebuWifi.png', array('alt' => 'CebuWifi'));?></a>
   	</div>
     <div class="span3">
 		<?php
