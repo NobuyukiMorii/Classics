@@ -9,12 +9,12 @@
 			echo '</div>';
 			echo '<div class="span3">';
 					echo '<h2>';
-					echo '平均2.31Mbps';
+					echo '平均' . $data_user[0]['User']['wifi_average_speed'] . 'Mbps';
 					echo '</h2>';
 			echo '</div>';
 			echo '<div class="span3">';
 					echo '<h2>';
-					echo '平均400peso';
+					echo '平均' . $data_user[0]['User']['payment_average'] . 'peso';
 					echo '</h2>';
 			echo '</div>';
 			echo '<div class="row">';
