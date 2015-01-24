@@ -1,24 +1,28 @@
-<h1>edit Users</h3>
-<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?> >トップ画面に戻る</a>
-<a href="javascript:history.back();">一つ前のページへ戻る</a>
+<?php echo $this->Form->create('User', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'edit')); ?>
+	<fieldset>
+		<legend>プロフィール編集</legend>
+		<?php echo $this->Form->input('User.username', array(
+			'label' => 'ユーザー名',
+			'type' => 'text',
+			'class' => 'input-xlarge',
+			'default' => $data[0]['User']['username']
+		)); ?>
+		<?php echo $this->Form->error('User.username');?>
 
-<table>
-<?php
-echo "<tr>";
-echo "<td>名前</td><td>{$data[0]['User']['username']}</td>";
-if(isset($data[0]['User']['avatar_file_name'])) {
-	echo "<td>画像</td><td>" .  $this->Upload->uploadImage($data[0], 'User.avatar', array('style' => 'thumb')) . "</td>";
-} else {
-	echo "<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
-}
-echo "</tr>";
-?>
-</table>
+		<?php echo $this->Form->input('User.password', array(
+			'label' => 'パスワード',
+			'type' => 'text',
+			'class' => 'input-xlarge'
+		)); ?>
+		<?php echo $this->Form->error('User.password');?>
 
-<?php
-echo $this->Form->create('User',array('type' => 'file' , 'action' => 'edit'));
-echo $this->Form->input('username' , array('default' => $data[0]['User']['username']));
-echo $this->Form->input('password');
-echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));
-echo $this->Form->end('Edit');
-?>
+		<?php echo $this->Form->input('avatar',array('type'=>'file' , 'label' => ''));?>
+
+		<div class="form-actions">
+			<?php echo $this->Form->submit('登録する', array(
+				'div' => false,
+				'class' => 'btn btn-primary',
+			)); ?>
+		</div>
+	</fieldset>
+<?php echo $this->Form->end(); ?>
