@@ -63,7 +63,6 @@ class PlacesController extends AppController {
     	}
 		$this->set('data' , $data);
 	}
-	
 	//場所情報を追加する
 	public function add(){
 		if($this->request->isPost()){
