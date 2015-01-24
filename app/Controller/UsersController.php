@@ -13,7 +13,7 @@ class UsersController extends AppController {
 	public $paginate = array(
         'User' => array(
             'limit' => 8, 
-            'order' => array('id' => 'asc')
+            'order' => array('User.wifi_average_speed' => 'desc')
         )
     );
     //ログインしていないユーザーのアクセスを許可するメソッドを指定
@@ -124,11 +124,13 @@ class UsersController extends AppController {
     public function serchUser(){
 		if(isset($this->data)){
 			if(!empty($this->data['User']['username'])){
+				//フォームが送信されていたら条件をつけて
 			    $this->paginate = array(
    					'conditions' => array('User.username like ?' => array("%{$this->data['User']['username']}%"))
 				);
     		}
     	}
+    	//フォームが送信sされていなければ、条件をつけずに検索する
     	$data = $this->paginate('User');
     	//検索結果が該当なしの場合
     	if($data == array()){
