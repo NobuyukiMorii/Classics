@@ -1,59 +1,134 @@
-<h1>ユーザー詳細情報</h1>
-<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?> >トップ画面に戻る</a>
-<a href="javascript:history.back();">一つ前のページへ戻る</a>
-
-<table>
-
-<p>ユーザー情報<p>
 <?php
-echo "<tr>";
-echo "<td>ユーザー名</td><td>{$data_user[0]['User']['username']}</td>";
-if($data_user[0]['User']['avatar_file_name'] != null){
-	echo "<td>" .  $this->Upload->uploadImage($data_user[0] , 'User.avatar', array('style' => 'thumb')) . "</td>";
-} else {
-	echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
-}
-echo "</tr>";
+	echo '<div class="hero-unit">';
+			echo '<h1>' . $data_user[0]['User']['username'] . '</h1>';
+			echo '<div class="span2">';
+				echo '<h2>' . count($data_place) . '箇所登録</h2>';
+			echo '</div>';
+			echo '<div class="span2">';
+					echo '<h2>' . count($data_post) . '回投稿</h2>';
+			echo '</div>';
+			echo '<div class="span3">';
+					echo '<h2>';
+					echo '平均2.31Mbps';
+					echo '</h2>';
+			echo '</div>';
+			echo '<div class="span3">';
+					echo '<h2>';
+					echo '平均400peso';
+					echo '</h2>';
+			echo '</div>';
+			echo '<div class="row">';
+				echo '<div class="span2">';
+					if($data_user[0]['User']['avatar_file_name'] != null){
+						echo "<td>" .  $this->Upload->uploadImage($data_user[0] , 'User.avatar', array('style' => 'thumb')) . "</td>";
+					} else {
+						echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'></td>";
+					}
+				echo '</div>';
+				echo '<div class="span3">';
+					echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'edit')) . ' class="btn btn-primary btn-large">プロフィールを編集する &raquo;</a></p>';
+				echo '</div>';
+				echo '<div class="span2">';
+					echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'delete')) . ' class="btn btn-primary btn-large">退会する &raquo;</a></p>';
+				echo '</div>';
+			echo '</div>';
+		echo '</div>';
+	echo '</div>';
+		echo '<hr>';
 ?>
-</table>
 
-<p>場所情報</p>
-<table>
+<div class="span5">
+
+<h2 class="page-header" >登録したお店</h2>
+
 <?php
 for($i = 0; $i < count($data_place); $i++){
-	echo "<tr>";
-	if($data_place[$i]['Place']['avatar_file_name'] != null){
-		echo "<td>" . $this->Upload->uploadImage($data_place[$i], 'Place.avatar', array('style' => 'thumb')) . "</td>";  
-	} else {
-		echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";  
-	}
-	echo 
-		"<td>
-			<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/{$data_place[$i]['Place']['id']}>{$data_place[$i]['Place']['name']}</a>
-		</td>";
-	echo "<td>{$data_place[$i]['Place']['wifi_average_speed']}</td>";
-	echo "<td>{$data_place[$i]['Place']['payment_average']}</td>";
-	echo "</tr>";
+	$arr = $data_place[$i];
+	echo '<div class="row">';
+	  	echo '<div class="span9">';
+	    	echo '<div class="row">';
+	      		echo "<div class='span2'>";
+	      			//Photo
+					if($arr['Place']['avatar_file_name'] != null){
+						echo 	$this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb'));
+					} else {
+						echo 	"<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
+					}
+	      		echo "</div>";
+	      		echo '<div class="span7">';
+					echo '<div class="row">';
+			  			echo '<div class="span9">';
+			    			echo '<div class="row">';
+			      				echo '<div class="span7">';
+			      					echo '<div class="row">';
+			      						echo '<h3><a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a></h3>';
+			      					echo '</div>';	
+			      				echo '</div>';
+			    			echo '</div>';
+
+			    			echo '<div class="row">';
+			      				echo '<div class="span2">';
+			      					echo '<div class="row">';
+			      						echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
+			      					echo '</div>';
+			      					echo '<div class="row">';
+			      						echo "<dl>";
+											echo "<dt>" . $arr['Place']['payment_average'] . "peso</dt>";
+											echo "<dt>" .  date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . "更新</dt>";
+										echo "</dl>";
+			      					echo '</div>';	
+			      				echo '</div>';
+			    			echo '</div>';
+
+			  			echo '</div>';
+					echo '</div>';
+	      		echo '</div>';
+	    	echo '</div>';
+	 	echo '</div>';
+	echo '</div>';
+	echo '<hr>';
+
 }
 ?>
-</table>
 
-</p>投稿情報</p>
-<table>
+
+</div>
+<div class="span7">
+
+<h2 class="page-header" >感想リスト</h2>
+
 <?php
 for($i = 0; $i < count($data_post); $i++){
-	echo "<tr>";
-		if($data_post[$i]['Post']['avatar_file_name'] != null){
-			echo "<td>" . $this->Upload->uploadImage($data_post[$i], 'Post.avatar', array('style' => 'thumb')) . "</td>";
-		} else {
-			echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
-		}  
-		echo "<td>{$data_post[$i]['Post']['created']}</td>";
-		echo "<td>{$data_post[$i]['Post']['comment']}</td>";
-		echo "<td>{$data_post[$i]['Post']['wifi_speed']}</td>";
-		echo "<td>{$data_post[$i]['Post']['payment']}</td>";
-		echo "<td>{$data_post[$i]['Post']['time_zone']}</td>";
-	echo "</tr>";
+
+	echo '<div class="bs-docs-grid">';
+		echo '<div class="row-fluid show-grid">';
+			echo '<div class="span3">';
+				//Photo
+				if($data_post[$i]['Post']['avatar_file_name'] != null){
+					echo "<td>" . $this->Upload->uploadImage($data_post[$i], 'Post.avatar', array('style' => 'thumb')) . "</td>";
+				} else {
+					echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'></td>";
+				}  
+			echo '</div>';
+			echo '<div class="span9">';
+				echo '<div class="row-fluid show-grid">';
+					echo '<div class="span5">';
+						echo '<h3>' . $data_post[$i]['Post']['wifi_speed'] . 'Mbps</h3>';
+						echo "<dl>";
+						echo "<dt>" . $data_post[$i]['Post']['payment'] . "peso</dt>";
+						echo "<dt>" . $data_post[$i]['Post']['time_zone'] . "時頃利用</dt>";
+						echo "<dt>" . date("Y/m/d H:i", strtotime($data_post[$i]['Post']['created'])) . "に投稿</dt>";
+						echo "</dl>";
+					echo '</div>';
+					echo '<div class="span7">';
+						echo '<p>' . $data_post[$i]['Post']['comment'] . '）</strong></p>';
+					echo '</div>';
+				echo '</div>';
+			echo '</div>';
+		echo '</div>';
+	echo '</div>';
+	echo '<hr>';
 }
 ?>
-</table>
+
+</div>
