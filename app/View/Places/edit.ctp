@@ -1,79 +1,70 @@
-<h1>場所情報</h1>
-<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?> >トップ画面に戻る</a>
-<a href="javascript:history.back();">一つ前のページへ戻る</a>
-<?php
-echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/{$data['Place']['id']}>閲覧する</a>";
-?>
-<table>
-<?php
-	$arr = $data;
-	if($arr['Place']['avatar_file_name'] != null){
-		echo "<tr>
-				<td>画像</td><td>" .  $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb')) . "</td>
-			</tr>";
-	} else {
-		echo "<tr>
-		 		<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>
-		 	</tr>";
-	}
-	echo "<tr><td>名前</td><td>{$arr['Place']['name']}</td></tr>";
-	echo "<tr><td>紹介文</td><td>{$arr['Place']['comment']}</td></tr>";
-	echo "<tr><td>ユーザー名</td><td><a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a></td></tr>";
-	//ジャンル
-	switch ($arr['Place']['genre']) {
-		case 0:
-			echo "<tr><td>ジャンル</td><td>カフェ</td></tr>";
-			break;
-		case 1:
-			echo "<tr><td>ジャンル</td><td>バー</td></tr>";
-			break;
-		case 2:
-			echo "<tr><td>ジャンル</td><td>レストラン</td></tr>";
-			break;
-		default:
-			echo "<tr><td>ジャンル</td><td>不明</td></tr>";
-			break;
-	}
-	//wifi
-	switch ($arr['Place']['wifi_existence']) {
-		case 0:
-			echo "<tr><td>wifi</td><td>なし</td></tr>";
-			break;
-		case 1:
-			echo "<tr><td>wifi</td><td>あり</td></tr>";
-			break;
-		case 2:
-			echo "<tr><td>wifi</td><td>不明</td></tr>";
-			break;
-		default:
-			echo "<tr><td>wifi</td><td>不明</td></tr>";
-			break;
-	}
-	//wifiの平均スピード
-	echo "<tr><td>wifiスピード</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
-	echo "<tr><td>予算</td><td>{$arr['Place']['payment_average']}</td></tr>";
-	echo "<tr><td>開店時間</td><td>{$arr['Place']['wifi_average_speed']}</td></tr>";
-	echo "<tr><td>開店時間</td><td>{$arr['Place']['open_time']}</td></tr>";
-	echo "<tr><td><閉店時間</td><td>{$arr['Place']['close_time']}</td></tr>";
-?>
-</table>
+<!-- ラジオボタンを横並びに設定 -->
+<?php echo $this->Html->css( 'radio-horizon'); ?>
 
-<?php
-	$arr = $data;
-	echo $this->Form->create('Place',array('type' => 'file' , 'action' => 'edit'));
-	echo $this->Form->text('Place.id' , array('value' => $arr['Place']['id'] , 'type' => 'hidden'));
-	echo '名前：' . $this->Form->text('Place.name' , array('value' => $arr['Place']['name']));
-	echo $this->Form->error('Place.name');
-	echo 'コメント：' . $this->Form->textarea('Place.comment' , array('value' => $arr['Place']['comment']));
-	echo $this->Form->error('Place.comment');
-	echo 'ジャンル：<br>' . $this->Form->select('Place.genre' , array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他') ,array('value' => $arr['Place']['genre'] , 'legend' => false));
-	echo $this->Form->error('Place.genre');
-	echo '<br>wifi：<br>' . $this->Form->radio('Place.wifi_existence' , array(1 => "あり" , 0 => "なし" , 3 => "不明") ,array('value' => $arr['Place']['wifi_existence'] , 'legend' => false));
-	echo $this->Form->error('Place.wifi_existence');
-	echo '開店時間：' . $this->Form->time('Place.open_time' , array('value' => $arr['Place']['open_time']));
-	echo $this->Form->error('Place.open_time');
-	echo '閉店時間：' . $this->Form->time('Place.close_time' , array('value' => $arr['Place']['close_time']));
-	echo $this->Form->error('Place.close_time');
-	echo '写真：' . $this->Form->input('avatar',array('type'=>'file' , 'label' => ''));	
-	echo $this->Form->end("送信");
-?>
+<?php echo $this->Form->create('Place', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'edit')); ?>
+	<fieldset>
+		<?php $arr = $data; ?>
+		<legend>お店情報編集フォーム</legend>
+		<?php echo $this->Form->text('Place.id' , array('value' => $arr['Place']['id'] , 'type' => 'hidden'));?>
+		<?php echo $this->Form->input('Place.name', array(
+			'label' => '店名',
+			'type' => 'text',
+			'class' => 'input-xlarge',
+			'helpBlock' => 'ホテルの場合にはホテル名をご入力下さい。',
+			'value' => $arr['Place']['name']
+		)); ?>
+		<?php echo $this->Form->error('Place.name');?>
+		<?php echo $this->Form->input('Place.comment' , array(
+			'label' => '紹介文',
+			'type' => 'textarea',
+			'class' => 'input-xlarge',
+			'cols' => 80,
+			'rows' => 10,
+			'value' => $arr['Place']['comment']
+		)); ?>
+		<?php echo $this->Form->error('Place.comment');?>
+
+		<?php echo $this->Form->input('Place.genre', array(
+			'label' => 'ジャンル',
+			'type' => 'select',
+			'options' => array(0 => "カフェ" , 1 => "バー" , 2 => "レストラン" , 3 => "ホテル" , 4 => 'その他'),
+			'value' => $arr['Place']['genre']
+		)); ?>
+		<?php echo $this->Form->error('Place.genre');?>
+
+		<?php echo $this->Form->input('Place.wifi_existence', array(
+			'label' => 'wifiの有無',
+			'type' => 'radio',
+			'div' => 'radio-horizontal',
+			'options' => array(1 => "あり" , 0 => "なし" , 3 => "不明"),
+			'value' => $arr['Place']['wifi_existence'],
+			'style' => 'float:none;',
+		)); ?>
+		<?php echo $this->Form->error('Place.wifi_existence');?>
+
+		<?php echo $this->Form->input('Place.open_time', array(
+			'label' => '開店時間',
+			'type' => 'time',
+			'class' => 'input-xlarge',
+			'selected' => $arr['Place']['open_time']
+		)); ?>
+		<?php echo $this->Form->error('Place.open_time'); ?>
+
+		<?php echo $this->Form->input('Place.close_time', array(
+			'label' => '閉店時間',
+			'type' => 'time',
+			'class' => 'input-xlarge',
+			'selected' => $arr['Place']['close_time']
+		)); ?>
+		<?php echo $this->Form->error('Place.close_time'); ?>
+
+		<?php echo $this->Form->input('avatar',array('type'=>'file' , 'label' => ''));?>
+
+		<div class="form-actions">
+			<?php echo $this->Form->submit('登録する', array(
+				'div' => false,
+				'class' => 'btn btn-primary',
+			)); ?>
+		</div>
+	</fieldset>
+<?php echo $this->Form->end(); ?>

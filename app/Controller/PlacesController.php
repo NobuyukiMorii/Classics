@@ -83,14 +83,19 @@ class PlacesController extends AppController {
 				'limit' => 6
 		);
 		$data = $this->paginate('Post');
+		//最後に投稿したユーザーを検索する
+		$created_user = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
+		$created_user['id'] =  $created_user[0]['User']['id'];
+		$created_user['username'] =  $created_user[0]['User']['username'];
+
 		//投稿情報があった場合とない場合に分岐
 		if(!empty($data)){
 			//投稿情報と場所情報を渡す
-			$this->set('data' , $data);
+			$this->set(compact('data' , 'created_user'));
 		} else {
 			//場所情報のみを渡す
 			$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
-			$this->set('data' , $data);
+			$this->set(compact('data' , 'created_user'));
 		}
 	}
 
