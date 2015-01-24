@@ -137,6 +137,7 @@ for($i = 0; $i < count($data); $i++){
 			      					echo '<p>' . $arr['Place']['comment'] . '<strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . '）</strong></p>';
 			      				echo '</div>';
 			    			echo '</div>';
+			    			
 			  			echo '</div>';
 					echo '</div>';
 	      		echo '</div>';
