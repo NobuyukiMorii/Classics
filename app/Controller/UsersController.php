@@ -12,7 +12,7 @@ class UsersController extends AppController {
 	//ページネーションの設定
 	public $paginate = array(
         'User' => array(
-            'limit' => 8, 
+            'limit' => 10, 
             'order' => array('User.wifi_average_speed' => 'desc')
         )
     );
