@@ -11,8 +11,14 @@ class Post extends AppModel {
 			'message' => '内容は必ず入力して下さい。'
 		),
 		'wifi_speed' => array(
-			'rule' => array('range', 0, 999),
-			'message' => '０〜９９９までの範囲で入力して下さい'
+			array(
+				'rule' => array('range', 0, 99),
+				'message' => '０〜９９までの範囲で入力して下さい'
+			),
+			array(
+				'rule' => array('decimal', 2),
+				'message' => '小数点以下2桁まで入力して下さい。',
+			)
 		),
 		'time_zone' => array(
 			'rule' => 'alphaNumeric' ,
