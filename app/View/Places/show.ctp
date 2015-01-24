@@ -2,6 +2,7 @@
 $arr = $data;
 	$arr = $data[0];
 		echo '<div class="hero-unit">';
+		
 			echo '<h1>' . $arr['Place']['name'] . '</h1>';
 			echo '<div class="span3">';
 			echo '</div>';
@@ -66,6 +67,7 @@ $arr = $data;
 					echo '</dt>';
 				echo '</dl>';
 			echo '</div>';
+
 		echo '</div>';
 		echo '<hr>';
 ?>
