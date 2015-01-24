@@ -29,7 +29,7 @@ $arr = $data;
 						}
 					echo '</h2>';
 			echo '</div>';
-			echo '<p><a href="#" class="btn btn-primary btn-large">編集する &raquo;</a></p>';
+			echo '<p><a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'edit')) . "/" . $data[0]['Place']['id'] . ' class="btn btn-primary btn-large">編集する &raquo;</a></p>';
 		echo '</div>';
 
 		echo '<div class="row">';
