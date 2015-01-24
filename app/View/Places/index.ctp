@@ -92,33 +92,31 @@ for($i = 0; $i < count($data); $i++){
 						echo 	"<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
 					}
 	      		echo "</div>";
-	      		echo '<div class="span7">';
+	      		echo '<div class="span6">';
 					echo '<div class="row">';
 			  			echo '<div class="span9">';
 			    			echo '<div class="row">';
 			      				echo '<div class="span7">';
-			      					echo '<div class="row">';
-			      						echo '<h3><a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a></h3>';
-			      					echo '</div>';	
-			      				echo '</div>';
-			      				echo '<div class="span2">';
-			      					echo '<h5 style="text-align:right;">';
-  									switch ($arr['Place']['genre']) {
-										case 0:
-											echo "カフェ";
-											break;
-										case 1:
-											echo "バー";
-											break;
-										case 2:
-											echo "レストラン";
-											break;
-										default:
-											echo "不明";
-											break;
-									}
-									echo '</h5>';
-			      				echo '</div>';
+			      					echo '<h3>';
+			      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a>';
+				      					echo '<small>';
+											switch ($arr['Place']['genre']) {
+											case 0:
+												echo "カフェ";
+												break;
+											case 1:
+												echo "バー";
+												break;
+											case 2:
+												echo "レストラン";
+												break;
+											default:
+												echo "不明";
+												break;
+											}
+										echo '</small>';
+									echo '</h3>';
+			      				echo '</div>';	
 			    			echo '</div>';
 
 			    			echo '<div class="row">';
