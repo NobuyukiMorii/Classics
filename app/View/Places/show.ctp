@@ -1,76 +1,73 @@
-			<?php
-			$arr = $data;
-				$arr = $data[0];
+<?php
+$arr = $data;
+	$arr = $data[0];
+		echo '<div class="hero-unit">';
+			echo '<h1>' . $arr['Place']['name'] . '</h1>';
+			echo '<div class="span3">';
+			echo '</div>';
+			echo '<div class="span2">';
+				echo '<h2>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h2>';
+			echo '</div>';
+			echo '<div class="span2">';
+					echo '<h2>' . $arr['Place']['payment_average'] . 'peso</h2>';
+			echo '</div>';
+			echo '<div class="span3">';
+					echo '<h2>';
+						switch ($arr['Place']['genre']) {
+							case 0:
+								echo "カフェ";
+								break;
+							case 1:
+								echo "バー";
+								break;
+							case 2:
+								echo "レストラン";
+								break;
+							default:
+								echo "不明";
+								break;
+						}
+					echo '</h2>';
+			echo '</div>';
+			echo '<p><a href="#" class="btn btn-primary btn-large">編集する &raquo;</a></p>';
+		echo '</div>';
 
-
-
-
-echo '<div class="hero-unit">';
-echo '<h1>' . $arr['Place']['name'] . '</h1>';
-	echo '<div class="span3">';
-	echo '</div>';
-	echo '<div class="span2">';
-		echo '<h2>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h2>';
-	echo '</div>';
-	echo '<div class="span2">';
-			echo '<h2>' . $arr['Place']['payment_average'] . 'peso</h2>';
-	echo '</div>';
-	echo '<div class="span3">';
-			echo '<h2>';
-				switch ($arr['Place']['genre']) {
-					case 0:
-						echo "カフェ";
-						break;
-					case 1:
-						echo "バー";
-						break;
-					case 2:
-						echo "レストラン";
-						break;
-					default:
-						echo "不明";
-						break;
+		echo '<div class="row">';
+			echo '<div class="span4">';
+				echo '<h2>Image</h2>';
+				echo '<p>';
+				if($arr['Place']['avatar_file_name'] != null){
+					echo $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb'));
+				} else {
+					echo "<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
 				}
-			echo '</h2>';
-	echo '</div>';
-echo '<p><a href="#" class="btn btn-primary btn-large">編集する &raquo;</a></p>';
-echo '</div>';
-echo '<div class="row">';
-echo '<div class="span4">';
-echo '<h2>Image</h2>';
-echo '<p>';
-if($arr['Place']['avatar_file_name'] != null){
-	echo $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb'));
-} else {
-	echo "<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
-}
-echo '</p>';
-echo '</div>';
-echo '<div class="span4">';
-echo '<h2>Instruction</h2>';
-echo '<p>' . $arr['Place']['comment'] . '</p>';
-echo '</div>';
-echo '<div class="span4">';
-echo '<h2>Details</h2>';
-echo '<dl>';
-	echo '<dt>';
-		echo '営業時間：';
-		echo date("H:i", strtotime($arr['Place']['open_time']));
-		echo "-";
-		echo date("H:i", strtotime($arr['Place']['close_time']));
-	echo '</dt>';
-	echo '<dt>';
-		echo '登録した人：';
-		echo "<a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>";
-	echo '</dt>';
-	echo '<dt>';
-		echo '登録日時：';
-		echo date("Y/m/d H:i", strtotime($arr['Post']['created']));
-	echo '</dt>';
-echo '</dl>';
-echo '</div>';
-echo '</div>';
-echo '<hr>';
+				echo '</p>';
+			echo '</div>';
+			echo '<div class="span4">';
+				echo '<h2>Instruction</h2>';
+				echo '<p>' . $arr['Place']['comment'] . '</p>';
+			echo '</div>';
+			echo '<div class="span4">';
+				echo '<h2>Details</h2>';
+				echo '<dl>';
+					echo '<dt>';
+						echo '営業時間：';
+						echo date("H:i", strtotime($arr['Place']['open_time']));
+						echo "-";
+						echo date("H:i", strtotime($arr['Place']['close_time']));
+					echo '</dt>';
+					echo '<dt>';
+						echo '登録した人：';
+						echo "<a href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>{$arr['User']['username']}</a>";
+					echo '</dt>';
+					echo '<dt>';
+						echo '登録日時：';
+						echo date("Y/m/d H:i", strtotime($arr['Post']['created']));
+					echo '</dt>';
+				echo '</dl>';
+			echo '</div>';
+		echo '</div>';
+		echo '<hr>';
 ?>
 
 <div class="bs-docs-grid">
