@@ -6,14 +6,8 @@ class User extends AppModel {
     //バリデート
     public $validate = array(
         'username' => array(
-            array(
-                'rule' => 'notEmpty' ,
-                'message' => 'ユーザー名は必ず入力して下さい。'
-            ),
-            array(
-                'rule' => 'isUnique',
-                'message' => 'このユーザー名は既に登録されています'
-            )
+            'rule' => 'notEmpty' ,
+            'message' => 'ユーザー名は必ず入力して下さい。'
         ),
         'password' => array(
             'required' => array(
