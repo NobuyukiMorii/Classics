@@ -24,6 +24,9 @@ class UsersController extends AppController {
 	}
 	//ログイン機能の実装
 	public function login(){
+		//レイアウトは使わないと指定
+		$this->layout = "";
+		//ログイン処理
 		if($this->request->isPost()){
 			if($this->Auth->login()){
 				$this->redirect(array('controller' => 'Places' , 'action' => 'index'));
@@ -41,6 +44,9 @@ class UsersController extends AppController {
 	
 	//ユーザー登録画面
 	public function add(){
+		//レイアウトをナビバーがないパターンに変更
+		$this->layout = 'non-nav';
+		//ユーザー登録処理
 		if(!empty($this->data)){
 			if($this->data){
 				$this->User->create();
