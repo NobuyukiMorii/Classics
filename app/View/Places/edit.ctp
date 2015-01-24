@@ -46,7 +46,7 @@
 			'label' => '開店時間',
 			'type' => 'time',
 			'class' => 'input-xlarge',
-			'selected' => $arr['Place']['open_time']
+			'selected' => $arr['Place']['open_time'],
 		)); ?>
 		<?php echo $this->Form->error('Place.open_time'); ?>
 
