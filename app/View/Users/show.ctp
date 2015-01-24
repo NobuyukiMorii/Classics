@@ -37,6 +37,7 @@
 		echo '<hr>';
 ?>
 
+<div class="container">
 <div class="span5">
 
 <h2 class="page-header" >登録したお店</h2>
@@ -93,7 +94,7 @@ for($i = 0; $i < count($data_place); $i++){
 
 
 </div>
-<div class="span7">
+<div class="span5">
 
 <h2 class="page-header" >感想リスト</h2>
 
@@ -131,4 +132,5 @@ for($i = 0; $i < count($data_post); $i++){
 }
 ?>
 
+</div>
 </div>
