@@ -43,7 +43,7 @@
 				'label' => false,
 				'type' => 'radio',
 				'div' => 'radio-horizontal',
-				'options' => array(0,1,2,3,4,5),
+				'options' =>  array(0 => '0Mbps以上' , 1 =>'1Mbps以上' , 2 => '2Mbps以上', 3 => '3Mbps以上', 4 =>'4Mbps以上' , 5 => '5Mbps以上'),
 				'value' => 0,
 				'style' => 'float:none;',
 			));
@@ -52,7 +52,7 @@
 				'label' => false,
 				'type' => 'radio',
 				'div' => 'radio-horizontal',
-				'options' => array(0,1,2,3,4,5),
+				'options' => array(0 => '0Mbps以上' , 1 =>'1Mbps以上' , 2 => '2Mbps以上', 3 => '3Mbps以上', 4 =>'4Mbps以上' , 5 => '5Mbps以上'),
 				'value' => $value_wifi_average_speed,
 				'style' => 'float:none;',
 			));
@@ -78,70 +78,68 @@
 </div>
 
 <hr>
+
+
 <?php
 for($i = 0; $i < count($data); $i++){
 	$arr = $data[$i];
+	
 	echo '<div class="row">';
-	  	echo '<div class="span9">';
-	    	echo '<div class="row">';
-	      		echo "<div class='span2'>";
-	      			//Photo
-					if($arr['Place']['avatar_file_name'] != null){
-						echo 	$this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb'));
-					} else {
-						echo 	"<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
-					}
-	      		echo "</div>";
-	      		echo '<div class="span6">';
-					echo '<div class="row">';
-			  			echo '<div class="span9">';
-			    			echo '<div class="row">';
-			      				echo '<div class="span7">';
-			      					echo '<h3>';
-			      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a>';
-				      					echo '<small>';
-											switch ($arr['Place']['genre']) {
-											case 0:
-												echo "カフェ";
-												break;
-											case 1:
-												echo "バー";
-												break;
-											case 2:
-												echo "レストラン";
-												break;
-											default:
-												echo "不明";
-												break;
-											}
-										echo '</small>';
-									echo '</h3>';
-			      				echo '</div>';	
-			    			echo '</div>';
+  		echo "<div class='span2'>";
+  			//Photo
+			if($arr['Place']['avatar_file_name'] != null){
+				echo 	$this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb'));
+			} else {
+				echo 	"<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
+			}
+  		echo "</div>";
 
-			    			echo '<div class="row">';
-			      				echo '<div class="span2">';
-			      					echo '<div class="row">';
-			      						echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
-			      					echo '</div>';
-			      					echo '<div class="row">';
-			      						echo "<dl>";
-											echo "<dt>" . $arr['Place']['payment_average'] . "peso</dt>";
-											echo "<dt>" . date("H:i", strtotime($arr['Place']['open_time'])) . ' - ' . date("H:i", strtotime($arr['Place']['close_time'])) . "</dt>";
-										echo "</dl>";
-			      					echo '</div>';	
-			      				echo '</div>';
-			      				echo '<div class="span7">';
-			      					echo '<p>' . $arr['Place']['comment'] . '<strong>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . '）</strong></p>';
-			      				echo '</div>';
-			    			echo '</div>';
-			    			
-			  			echo '</div>';
-					echo '</div>';
-	      		echo '</div>';
-	    	echo '</div>';
-	 	echo '</div>';
+  		echo '<div class="span6">';
+			echo '<div class="row">';
+	  			echo '<div class="span11">';
+	    			echo '<div class="row">';
+	      				echo '<div class="span12">';
+	      					echo '<h3>';
+	      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a>';
+		      					echo '<small>';
+									switch ($arr['Place']['genre']) {
+									case 0:
+										echo "カフェ";
+										break;
+									case 1:
+										echo "バー";
+										break;
+									case 2:
+										echo "レストラン";
+										break;
+									default:
+										echo "不明";
+										break;
+									}
+								echo '</small>';
+							echo '</h3>';
+	      				echo '</div>';	
+	    			echo '</div>';
+
+	    			echo '<div class="row">';
+	    				echo '<div class="span1">';
+	    				echo '</div>';
+	      				echo '<div class="span2">';
+	      					echo '<div class="row">';
+	      						echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
+	      						echo '<h3>' . $arr['Place']['payment_average'] . 'peso</h3>';
+	      					echo '</div>';	
+	      				echo '</div>';
+	      				echo '<div class="span7">';
+	      					echo '<h4>' . $arr['Place']['comment'] . '<br><small>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . '）</small></h4>';
+	      				echo '</div>';
+	    			echo '</div>';
+	    			
+	  			echo '</div>';
+			echo '</div>';
+  		echo '</div>';
 	echo '</div>';
+
 	echo '<hr>';
 
 }
