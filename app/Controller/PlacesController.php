@@ -11,7 +11,7 @@ class PlacesController extends AppController {
 	public $paginate = array(
         'Place' => array(
             'limit' => 8, 
-            'order' => array('wifi_average_speed' => 'DESC')
+            'order' => array('wifi_average_speed' => 'desc')
         )
     );
 
