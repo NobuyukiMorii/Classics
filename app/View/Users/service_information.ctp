@@ -1,0 +1,1 @@
+          <p class="lead">iPhoneアプリSpeedTest、もしくは、以下サイトでFifiのスピードを測定して下さい！<a href="http://www.speedtest.net/">http://www.speedtest.net/</a></p>
