@@ -1,3 +1,17 @@
+<?php echo $this->Html->script('jquery-1.11.2.min'); ?>
+<script>
+function SpeedTest(){
+    var start = (new Date()).getTime();
+    $.get('/classics/img/CebuWifi.png?' + start, function(data) {
+        var end = (new Date()).getTime();
+        var sec = (end - start) / 1000;
+        var mbps =  (( (data.length *8) / sec)/1000000).toFixed(5);
+        alert((mbps) + 'Mbps');
+    });
+};
+SpeedTest();
+</script>
+
 <?php
 $arr = $data;
 	$arr = $data[0];
