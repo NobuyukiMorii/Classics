@@ -7,7 +7,6 @@ function SpeedTest(){
         var sec = (end - start) / 1000;
         var mbps =  (( (data.length *8) / sec)/1000000).toFixed(2);
         $('#wifi_speed').val(mbps);
-        //alert((mbps) + 'Mbps');
     });
 };
 SpeedTest();
