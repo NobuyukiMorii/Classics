@@ -2,7 +2,7 @@
 <script>
 function SpeedTest(){
     var start = (new Date()).getTime();
-    $.get('/classics/img/CebuWifi.png?' + start, function(data) {
+    $.get('/Classics/img/heavy.jpg?' + start, function(data) {
         var end = (new Date()).getTime();
         var sec = (end - start) / 1000;
         var mbps =  (( (data.length *8) / sec)/1000000).toFixed(5);

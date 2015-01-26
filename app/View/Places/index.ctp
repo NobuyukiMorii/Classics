@@ -1,5 +1,5 @@
 <!-- ラジオボタンを横並びに設定 -->
-<?php echo $this->Html->css( 'radio-horizon'); ?>
+<?php echo $this->Html->css('radio-horizon'); ?>
 
 <div class="container-fluid">
   <div class="row-fluid">
