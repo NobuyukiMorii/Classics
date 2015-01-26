@@ -5,8 +5,9 @@ function SpeedTest(){
     $.get('/Classics/img/heavy.jpg?' + start, function(data) {
         var end = (new Date()).getTime();
         var sec = (end - start) / 1000;
-        var mbps =  (( (data.length *8) / sec)/1000000).toFixed(5);
-        alert((mbps) + 'Mbps');
+        var mbps =  (( (data.length *8) / sec)/1000000).toFixed(2);
+        $('#wifi_speed').val(mbps);
+        //alert((mbps) + 'Mbps');
     });
 };
 SpeedTest();
@@ -138,13 +139,7 @@ $arr = $data;
 						'rows' => 10,
 					)); ?>
 					<?php echo $this->Form->error('Post.comment');?>
-					<?php echo $this->Form->input('Post.wifi_speed', array(
-						'label' => 'Wifiスピード（Mbps）',
-						'type' => 'text',
-						'class' => 'input-xlarge',
-						'helpBlock' => '10.00の形式でご入力下さい。'
-					)); ?>
-					<?php echo $this->Form->error('Post.wifi_speed');?>
+					<?php echo $this->Form->text('Post.wifi_speed' , array('value' => '' , 'type' => 'hidden' , 'id' => 'wifi_speed'));?>
 					<?php echo $this->Form->input('Post.time_zone', array(
 						'label' => '利用時間',
 						'type' => 'select',
@@ -157,7 +152,7 @@ $arr = $data;
 						'label' => '使った金額（１人）',
 						'type' => 'text',
 						'class' => 'input-xlarge',
-						'helpBlock' => '10.00の形式でご入力下さい。'
+						'helpBlock' => '一人あたりの金額をご入力下さい。'
 					)); ?>
 					<?php echo $this->Form->error('Post.payment'); ?>
 					<?php echo $this->Form->input('avatar',array('type'=>'file','label'=>'写真'));?>
