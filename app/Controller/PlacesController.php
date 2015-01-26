@@ -80,6 +80,7 @@ class PlacesController extends AppController {
 		//投稿の情報にページネーションをかけて渡す
 		$this->paginate = array(
 				'conditions' => array('Post.places_id' => $param),
+				'order' => array('Post.created' => 'desc'),
 				'limit' => 6
 		);
 		$data = $this->paginate('Post');
