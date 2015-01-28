@@ -25,3 +25,16 @@
 		</div>
 	</fieldset>
 <?php echo $this->Form->end(); ?>
+
+<button class="btn btn-success" id="JampToLogin" style="margin-top: 20px;">ログイン画面に戻る</button>
+
+<?php echo $this->Html->script('jquery-1.11.2.min'); ?>
+<script>
+//新規登録ボタンが押されたら、User.addページに遷移する
+$(document).ready(function(){
+	$('#JampToLogin').click(function(){
+	  	window.location.href = 'http://' + location.host + '/classics/Users/login';
+	  	console.log('http://' + location.host + '/Classics/Users/login');
+	});
+});
+</script>

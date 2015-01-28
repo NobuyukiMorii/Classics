@@ -52,7 +52,7 @@
 					</form>		
 				</div>
 			</div>
-      <button class="btn btn-success" id="addToJamp" style="margin-top: 20px;">新規ユーザー登録</button>
+      <button class="btn btn-success" id="JampToAddUser" style="margin-top: 20px;">新規ユーザー登録</button>
 		</div>
 	</div>
 
@@ -134,8 +134,8 @@
   <script>
   //新規登録ボタンが押されたら、User.addページに遷移する
   $(document).ready(function(){
-    $('#addToJamp').click(function(){
-      window.location.href = 'http://' + location.host + '/classics/Users/add';
+    $('#JampToAddUser').click(function(){
+      window.location.href = 'http://' + location.host + '/Classics/Users/add';
     });
   });
   </script>
