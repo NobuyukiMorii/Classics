@@ -98,7 +98,7 @@ for($i = 0; $i < count($data); $i++){
 			echo '<div class="row">';
 	  			echo '<div class="span11">';
 	    			echo '<div class="row">';
-	      				echo '<div class="span12">';
+	      				echo '<div class="span4">';
 	      					echo '<h3>';
 	      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a>';
 		      					echo '<small>';
@@ -118,19 +118,17 @@ for($i = 0; $i < count($data); $i++){
 									}
 								echo '</small>';
 							echo '</h3>';
-	      				echo '</div>';	
+	      				echo '</div>';
+						echo '<div class="span3">';
+							echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
+						echo '</div>';
+						echo '<div class="span3">';
+							echo '<h3>' . $arr['Place']['payment_average'] . 'peso</h3>';
+						echo '</div>';
 	    			echo '</div>';
 
 	    			echo '<div class="row">';
-	    				echo '<div class="span1">';
-	    				echo '</div>';
-	      				echo '<div class="span2">';
-	      					echo '<div class="row">';
-	      						echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
-	      						echo '<h3>' . $arr['Place']['payment_average'] . 'peso</h3>';
-	      					echo '</div>';	
-	      				echo '</div>';
-	      				echo '<div class="span7">';
+	      				echo '<div class="span12">';
 	      					echo '<h4>' . $arr['Place']['comment'] . '<br><small>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . '）</small></h4>';
 	      				echo '</div>';
 	    			echo '</div>';
@@ -144,6 +142,7 @@ for($i = 0; $i < count($data); $i++){
 
 }
 ?>
+
 
 <div class="text-center">
 	<div class="pagination">                         
