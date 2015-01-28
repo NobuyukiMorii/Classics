@@ -52,6 +52,8 @@ class UsersController extends AppController {
 				$this->User->create();
 				$this->User->save($this->data);
 				$this->redirect(array('action'=>'login'));
+			} else {
+				$this->Session->setFlash(__('ユーザー登録に失敗しました。'));
 			}
 		}
 	}

@@ -4,18 +4,14 @@
 		<?php echo $this->Form->input('User.username', array(
 			'label' => 'ユーザー名',
 			'type' => 'text',
-			'class' => 'input-xlarge',
-			'required' => false
+			'class' => 'input-xlarge'
 		)); ?>
-		<?php echo $this->Form->error('User.username');?>
 
 		<?php echo $this->Form->input('User.password', array(
 			'label' => 'パスワード',
 			'type' => 'text',
 			'class' => 'input-xlarge',
-			'required' => false
 		)); ?>
-		<?php echo $this->Form->error('User.password');?>
 
 		<?php echo $this->Form->input('avatar',array('type'=>'file' , 'label' => ''));?>
 

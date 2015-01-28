@@ -8,7 +8,6 @@
 			'default' => $data[0]['User']['username'],
 			'required' => false
 		)); ?>
-		<?php echo $this->Form->error('User.username');?>
 
 		<?php echo $this->Form->input('User.password', array(
 			'label' => 'パスワード',
@@ -16,7 +15,6 @@
 			'class' => 'input-xlarge',
 			'required' => false
 		)); ?>
-		<?php echo $this->Form->error('User.password');?>
 
 		<?php echo $this->Form->input('avatar',array('type'=>'file' , 'label' => ''));?>
 

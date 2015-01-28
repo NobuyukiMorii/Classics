@@ -10,10 +10,8 @@ class User extends AppModel {
             'message' => 'ユーザー名は必ず入力して下さい。'
         ),
         'password' => array(
-            'required' => array(
-                'rule' => array('notEmpty'),
-                'message' => 'パスワードが違います。'
-            )
+            'rule' => 'notEmpty' ,
+            'message' => 'パスワードは必ず入力して下さい。'
         )
     );
     //保存する時のハッシュ化
