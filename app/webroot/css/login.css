@@ -46,7 +46,7 @@ form.signup input.form-control:focus {
 
 #header {	
 	background-color: #444;
-	background: url(../img/Cafe-bg.jpg) no-repeat center top;
+	background: url() no-repeat center top;
 	margin-top: -20px;
 	padding-top: 150px;
 	background-attachment: relative;
