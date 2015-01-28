@@ -127,7 +127,7 @@ echo '</div>';
   	<div class="span5">
 		<?php echo $this->Form->create('Post', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'add')); ?>
 			<fieldset>
-				<legend>感想フォーム</legend>
+				<legend>お店のWifiに繋いで感想を登録して下さい</legend>
 				<h3 id="wifi_speed_text"></h3>
 				<?php echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden')); ?>
 				<?php echo $this->Form->input('Post.comment', array(

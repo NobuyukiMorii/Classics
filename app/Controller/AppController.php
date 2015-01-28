@@ -49,8 +49,6 @@ class AppController extends Controller {
             //ログインしていない時のエラーメッセージを指定
         	'authError' => 'ログインしてください。'
         ),
-        //デバッグキット使う
-		'DebugKit.Toolbar',
         //モバイル判定を行う
         'RequestHandler'
 	);
