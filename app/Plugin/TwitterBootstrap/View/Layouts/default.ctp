@@ -53,9 +53,6 @@
 					<ul class="nav">
 						<li><a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'add')); ?>>Wifiスポットを登録する</a></li>
 						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'profile')); ?>>プロフィール</a></li>
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'serchUser')); ?>>Wifiランキング</a></li>
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'service_information')); ?>>サービスについて</a></li>
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'inquiry')); ?>>お問い合わせ</a></li>
 						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'logout')); ?>>ログアウトする</a></li>
 					</ul>
 				</div><!--/.nav-collapse -->
