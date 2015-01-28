@@ -5,14 +5,16 @@
 			'label' => 'ユーザー名',
 			'type' => 'text',
 			'class' => 'input-xlarge',
-			'default' => $data[0]['User']['username']
+			'default' => $data[0]['User']['username'],
+			'required' => false
 		)); ?>
 		<?php echo $this->Form->error('User.username');?>
 
 		<?php echo $this->Form->input('User.password', array(
 			'label' => 'パスワード',
 			'type' => 'text',
-			'class' => 'input-xlarge'
+			'class' => 'input-xlarge',
+			'required' => false
 		)); ?>
 		<?php echo $this->Form->error('User.password');?>
 

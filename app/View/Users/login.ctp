@@ -42,10 +42,12 @@
 								'type' => 'text',
 								'class' => 'form-control',
 								'placeholder' => 'ユーザー名',
+                'required' => false
 							)); ?>						
 							<?php echo $this->Form->input('User.password', array(
 								'class' => 'form-control',
 								'placeholder' => 'パスワード',
+                'required' => false
 							)); ?>	
 					  </div>
 					  <button type="submit" class="btn btn-theme">Login</button>
