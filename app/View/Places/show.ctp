@@ -7,6 +7,7 @@ function SpeedTest(){
         var sec = (end - start) / 1000;
         var mbps =  (( (data.length *8) / sec)/1000000).toFixed(2);
         $('#wifi_speed').val(mbps);
+        $('#wifi_speed_text').text('現在' + mbps + 'Mbps');
     });
 };
 SpeedTest();
@@ -129,6 +130,7 @@ $arr = $data;
 			<?php echo $this->Form->create('Post', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'add')); ?>
 				<fieldset>
 					<legend>感想フォーム</legend>
+					<h3 id="wifi_speed_text"></h3>
 					<?php echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden')); ?>
 					<?php echo $this->Form->input('Post.comment', array(
 						'label' => '感想',
