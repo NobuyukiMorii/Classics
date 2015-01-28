@@ -1,46 +1,37 @@
 <?php
-	echo '<div class="hero-unit">';
-			echo '<h1>' . $data_user[0]['User']['username'] . '</h1>';
-			echo '<div class="span2">';
-				echo '<h2>' . count($data_place) . '箇所登録</h2>';
-			echo '</div>';
-			echo '<div class="span2">';
-					echo '<h2>' . count($data_post) . '回投稿</h2>';
-			echo '</div>';
-			echo '<div class="span3">';
-					echo '<h2>';
-					echo '平均' . $data_user[0]['User']['wifi_average_speed'] . 'Mbps';
-					echo '</h2>';
-			echo '</div>';
-			echo '<div class="span3">';
-					echo '<h2>';
-					echo '平均' . $data_user[0]['User']['payment_average'] . 'peso';
-					echo '</h2>';
-			echo '</div>';
-			echo '<div class="row">';
-				echo '<div class="span2">';
-					if($data_user[0]['User']['avatar_file_name'] != null){
-						echo "<td>" .  $this->Upload->uploadImage($data_user[0] , 'User.avatar', array('style' => 'thumb')) . "</td>";
-					} else {
-						echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'></td>";
-					}
-				echo '</div>';
-				echo '<div class="span3">';
-					echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'edit')) . ' class="btn btn-primary btn-large">プロフィールを編集する &raquo;</a></p>';
-				echo '</div>';
-				echo '<div class="span2">';
-					echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'delete')) . ' class="btn btn-primary btn-large">退会する &raquo;</a></p>';
-				echo '</div>';
-			echo '</div>';
-		echo '</div>';
-	echo '</div>';
-		echo '<hr>';
+
+echo '<h1 class="page-header">' . $data_user[0]['User']['username'] . '</h1>';
+echo '<div class="row">';
+echo '<div class="span3">';
+if($data_user[0]['User']['avatar_file_name'] != null){
+	echo "<td>" .  $this->Upload->uploadImage($data_user[0] , 'User.avatar', array('style' => 'thumb')) . "</td>";
+} else {
+	echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'></td>";
+}
+echo '</div>';
+echo '<div class="span3">';
+	echo '<h3>';
+	echo '平均' . $data_user[0]['User']['wifi_average_speed'] . 'Mbps';
+	echo '</h3>';
+	echo '<h3>';
+	echo '平均' . $data_user[0]['User']['payment_average'] . 'peso';
+	echo '</h3>';
+echo '</div>';
+echo '<div class="span3">';
+	echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'edit')) . ' class="btn btn-primary btn-large">プロフィールを編集する &raquo;</a></p>';
+	echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'delete')) . ' class="btn btn-primary btn-large">退会する &raquo;</a></p>';
+echo '</div>';			
+
+
+echo '</div>';
+
+echo '<hr>';
 ?>
 
-<div class="container">
+<div class="container" style="margin-top:40px;">
 <div class="span5">
 
-<h2 class="page-header" >登録したお店</h2>
+<legend>登録してくれたお店</legend>
 
 <?php
 for($i = 0; $i < count($data_place); $i++){
@@ -96,7 +87,7 @@ for($i = 0; $i < count($data_place); $i++){
 </div>
 <div class="span5">
 
-<h2 class="page-header" >感想リスト</h2>
+<legend>これまでの感想</legend>
 
 <?php
 for($i = 0; $i < count($data_post); $i++){
@@ -117,8 +108,7 @@ for($i = 0; $i < count($data_post); $i++){
 						echo '<h3>' . $data_post[$i]['Post']['wifi_speed'] . 'Mbps</h3>';
 						echo "<dl>";
 						echo "<dt>" . $data_post[$i]['Post']['payment'] . "peso</dt>";
-						echo "<dt>" . $data_post[$i]['Post']['time_zone'] . "時頃利用</dt>";
-						echo "<dt>" . date("Y/m/d H:i", strtotime($data_post[$i]['Post']['created'])) . "に投稿</dt>";
+						echo "<dt>" . date("Y/m/d H:i", strtotime($data_post[$i]['Post']['created'])) . "</dt>";
 						echo "</dl>";
 					echo '</div>';
 					echo '<div class="span7">';
