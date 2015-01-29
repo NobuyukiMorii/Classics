@@ -6,7 +6,7 @@
   	<div class="span6">
   		<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index'));?>><?php echo $this->Html->image('CebuWifi.png', array('alt' => 'CebuWifi'));?></a>
   	</div>
-    <div class="span3">
+    <div class="span3" style="margin-top: 45px;">
 		<?php
 		echo '<h4>場所名で検索</h4>';
 		echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
@@ -15,7 +15,7 @@
 		echo $this->Form->end('送信');
 		?>
     </div>
-    <div class="span3">
+    <div class="span3" style="margin-top: 45px;">
 		<?php
 		echo '<h4>Wifiのスピードとジャンルで検索</h4>';
 		echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
@@ -83,8 +83,13 @@
 <?php
 for($i = 0; $i < count($data); $i++){
 	$arr = $data[$i];
-	
+	$rank = $i + 1;
 	echo '<div class="row">';
+		echo "<div class='span1'>";
+			echo "<h1>";
+				 echo '<span class="badge badge-info"><h3>' . $rank. '位</h3></span>';
+			echo "</h1>";
+		echo "</div>";
   		echo "<div class='span2'>";
   			//Photo
 			if($arr['Place']['avatar_file_name'] != null){
@@ -94,13 +99,13 @@ for($i = 0; $i < count($data); $i++){
 			}
   		echo "</div>";
 
-  		echo '<div class="span6">';
+  		echo '<div class="span5">';
 			echo '<div class="row">';
 	  			echo '<div class="span11">';
 	    			echo '<div class="row">';
 	      				echo '<div class="span4">';
 	      					echo '<h3>';
-	      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '</a>';
+	      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '&emsp;';
 		      					echo '<small>';
 									switch ($arr['Place']['genre']) {
 									case 0:
@@ -116,6 +121,7 @@ for($i = 0; $i < count($data); $i++){
 										echo "不明";
 										break;
 									}
+								echo '</a>';
 								echo '</small>';
 							echo '</h3>';
 	      				echo '</div>';
@@ -134,7 +140,7 @@ for($i = 0; $i < count($data); $i++){
 	    			echo '</div>';
 
 	    			echo '<div class="row">';
-	      				echo '<div class="span12">';
+	      				echo '<div class="span9">';
 	      					echo '<h4>' . $arr['Place']['comment'] . '<br><small>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . '）</small></h4>';
 	      				echo '</div>';
 	    			echo '</div>';
