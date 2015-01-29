@@ -19,6 +19,12 @@ class PostsController extends AppController {
 		$data['Post']['users_id'] = $this->Auth->user('id');
 		$places_id = $data['Post']['places_id'];
 
+		//もしConnectToShopFifiが2なら、wifi_speedを0にする
+		if($data['Post']['ConnectToShopFifi'] == 2){
+			unset($data['Post']['wifi_speed']);
+		}
+		unset($data['Post']['ConnectToShopFifi']);
+
 		if(empty($this->data['Post']['comment'])){
 			$this->Session->setFlash(__('コメントは必ず入力して下さい。'));
 			$this->redirect(array('controller' => 'Places' , 'action'=>'show' , $data['Post']['places_id']));

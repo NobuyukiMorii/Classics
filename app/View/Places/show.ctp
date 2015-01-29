@@ -1,4 +1,8 @@
+<!-- jQueryをダウンロード -->
 <?php echo $this->Html->script('jquery-1.11.2.min'); ?>
+<!-- ラジオボタンを横並びに設定 -->
+<?php echo $this->Html->css( 'radio-horizon'); ?>
+
 <script>
 function SpeedTest(){
     var start = (new Date()).getTime();
@@ -99,7 +103,6 @@ echo '</div>';
 									echo '<h3>' . $arr['Post']['wifi_speed'] . 'Mbps</h3>';
 									echo "<dl>";
 									echo "<dt>" . $arr['Post']['payment'] . "peso</dt>";
-									echo "<dt>" . $arr['Post']['time_zone'] . "</dt>";
 									echo "</dl>";
 								echo '</div>';
 								echo '<div class="span7">';
@@ -128,7 +131,6 @@ echo '</div>';
 		<?php echo $this->Form->create('Post', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'add')); ?>
 			<fieldset>
 				<legend>お店のWifiに繋いで感想を登録して下さい</legend>
-				<h3 id="wifi_speed_text"></h3>
 				<?php echo $this->Form->text('Post.places_id' , array('value' => $data[0]['Place']['id'] , 'type' => 'hidden')); ?>
 				<?php echo $this->Form->input('Post.comment', array(
 					'label' => '感想',
@@ -139,13 +141,15 @@ echo '</div>';
 				)); ?>
 				<?php echo $this->Form->error('Post.comment');?>
 				<?php echo $this->Form->text('Post.wifi_speed' , array('value' => '' , 'type' => 'hidden' , 'id' => 'wifi_speed'));?>
-				<?php echo $this->Form->input('Post.time_zone', array(
-					'label' => '利用時間',
-					'type' => 'select',
-					'class' => 'input-xlarge',
-					'value' => 22,
-					'options' => array(0 => "0時" , 1 => "1時" , 2 => "2時" , 3 => "3時" , 4 => "4時" , 5 => "5時" , 6 => "6時" , 7 => "7時" , 8 => "8時" , 9=> "9時" , 10 => "10時" ,11 => "11時" , 12 =>"12時" , 13 => "13時" , 14 => "14時" , 15 => "15時" , 16 => "16時" , 17 => "17時" , 18 => "18時" , 19 => "19時" , 20 => "20時" , 21 => "21時" , 22 => "22時" ,23 => "23時")
+				<?php echo $this->Form->input('Post.ConnectToShopFifi', array(
+				'label' => '今繋いでいるのは',
+				'type' => 'radio',
+				'div' => 'radio-horizontal',
+				'options' => array( 1 => "お店のWifi" , 2 => "その他" ),
+				'value' => 1,
+				'style' => 'float:none;',
 				)); ?>
+				<p style=text-align:right; id="wifi_speed_text"></p>
 				<?php echo $this->Form->error('Post.time_zone');?>
 				<?php echo $this->Form->input('Post.payment', array(
 					'label' => '使った金額（１人）',

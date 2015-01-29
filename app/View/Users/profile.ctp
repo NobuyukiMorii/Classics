@@ -108,8 +108,7 @@ for($i = 0; $i < count($data_post); $i++){
 						echo '<h3>' . $data_post[$i]['Post']['wifi_speed'] . 'Mbps</h3>';
 						echo "<dl>";
 						echo "<dt>" . $data_post[$i]['Post']['payment'] . "peso</dt>";
-						echo "<dt>" . $data_post[$i]['Post']['time_zone'] . "時頃利用</dt>";
-						echo "<dt>" . date("Y/m/d H:i", strtotime($data_post[$i]['Post']['created'])) . "に投稿</dt>";
+						echo "<dt>" . date("Y/m/d H:i", strtotime($data_post[$i]['Post']['created'])) . "</dt>";
 						echo "</dl>";
 					echo '</div>';
 					echo '<div class="span7">';
