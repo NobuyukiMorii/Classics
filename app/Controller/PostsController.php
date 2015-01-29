@@ -20,10 +20,9 @@ class PostsController extends AppController {
 		$places_id = $data['Post']['places_id'];
 
 		//もしConnectToShopFifiが2なら、wifi_speedを0にする
-		if($data['Post']['ConnectToShopFifi'] == 2){
+		if($data['Post']['ConnectToShopFifi'] == 1){
 			unset($data['Post']['wifi_speed']);
 		}
-		unset($data['Post']['ConnectToShopFifi']);
 
 		if(empty($this->data['Post']['comment'])){
 			$this->Session->setFlash(__('コメントは必ず入力して下さい。'));
