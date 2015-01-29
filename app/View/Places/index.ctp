@@ -3,21 +3,27 @@
 
 <div class="container-fluid">
   <div class="row-fluid">
-  	<div class="span6">
-  		<a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index'));?>><?php echo $this->Html->image('CebuWifi.png', array('alt' => 'CebuWifi'));?></a>
+  	<div class="span3 SerchFormGroup">
+  		<?php
+  		echo '<a href=';
+  		echo $this->Html->url(array('controller' => 'Places' , 'action' => 'add'));
+  		echo '>';
+  		echo '<span class="label label-custom" id="AddPlaceButton"><h4>お店を登録</h4></span>';
+  		echo '</a>';
+  		?>
   	</div>
-    <div class="span3" style="margin-top: 45px;">
+    <div class="span3 SerchFormGroup">
 		<?php
-		echo '<h4>場所名で検索</h4>';
+		echo '<span class="label label-custom" id="PlaceSerch"><h4>場所名で検索</h4></span>';
 		echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
 		echo $this->Form->input('Place.name' , array('label' => false));
 		echo $this->Form->text('Place.flg' , array('value' => "name_form" , 'type' => 'hidden'));
 		echo $this->Form->end('送信');
 		?>
     </div>
-    <div class="span3" style="margin-top: 45px;">
+    <div class="span6 SerchFormGroup">
 		<?php
-		echo '<h4>Wifiのスピードとジャンルで検索</h4>';
+		echo '<span class="label label-custom" id="SpeedAndGenreSerch"><h4>Wifiのスピードとジャンルで検索</h4></span>';
 		echo $this->Form->create('Place' , array('type' => 'post' , 'action' => 'index' , 'novalidate' => true));
 		if(empty($value_genre)){
 			echo $this->Form->input('Place.genre', array(
@@ -85,17 +91,12 @@ for($i = 0; $i < count($data); $i++){
 	$arr = $data[$i];
 	$rank = $i + 1;
 	echo '<div class="row">';
-		echo "<div class='span1'>";
-			echo "<h1>";
-				 echo '<span class="badge badge-info"><h3>' . $rank. '位</h3></span>';
-			echo "</h1>";
-		echo "</div>";
   		echo "<div class='span2'>";
   			//Photo
 			if($arr['Place']['avatar_file_name'] != null){
-				echo 	$this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb'));
+				echo 	'<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName">' . $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb')) . '</a>';
 			} else {
-				echo "<img border='0' src='/Classics/img/NoImage.jpg' width='170'>";
+				echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName"><img border="0" src="/Classics/img/NoImage.jpg" width="170"></a>';
 			}
   		echo "</div>";
 
@@ -103,10 +104,10 @@ for($i = 0; $i < count($data); $i++){
 			echo '<div class="row">';
 	  			echo '<div class="span11">';
 	    			echo '<div class="row">';
-	      				echo '<div class="span4">';
+	      				echo '<div class="span6">';
 	      					echo '<h3>';
-	      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $arr['Place']['name'] . '&emsp;';
-		      					echo '<small>';
+	      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName">' . $arr['Place']['name'] . ' ';
+		      					echo '<span class="VagueGrayGenre">';
 									switch ($arr['Place']['genre']) {
 									case 0:
 										echo "カフェ";
@@ -122,20 +123,17 @@ for($i = 0; $i < count($data); $i++){
 										break;
 									}
 								echo '</a>';
-								echo '</small>';
+								echo '</span>';
 							echo '</h3>';
 	      				echo '</div>';
 						echo '<div class="span3">';
 							if($arr['Place']['wifi_existence'] == 0){
-								echo '<h3>wifiなし</h3>';
+								echo '<span class="VagueGrayVagueGrayWifiMbps">wifiなし</span>';
 							} else if($arr['Place']['wifi_average_speed'] == 0){
-								echo '<h3>未測定</h3>';
+								echo '<span class="VagueGrayVagueGrayWifiMbps">未測定</span>';
 							} else {
-								echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
+								echo '<h3 class="WifiAverageSpeed">' . $arr['Place']['wifi_average_speed'] . '<span class="VagueGrayVagueGrayWifiMbps">Mbps</span></h3>';
 							}
-						echo '</div>';
-						echo '<div class="span3">';
-							echo '<h3>' . $arr['Place']['payment_average'] . 'ペソ</h3>';
 						echo '</div>';
 	    			echo '</div>';
 

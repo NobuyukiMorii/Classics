@@ -50,11 +50,11 @@
                 'required' => false
 							)); ?>	
 					  </div>
-					  <button type="submit" class="btn btn-theme">Login</button>
+					  <button type="submit" class="btn btn-theme">ログイン</button>
 					</form>		
 				</div>
 			</div>
-      <button class="btn btn-success" id="JampToAddUser" style="margin-top: 20px;">新規ユーザー登録</button>
+      <button class="btn btn-theme" id="JampToAddUser" style="margin-top: 20px;">新規ユーザー登録</button>
 		</div>
 	</div>
 
@@ -62,7 +62,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-lg-offset-3">
-					<p class="copyright">Copyright &copy; 2015 - Morii NObuyuki</p>
+					<p class="copyright"></p>
 			</div>
 		</div>		
 	</div>	

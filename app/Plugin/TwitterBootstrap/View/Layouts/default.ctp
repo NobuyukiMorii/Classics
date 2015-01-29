@@ -12,11 +12,13 @@
 
 	<!-- Le styles -->
 	<?php echo $this->Html->css('bootstrap.min'); ?>
+	<?php echo $this->Html->css('style'); ?>
 	<style>
 	body {
 		padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
 	}
 	</style>
+
 	<?php echo $this->Html->css('bootstrap-responsive.min'); ?>
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -38,34 +40,21 @@
 	?>
 </head>
 
-<body>
-
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</a>
-				<a class="brand" href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index')); ?>><?php echo __('Cebu Wifi'); ?></a>
-				<div class="nav-collapse">
-					<ul class="nav">
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'add')); ?>>Wifiスポットを登録する</a></li>
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'profile')); ?>>プロフィール</a></li>
-						<li><a href=<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'logout')); ?>>ログアウトする</a></li>
-					</ul>
-				</div><!--/.nav-collapse -->
-			</div>
-		</div>
-	</div><!-- /navbar -->
-
+<body id="TopMargin">
 	<div class="container">
+
+	    <div class="masthead">
+	        <h3 class="muted"><a href=<?php echo $this->Html->url(array('controller' => 'Places' , 'action' => 'index'));?>><?php echo $this->Html->image('CebuWifi.png', array('alt' => 'CebuWifi' , 'class' => 'IndexBigImage'));?></a></h3>
+	    </div>
 
 		<?php echo $this->Session->flash(); ?>
 
 		<?php echo $this->fetch('content'); ?>
 
+		<footer>
+        	<p class="pull-right"><a href="#">Back to top</a></p>
+        	<p>&copy; 2015 CebuWifi. &middot; <a href="<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'profile')); ?>">プロフィール</a> &middot; <a href="<?php echo $this->Html->url(array('controller' => 'Users' , 'action' => 'logout')); ?>">ログアウト</a></p>
+      	</footer>
 	</div> <!-- /container -->
     
 	<!-- Le javascript
@@ -77,3 +66,4 @@
 
 </body>
 </html>
+
