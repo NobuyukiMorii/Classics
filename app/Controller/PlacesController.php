@@ -11,7 +11,7 @@ class PlacesController extends AppController {
 	public $paginate = array(
         'Place' => array(
             'limit' => 8, 
-            'order' => array('Place.wifi_average_speed' => 'desc')
+            'order' => array('Place.wifi_average_speed' => 'desc'),
         )
     );
 
@@ -26,7 +26,16 @@ class PlacesController extends AppController {
 					$this->paginate = array('conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%")));
 		    	} else {
 		    		//名前が入寮されていなかった場合
-		    		//何も条件指定しないで全検索
+					$conditions = array(
+						array(
+						'Place.wifi_existence' => 1,
+						'Place.wifi_average_speed >' => 0
+						)
+					);
+					$this->paginate = array(
+						'conditions' => $conditions,
+						'order' => array('Place.wifi_average_speed' => 'desc'),
+					);
 		    	}
 			} elseif ($this->data['Place']['flg'] === "other_form"){
 				//それ以外の項目が検索条件だった場合
@@ -49,8 +58,16 @@ class PlacesController extends AppController {
 					$this->set('value_wifi_existence' , $this->data['Place']['wifi_existence']);
 			} 
 		} else {
-			//フォームが送信されていな場合
-			//何も条件指定しないで全検索
+			$conditions = array(
+				array(
+				'Place.wifi_existence' => 1,
+				'Place.wifi_average_speed >' => 0
+				)
+			);
+			$this->paginate = array(
+				'conditions' => $conditions,
+				'order' => array('Place.wifi_average_speed' => 'desc'),
+			);
 		}
 		//検索結果のレコードがあるかないかの判定
     	$data = $this->paginate('Place');
