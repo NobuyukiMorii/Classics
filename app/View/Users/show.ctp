@@ -44,7 +44,7 @@ for($i = 0; $i < count($data_place); $i++){
 					if($arr['Place']['avatar_file_name'] != null){
 						echo 	$this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb'));
 					} else {
-						echo 	"<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
+						echo 	"<img border='0' src='/Classics/img/NoImage.jpg' width='170'>";
 					}
 	      		echo "</div>";
 	      		echo '<div class="span7">';
@@ -99,7 +99,7 @@ for($i = 0; $i < count($data_post); $i++){
 				if($data_post[$i]['Post']['avatar_file_name'] != null){
 					echo "<td>" . $this->Upload->uploadImage($data_post[$i], 'Post.avatar', array('style' => 'thumb')) . "</td>";
 				} else {
-					echo "<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'></td>";
+					echo "<td><img border='0' src='/Classics/img/NoImage.jpg' width='170'></td>";
 				}  
 			echo '</div>';
 			echo '<div class="span9">';

@@ -46,11 +46,17 @@ $arr = $data;
 			if($arr['Place']['avatar_file_name'] != null){
 				echo $this->Upload->uploadImage($arr['Place'], 'Place.avatar', array('style' => 'thumb'));
 			} else {
-				echo "<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
+				echo "<img border='0' src='/Classics/img/NoImage.jpg' width='170'>";
 			}
 		echo '</div>';
 		echo '<div class="span3">';
-			echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
+			if($arr['Place']['wifi_existence'] == 0){
+				echo '<h3>wifiなし</h3>';
+			} else if($arr['Place']['wifi_average_speed'] == 0){
+				echo '<h3>未測定</h3>';
+			} else {
+				echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
+			}
 			echo '<h3>' . $arr['Place']['payment_average'] . 'peso</h3>';
 		echo '</div>';
 		echo '<div class="span3">';

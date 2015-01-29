@@ -90,7 +90,7 @@ for($i = 0; $i < count($data); $i++){
 			if($arr['Place']['avatar_file_name'] != null){
 				echo 	$this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb'));
 			} else {
-				echo 	"<img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='170'>";
+				echo "<img border='0' src='/Classics/img/NoImage.jpg' width='170'>";
 			}
   		echo "</div>";
 
