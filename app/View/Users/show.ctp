@@ -14,7 +14,7 @@ echo '<div class="span3">';
 	echo '平均' . $data_user[0]['User']['wifi_average_speed'] . 'Mbps';
 	echo '</h3>';
 	echo '<h3>';
-	echo '平均' . $data_user[0]['User']['payment_average'] . 'peso';
+	echo '平均' . $data_user[0]['User']['payment_average'] . 'ペソ';
 	echo '</h3>';
 echo '</div>';
 echo '<div class="span3">';
@@ -65,7 +65,7 @@ for($i = 0; $i < count($data_place); $i++){
 			      					echo '</div>';
 			      					echo '<div class="row">';
 			      						echo "<dl>";
-											echo "<dt>" . $arr['Place']['payment_average'] . "peso</dt>";
+											echo "<dt>" . $arr['Place']['payment_average'] . "ペソ</dt>";
 											echo "<dt>" .  date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . "更新</dt>";
 										echo "</dl>";
 			      					echo '</div>';	
@@ -107,7 +107,7 @@ for($i = 0; $i < count($data_post); $i++){
 					echo '<div class="span5">';
 						echo '<h3>' . $data_post[$i]['Post']['wifi_speed'] . 'Mbps</h3>';
 						echo "<dl>";
-						echo "<dt>" . $data_post[$i]['Post']['payment'] . "peso</dt>";
+						echo "<dt>" . $data_post[$i]['Post']['payment'] . "ペソ</dt>";
 						echo "<dt>" . date("Y/m/d H:i", strtotime($data_post[$i]['Post']['created'])) . "</dt>";
 						echo "</dl>";
 					echo '</div>';

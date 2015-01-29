@@ -44,7 +44,7 @@ for($i = 0; $i < count($data); $i++){
 			      					echo '<h3>' . $arr['User']['wifi_average_speed'] . 'Mbps</h3>';
 			      				echo '</div>';
 			      				echo '<div class="span2">';
-			      					echo '<h3>平均' . $arr['User']['payment_average'] . 'peso</h3>';
+			      					echo '<h3>平均' . $arr['User']['payment_average'] . 'ペソ</h3>';
 			      				echo '</div>';
 			    			echo '</div>';
 			    			

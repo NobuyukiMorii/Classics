@@ -129,7 +129,7 @@ for($i = 0; $i < count($data); $i++){
 							}
 						echo '</div>';
 						echo '<div class="span3">';
-							echo '<h3>' . $arr['Place']['payment_average'] . 'peso</h3>';
+							echo '<h3>' . $arr['Place']['payment_average'] . 'ペソ</h3>';
 						echo '</div>';
 	    			echo '</div>';
 

@@ -13,7 +13,7 @@ echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 
 			</tr>";
 	} else {
 		echo "<tr>
-		 		<td>画像</td><td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>
+		 		<td>画像</td><td><img border='0' src='/Classics/img/NoImage.jpg' width='170'></td>
 		 	</tr>";
 	}
 	echo "<tr><td>名前</td><td>{$arr['Place']['name']}</td></tr>";

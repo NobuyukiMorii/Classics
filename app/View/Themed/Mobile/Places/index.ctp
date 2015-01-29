@@ -22,7 +22,7 @@
 		if($arr['Place']['avatar_file_name'] != null){
 			echo 	"<td>" .  $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb')) . "</td>";
 		} else {
-			echo 	"<td><img border='0' src='http://www.tg-net.co.jp/html/noimage.jpg' width='128'></td>";
+			echo 	"<td><img border='0' src='/Classics/img/NoImage.jpg' width='170'></td>";
 		}
 		//場所の名前
 		echo 

@@ -57,7 +57,7 @@ $arr = $data;
 			} else {
 				echo '<h3>' . $arr['Place']['wifi_average_speed'] . 'Mbps</h3>';
 			}
-			echo '<h3>' . $arr['Place']['payment_average'] . 'peso</h3>';
+			echo '<h3>' . $arr['Place']['payment_average'] . 'ペソ</h3>';
 		echo '</div>';
 		echo '<div class="span3">';
 			echo '<p>' . $arr['Place']['comment'] . '</p>';
@@ -112,7 +112,7 @@ echo '</div>';
 										echo '<h3>未測定</h3>';
 									}
 									echo "<dl>";
-									echo "<dt>" . $arr['Post']['payment'] . "peso</dt>";
+									echo "<dt>" . $arr['Post']['payment'] . "ペソ</dt>";
 									echo "</dl>";
 								echo '</div>';
 								echo '<div class="span7">';
