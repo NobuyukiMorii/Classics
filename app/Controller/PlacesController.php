@@ -11,13 +11,12 @@ class PlacesController extends AppController {
 	public $paginate = array(
         'Place' => array(
             'limit' => 8, 
-            'order' => array('wifi_average_speed' => 'desc')
+            'order' => array('Place.wifi_average_speed' => 'desc')
         )
     );
 
 	//場所情報を全件だし
 	public function index(){
-
 		if(!empty($this->data)){
 			//フォームが送信された場合の処理
 			if($this->data['Place']['flg'] === "name_form"){
@@ -35,14 +34,19 @@ class PlacesController extends AppController {
 					  	array( 'and' => 
 					  		array(
 					  				'Place.genre' => $this->data['Place']['genre'],
-					  				'Place.wifi_average_speed >=' => $this->data['Place']['wifi_average_speed'],
+					  				'Place.wifi_average_speed >' => $this->data['Place']['wifi_average_speed'],
+					  				'Place.wifi_existence' => $this->data['Place']['wifi_existence']
 					  		)
 					  	)
 					);
-					$this->paginate = array('conditions' => $conditions);
+					$this->paginate = array(
+						'conditions' => $conditions,
+						'order' => array('Place.wifi_average_speed' => 'desc'),
+					);
 					//ビューのラジオの初期値をセットする
 					$this->set('value_genre' , $this->data['Place']['genre']);
 					$this->set('value_wifi_average_speed' , $this->data['Place']['wifi_average_speed']);
+					$this->set('value_wifi_existence' , $this->data['Place']['wifi_existence']);
 			} 
 		} else {
 			//フォームが送信されていな場合

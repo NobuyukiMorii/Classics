@@ -63,6 +63,26 @@
 				'style' => 'float:none;',
 			));
 		}
+
+		if(!isset($value_wifi_existence) ||$value_wifi_existence == 1){
+			echo $this->Form->input('Place.wifi_existence', array(
+				'label' => false,
+				'type' => 'radio',
+				'div' => 'radio-horizontal',
+				'options' => array(1 => "Wifiあり" , 0 => "Wifiなし"),
+				'value' => 1,
+				'style' => 'float:none;',
+			));
+		} else {
+			echo $this->Form->input('Place.wifi_existence', array(
+				'label' => false,
+				'type' => 'radio',
+				'div' => 'radio-horizontal',
+				'options' => array(1 => "Wifiあり" , 0 => "Wifiなし"),
+				'value' => 0,
+				'style' => 'float:none;',
+			));
+		}
 		echo $this->Form->text('Place.flg' , array('value' => "other_form" , 'type' => 'hidden'));
 		echo $this->Form->end('送信');
 		?>
