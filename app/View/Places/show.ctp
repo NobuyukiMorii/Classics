@@ -100,7 +100,11 @@ echo '</div>';
 						echo '<div class="span9">';
 							echo '<div class="row-fluid show-grid">';
 								echo '<div class="span5">';
-									echo '<h3>' . $arr['Post']['wifi_speed'] . 'Mbps</h3>';
+									if($arr['Post']['wifi_speed'] != 0){
+										echo '<h3>' . $arr['Post']['wifi_speed'] . 'Mbps</h3>';
+									} else {
+										echo '<h3>未測定</h3>';
+									}
 									echo "<dl>";
 									echo "<dt>" . $arr['Post']['payment'] . "peso</dt>";
 									echo "</dl>";
@@ -145,7 +149,7 @@ echo '</div>';
 				'label' => '今繋いでいるのは',
 				'type' => 'radio',
 				'div' => 'radio-horizontal',
-				'options' => array( 1 => "お店のWifi" , 2 => "その他" ),
+				'options' => array( 0 => "お店のWifi" , 1 => "その他" ),
 				'value' => 1,
 				'style' => 'float:none;',
 				)); ?>
