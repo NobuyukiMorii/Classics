@@ -147,11 +147,11 @@ for($i = 0; $i < count($data); $i++){
 								echo '</span>';
 							echo '</h3>';
 	      				echo '</div>';
-						echo '<div class="span3">';
+						echo '<div class="span3 AlignRight">';
 							if($arr['Place']['wifi_existence'] == 0){
 								echo '<span class="VagueGrayVagueGrayWifiMbps">wifiなし</span>';
 							} else if($arr['Place']['wifi_average_speed'] == 0){
-								echo '<span class="VagueGrayVagueGrayWifiMbps">未測定</span>';
+								echo '<span class="VagueGrayVagueGrayWifiMbps">Wifi未測定</span>';
 							} else {
 								echo '<h3 class="WifiAverageSpeed">' . $arr['Place']['wifi_average_speed'] . '<span class="VagueGrayVagueGrayWifiMbps">Mbps</span></h3>';
 							}
@@ -160,7 +160,7 @@ for($i = 0; $i < count($data); $i++){
 
 	    			echo '<div class="row">';
 	      				echo '<div class="span9">';
-	      					echo '<h4>' . $arr['Place']['comment'] . '<br><small>（<a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/" . $arr['User']['id'] . ">" . $arr['User']['username'] . '</a>：' . date("Y/m/d H:i", strtotime($arr['Place']['modified'])) . '）</small></h4>';
+	      					echo '<p>' . $arr['Place']['comment'] . '</p>';
 	      				echo '</div>';
 	    			echo '</div>';
 	    			
