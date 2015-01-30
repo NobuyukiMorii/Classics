@@ -16,6 +16,23 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.btn-orange {
+  background-color: #ff6500!important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff6500", endColorstr="#ff6500");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ff6500), to(#ff6500));
+  background-image: -moz-linear-gradient(top, #ff6500, #ff6500);
+  background-image: -ms-linear-gradient(top, #ff6500, #ff6500);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ff6500), color-stop(100%, #ff6500));
+  background-image: -webkit-linear-gradient(top, #ff6500, #ff6500);
+  background-image: -o-linear-gradient(top, #ff6500, #ff6500);
+  background-image: linear-gradient(#ff6500, #ff6500);
+  border-color: #ff6500 #ff6500 hsl(195, 79%, 38%);
+  color: #FFF !important;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.33);
+  -webkit-font-smoothing: antialiased;
+}
+
 .label-custom,
 .badge-custom {
   background-color: #33ccff;
@@ -85,12 +102,12 @@
 
 .btn-theme2  {
   color: #fff;
-  background-color: #fd680e;
+  background-color: #ff6500;
   border-color: #fd680e;
 }
 .btn-theme2:hover  {
   color: #fff;
-  background-color: #fd680e;
+  background-color: #ff6500;
   border-color: #fd680e;
 }
 
@@ -150,6 +167,53 @@
   margin: -3px;
 }
 
-.form-box{
+.form-box {
   border: 1px solid #efefef;
+}
+
+.MarginButtom {
+  margin-top: 0px;
+  margin-bottom: 8px;
+}
+
+.margin-edit-button {
+  margin-top: 15px;
+}
+
+.miginiyoseru {
+  margin-left: 23px;
+}
+
+.PlaceShowPlaceWifiGray {
+  color :#999999;
+}
+
+.PlaceShowPlacePesoOrabge {
+  color :#ff6500;
+}
+
+.PlaceShowPlacePesoGray {
+  color :#999999;
+  font-size: 13px;
+}
+
+.PlaceShowPlaceWifiOrange {
+  color :#ff6500;
+}
+
+.PlaceShowPlaceWifiGraySmall {
+  color :#999999;
+  font-size: 20px;
+}
+
+.NameTag {
+  color :#33ccff;
+}
+
+.AlignRight {
+  text-align: right;
+}
+
+.IndexComment {
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
