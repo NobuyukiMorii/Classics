@@ -19,7 +19,6 @@ echo '<div class="span3">';
 echo '</div>';
 echo '<div class="span3">';
 	echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'edit')) . ' class="btn btn-primary btn-large">プロフィールを編集する &raquo;</a></p>';
-	echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'delete')) . ' class="btn btn-primary btn-large">退会する &raquo;</a></p>';
 echo '</div>';			
 
 
