@@ -1,7 +1,8 @@
 <!-- ラジオボタンを横並びに設定 -->
 <?php echo $this->Html->css('radio-horizon'); ?>
 
-<div class="container-fluid">
+<span class="label label-custom" id="FormTitle"><h4>場所名で検索</h4></span>
+<div class="container-fluid form-box">
   <div class="row-fluid">
   	<div class="span3 SerchFormGroup">
   		<?php

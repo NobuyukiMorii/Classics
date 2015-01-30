@@ -38,10 +38,34 @@
   margin-bottom: 2px;
 }
 
+#FormTitle {
+  width: 1162px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+#ContentsTitle {
+  width: 1162px;
+  text-align: center;
+  margin-top: 40px;
+}
+
 #SpeedAndGenreSerch{
   width: 475px;
   text-align: center;
   margin-bottom: 5px;
+}
+
+#kansou{
+  width: 565px;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+#toukou{
+  width: 565px;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .SerchFormGroup{
@@ -59,6 +83,17 @@
   border-color: #444;
 }
 
+.btn-theme2  {
+  color: #fff;
+  background-color: #fd680e;
+  border-color: #fd680e;
+}
+.btn-theme2:hover  {
+  color: #fff;
+  background-color: #fd680e;
+  border-color: #fd680e;
+}
+
 .PlaceName {
   color: #33ccff;
   font-size: 56px;
@@ -73,6 +108,13 @@
   color: #fd680e;
   font-size: 56px;
   font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  margin-bottom: 50px;
+}
+
+.AveragePaymentNumber {
+ color: #fd680e;
+  font-size: 42px;
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
 
 .VagueGrayGenre {
@@ -85,10 +127,29 @@
   font-size: 40px;
 }
 
+.VagueGrayVagueGraySmall{
+  color :#999999;
+  font-size: 15px;
+}
+
+.OrangeSmall{
+  color :#000000;
+  font-size: 15px;
+}
+
 #TopMargin {
   padding-top: 3px;
 }
 
 .IndexBigImage {
   padding-top: 0px;
+}
+
+#fieldset {
+  border: 3px solid #33ccff;
+  margin: -3px;
+}
+
+.form-box{
+  border: 1px solid #efefef;
 }
