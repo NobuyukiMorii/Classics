@@ -10,7 +10,7 @@ class PlacesController extends AppController {
 	//ページネーションの設定
 	public $paginate = array(
         'Place' => array(
-            'limit' => 8, 
+            'limit' => 5, 
             'order' => array('Place.wifi_average_speed' => 'desc'),
         )
     );
@@ -35,6 +35,7 @@ class PlacesController extends AppController {
 					$this->paginate = array(
 						'conditions' => $conditions,
 						'order' => array('Place.wifi_average_speed' => 'desc'),
+						'limit' => 5
 					);
 		    	}
 			} elseif ($this->data['Place']['flg'] === "other_form"){
@@ -43,7 +44,7 @@ class PlacesController extends AppController {
 					  	array( 'and' => 
 					  		array(
 					  				'Place.genre' => $this->data['Place']['genre'],
-					  				'Place.wifi_average_speed >' => $this->data['Place']['wifi_average_speed'],
+					  				'Place.wifi_average_speed >=' => $this->data['Place']['wifi_average_speed'],
 					  				'Place.wifi_existence' => $this->data['Place']['wifi_existence']
 					  		)
 					  	)
@@ -51,6 +52,7 @@ class PlacesController extends AppController {
 					$this->paginate = array(
 						'conditions' => $conditions,
 						'order' => array('Place.wifi_average_speed' => 'desc'),
+						'limit' => 5
 					);
 					//ビューのラジオの初期値をセットする
 					$this->set('value_genre' , $this->data['Place']['genre']);
