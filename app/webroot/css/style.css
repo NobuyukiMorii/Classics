@@ -210,6 +210,11 @@
   color :#ff6500;
 }
 
+.UserShowPlaceName {
+  color :#33ccff;
+  font-size: 30px;
+}
+
 .PlaceShowPlacePesoGray {
   color :#999999;
   font-size: 13px;

@@ -60,18 +60,6 @@ class UsersController extends AppController {
 
 	//ユーザー確認画面（みんな見れる）
 	public function show($param){
-		//場所情報のデータ
-		$conditions_place = array(
-	  		array(
-	  			'Place.users_id' => $param
-	  		)
-		);
-		$this->paginate = array(
-			'conditions' => $conditions_place,
-			'order' => array('Place.created' => 'desc'),
-		);
-		$data_place = $this->paginate('Place');
-
 		//ユーザー情報のデータ
 		$data_user = $this->User->find('all' ,  array('conditions' => array('User.id' => $param)));
 		

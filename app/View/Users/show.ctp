@@ -53,12 +53,36 @@
 						echo '</div>';
 						echo '<div class="span9">';
 							echo '<div class="row-fluid show-grid">';
-								echo '<div class="span5">';
-									echo "<h3 class='PlaceShowPlacePesoOrabge'>" . $data_post[$i]['Place']['name'] . "<span class='PlaceShowPlacePesoGray'>" . $data_post[$i]['Place']['genre'] ."</span></h3>";
-									echo '<h3 class="PlaceShowPlaceWifiOrange">' . $data_post[$i]['Post']['wifi_speed'] .'<span class="PlaceShowPlaceWifiGraySmall">Mbps</span></h3>';
-									echo "<h3 class='PlaceShowPlacePesoOrabge'>" . $data_post[$i]['Post']['payment'] . "<span class='PlaceShowPlacePesoGray'>ペソ</span></h3>";
+								echo '<div class="row">';
+									echo '<div class="span6">';
+										echo "<h3 class='UserShowPlaceName'>";
+											echo $data_post[$i]['Place']['name'];
+											echo "<span class='PlaceShowPlacePesoGray'>";
+											switch ($data_post[$i]['Place']['genre']) {
+											case 0:
+												echo "カフェ";
+												break;
+											case 1:
+												echo "バー";
+												break;
+											case 2:
+												echo "レストラン";
+												break;
+											default:
+												echo "不明";
+												break;
+											}
+											echo "</span>";
+										echo "</h3>";
+									echo '</div>';
+									echo '<div class="span3">';
+										echo '<h3 class="PlaceShowPlaceWifiOrange">' . $data_post[$i]['Post']['wifi_speed'] .'<span class="PlaceShowPlaceWifiGraySmall">Mbps</span></h3>';
+									echo '</div>';
+									echo '<div class="span3">';
+										echo "<h3 class='PlaceShowPlacePesoOrabge'>" . $data_post[$i]['Post']['payment'] . "<span class='PlaceShowPlacePesoGray'>ペソ</span></h3>";
+									echo '</div>';
 								echo '</div>';
-								echo '<div class="span7">';
+								echo '<div class="row">';
 									echo '<p>';
 										echo '<p class="IndexComment">' . $data_post[$i]['Post']['comment'] . '</p>';
 										echo date("Y/m/d H:i", strtotime($data_post[$i]['Post']['created']));
