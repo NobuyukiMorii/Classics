@@ -110,7 +110,6 @@
 <?php
 for($i = 0; $i < count($data); $i++){
 	$arr = $data[$i];
-	$rank = $i + 1;
 	echo '<div class="row">';
   		echo "<div class='span2'>";
   			//Photo

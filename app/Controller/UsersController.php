@@ -61,13 +61,32 @@ class UsersController extends AppController {
 	//ユーザー確認画面（みんな見れる）
 	public function show($param){
 		//場所情報のデータ
-		$this->Place->unbindModel(array('belongsTo' => array('User')));
-		$data_place = $this->Place->find('all' , array('conditions' => array('Place.users_id' => $param)));
+		$conditions_place = array(
+	  		array(
+	  			'Place.users_id' => $param
+	  		)
+		);
+		$this->paginate = array(
+			'conditions' => $conditions_place,
+			'order' => array('Place.created' => 'desc'),
+		);
+		$data_place = $this->paginate('Place');
+
 		//ユーザー情報のデータ
 		$data_user = $this->User->find('all' ,  array('conditions' => array('User.id' => $param)));
+		
 		//投稿情報
-		$this->Post->unbindModel(array('belongsTo' => array('Place' , 'User')));
-		$data_post = $this->Post->find('all' , array('conditions' => array('Post.users_id' => $param)));
+		$conditions_post = array(
+	  		array(
+	  			'Post.users_id' => $param
+	  		)
+		);
+		$this->paginate = array(
+			'conditions' => $conditions_post,
+			'order' => array('Post.created' => 'desc'),
+		);
+		$data_post = $this->paginate('Post');
+
 		//データをビューに渡す
 		$this->set(compact('data_place' , 'data_user' , 'data_post'));
 	}

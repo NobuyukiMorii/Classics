@@ -127,7 +127,7 @@ class PlacesController extends AppController {
     	if(isset($param)){
         	$data = $this->Place->find('all' , array('conditions' => array('Place.id' => $param)));
         	$data = $data[0];
-        	$this->set('data' , $data); 		
+        	$this->set('data' , $data);	
     	} 
 
     	if($this->request->isPost()){

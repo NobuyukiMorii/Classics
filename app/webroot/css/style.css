@@ -85,6 +85,12 @@
   margin-bottom: 60px;
 }
 
+#toukouUserShow{
+  width: 961px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 .SerchFormGroup{
   margin-top :20px;
 }
@@ -115,6 +121,13 @@
   color: #33ccff;
   font-size: 56px;
   font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+
+.PlaceNameUserShow {
+  color: #33ccff;
+  font-size: 56px;
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  margin-bottom: 20px;
 }
 
 .PlaceName:hover {
@@ -149,8 +162,13 @@
   font-size: 15px;
 }
 
-.OrangeSmall{
+.BlackSmall{
   color :#000000;
+  font-size: 15px;
+}
+
+.OrangeSmall {
+  color :#ff6500;
   font-size: 15px;
 }
 

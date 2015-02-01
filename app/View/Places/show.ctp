@@ -74,21 +74,25 @@ $arr = $data;
 				echo '<div class="MarginButtom">';
 					echo '<span class="VagueGrayVagueGraySmall">営業時間</span>';
 					echo '<br>';
-					echo '<span class="OrangeSmall">' . date("H時i分", strtotime($arr['Place']['open_time'])) . '</span>';
+					echo '<span class="BlackSmall">' . date("H時i分", strtotime($arr['Place']['open_time'])) . '</span>';
 					echo '<span class="VagueGrayVagueGraySmall">〜</span>';
-					echo '<span class="OrangeSmall	">' . date("H時i分", strtotime($arr['Place']['close_time'])) . '</span>';
+					echo '<span class="BlackSmall	">' . date("H時i分", strtotime($arr['Place']['close_time'])) . '</span>';
 					echo '<br>';
 				echo '</div>';
 				echo '<div class="MarginButtom">';
 					echo '<span class="VagueGrayVagueGraySmall">登録した人</span>';
 					echo '<br>';
-					echo "<a class='OrangeSmall' href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$created_user['id']}>{$created_user['username']}</a>";
+					if($created_user['username'] != "退会者"){
+						echo "<a class='OrangeSmall' href=" . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$created_user['id']}>{$created_user['username']}</a>";
+					} else {
+						echo "<span class='BlackSmall'}>{$created_user['username']}</span>";						
+					}
 					echo '<br>';
 				echo '</div>';
 				echo '<div class="MarginButtom">';
 					echo '<span class="VagueGrayVagueGraySmall">登録日</span>';
 					echo '<br>';
-					echo '<span class="OrangeSmall">' . date("Y年m月d日", strtotime($arr['Place']['created'])) . '</span>';
+					echo '<span class="BlackSmall">' . date("Y年m月d日", strtotime($arr['Place']['created'])) . '</span>';
 				echo '</div>';
 			echo '</div>';
 		echo '</div>';
@@ -128,7 +132,7 @@ $arr = $data;
 										echo '<p class="IndexComment">' . $arr['Post']['comment'] . '</p>';
 										echo '<br>';
 										if($arr['User']['username'] !== "退会者"){
-											echo '<a class="NameTag" href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>";
+											echo '<a class="OrangeSmall" href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'show')) . "/{$arr['User']['id']}>";
 										}
 										echo $arr['User']['username'];
 										if($arr['User']['username'] !== "退会者"){
