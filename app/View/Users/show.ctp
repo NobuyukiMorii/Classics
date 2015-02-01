@@ -7,9 +7,6 @@
 				echo  $data_user[0]['User']['username'] . ' ';
 			echo '</h1>';
 			echo '</div>';
-			echo '<div class="span2">';
-				echo '<p><a href=' . $this->Html->url(array('controller' => 'Users' , 'action' => 'edit')) . ' class="btn btn-orange margin-edit-button">編集する</a></p>';
-			echo '</div>';
 		echo '</div>';
 
 		echo '<div class="row">';

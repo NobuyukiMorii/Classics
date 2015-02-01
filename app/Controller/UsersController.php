@@ -72,6 +72,7 @@ class UsersController extends AppController {
 		$this->paginate = array(
 			'conditions' => $conditions_post,
 			'order' => array('Post.created' => 'desc'),
+			'limit' => 5
 		);
 		$data_post = $this->paginate('Post');
 
@@ -83,12 +84,22 @@ class UsersController extends AppController {
 	public function profile(){
 		$id = $this->Auth->user('id');
 		if(!empty($id)){
-			$data_place = $this->Place->find('all' , array('conditions' => array('Place.users_id' => $id)));
 			//ユーザー情報のデータ
 			$data_user = $this->User->find('all' ,  array('conditions' => array('User.id' => $id)));
+			
 			//投稿情報
-			$this->Post->unbindModel(array('belongsTo' => array('Place' , 'User')));
-			$data_post = $this->Post->find('all' , array('conditions' => array('Post.users_id' => $id)));
+			$conditions_post = array(
+		  		array(
+		  			'Post.users_id' => $id
+		  		)
+			);
+			$this->paginate = array(
+				'conditions' => $conditions_post,
+				'order' => array('Post.created' => 'desc'),
+				'limit' => 5
+			);
+			$data_post = $this->paginate('Post');
+
 			//データをビューに渡す
 			$this->set(compact('data_place' , 'data_user' , 'data_post'));
         } else {
