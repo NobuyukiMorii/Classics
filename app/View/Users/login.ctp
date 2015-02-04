@@ -74,12 +74,12 @@
       <div class="row margin-bottom">
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Find Wifi Spot</h2>
-          <p>セブ市内でWiFiが快適に使えるカフェ、レストラン、ホテルなどを簡単に見つけられます！！</p>
+          <h2>場所</h2>
+          <p>セブ市内でWifiが使えるお店を簡単に見つけられます</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" style="width: 140px; height: 140px;">
-          <h2>Check Review</h2>
+          <h2>スピード</h2>
           <p>平均予算や営業時間、これまで使ったユーザーの感想など、過去に利用したユーザーの生の感想をお届けします！！</p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
