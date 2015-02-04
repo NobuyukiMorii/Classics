@@ -59,7 +59,7 @@
 								echo '<div class="row">';
 									echo '<div class="span6">';
 										echo "<h3 class='UserShowPlaceName'>";
-											echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $data_post[$i]['Post']['places_id'] . '>'; 
+											echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $data_post[$i]['Post']['places_id'] . ' class="NoLine" >'; 
 												echo $data_post[$i]['Place']['name'];
 											echo '</a>';
 											echo "<span class='PlaceShowPlacePesoGray'>";

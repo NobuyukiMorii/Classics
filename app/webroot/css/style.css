@@ -123,6 +123,10 @@
   font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
 
+.PlaceName:hover {
+  text-decoration: none;
+}
+
 .PlaceNameUserShow {
   color: #33ccff;
   font-size: 56px;
@@ -130,7 +134,7 @@
   margin-bottom: 20px;
 }
 
-.PlaceName:hover {
+.NoLine:hover {
   text-decoration: none;
 }
 

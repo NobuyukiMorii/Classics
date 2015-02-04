@@ -114,7 +114,7 @@ for($i = 0; $i < count($data); $i++){
   		echo "<div class='span2'>";
   			//Photo
 			if($arr['Place']['avatar_file_name'] != null){
-				echo 	'<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName">' . $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb')) . '</a>';
+				echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName">' . $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb')) . '</a>';
 			} else {
 				echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName"><img border="0" src="/Classics/img/NoImage.jpg" width="170"></a>';
 			}
