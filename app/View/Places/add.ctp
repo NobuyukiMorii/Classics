@@ -1,5 +1,16 @@
 <!-- ラジオボタンを横並びに設定 -->
 <?php echo $this->Html->css( 'radio-horizon'); ?>
+<!-- jQueryを使用 -->
+<?php echo $this->Html->script('jquery-1.11.2.min'); ?>
+<!-- Wifiの速度を図るファイルを使用-->
+<?php echo $this->Html->script('SpeedTest'); ?>
+<!-- 緯度と経度をとるファイルを使用-->
+<?php echo $this->Html->script('GetLocation'); ?>
+<script>
+SpeedTest();
+startFunc();
+console.log(location);
+</script>
 
 <?php echo $this->Form->create('Place', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'add')); ?>
 	<fieldset>
@@ -37,6 +48,19 @@
 			'value' => 1,
 			'style' => 'float:none;',
 		)); ?>
+
+		<?php echo $this->Form->input('Place.ConnectToShopFifi', array(
+			'label' => '今繋いでいるのは',
+			'type' => 'radio',
+			'div' => 'radio-horizontal',
+			'options' => array( 0 => "お店のWifi" , 1 => "その他" ),
+			'value' => 1,
+			'style' => 'float:none;',
+		)); ?>
+		<?php echo $this->Form->text('Place.wifi_average_speed' , array('value' => '' , 'type' => 'hidden' , 'id' => 'wifi_speed'));?>
+		<?php echo $this->Form->text('Place.latitude' , array('value' => '' , 'type' => 'hidden' , 'id' => 'latitude'));?>
+		<?php echo $this->Form->text('Place.longitude' , array('value' => '' , 'type' => 'hidden' , 'id' => 'longitude'));?>
+
 		<?php echo $this->Form->error('Place.wifi_existence');?>
 
 		<?php echo $this->Form->input('Place.open_time', array(
