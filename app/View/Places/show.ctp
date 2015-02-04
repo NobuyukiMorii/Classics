@@ -1,20 +1,15 @@
-<!-- jQueryをダウンロード -->
+<!-- jQueryを使用 -->
 <?php echo $this->Html->script('jquery-1.11.2.min'); ?>
 <!-- ラジオボタンを横並びに設定 -->
 <?php echo $this->Html->css( 'radio-horizon'); ?>
-
+<!-- Wifiの速度を図るファイルを使用-->
+<?php echo $this->Html->script('SpeedTest'); ?>
+<!-- 緯度と経度をとるファイルを使用-->
+<?php echo $this->Html->script('GetLocation'); ?>
 <script>
-function SpeedTest(){
-    var start = (new Date()).getTime();
-    $.get('/Classics/img/heavy.jpg?' + start, function(data) {
-        var end = (new Date()).getTime();
-        var sec = (end - start) / 1000;
-        var mbps =  (( (data.length *8) / sec)/1000000).toFixed(2);
-        $('#wifi_speed').val(mbps);
-        $('#wifi_speed_text').text(mbps);
-    });
-};
 SpeedTest();
+startFunc();
+
 </script>
 
 <?php
@@ -189,6 +184,8 @@ $arr = $data;
 				)); ?>
 				<?php echo $this->Form->error('Post.comment');?>
 				<?php echo $this->Form->text('Post.wifi_speed' , array('value' => '' , 'type' => 'hidden' , 'id' => 'wifi_speed'));?>
+				<?php echo $this->Form->text('Post.latitude' , array('value' => '' , 'type' => 'hidden' , 'id' => 'latitude'));?>
+				<?php echo $this->Form->text('Post.longitude' , array('value' => '' , 'type' => 'hidden' , 'id' => 'longitude'));?>
 				<?php echo $this->Form->error('Post.time_zone');?>
 				<?php echo $this->Form->input('Post.payment', array(
 					'label' => '使った金額',
