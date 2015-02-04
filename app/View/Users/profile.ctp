@@ -47,7 +47,11 @@
 						echo '<div class="span3">';
 							//Photo
 							if($data_post[$i]['Post']['avatar_file_name'] != null){
-								echo "<td>" . $this->Upload->uploadImage($data_post[$i], 'Post.avatar', array('style' => 'thumb')) . "</td>";
+								echo "<td>";
+									echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $data_post[$i]['Post']['places_id'] . '>'; 
+										echo $this->Upload->uploadImage($data_post[$i], 'Post.avatar', array('style' => 'thumb'));
+									echo '</a>';
+								echo "</td>";
 							} else {
 								echo "<td><img border='0' src='/Classics/img/NoImage.jpg' width='170'></td>";
 							}  
@@ -57,7 +61,9 @@
 								echo '<div class="row">';
 									echo '<div class="span6">';
 										echo "<h3 class='UserShowPlaceName'>";
-											echo $data_post[$i]['Place']['name'];
+											echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $data_post[$i]['Post']['places_id'] . '>'; 										
+												echo $data_post[$i]['Place']['name'];
+											echo '</a>';
 											echo "<span class='PlaceShowPlacePesoGray'>";
 											switch ($data_post[$i]['Place']['genre']) {
 											case 0:
