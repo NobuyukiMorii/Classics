@@ -14,7 +14,7 @@ function successCallback(position) {
   location['latitude'] = position.coords.latitude;
   location['longitude'] = position.coords.longitude;
   $('#latitude').val(location['latitude']);
-  $('#longitude').text(location['longitude']);
+  $('#longitude').val(location['longitude']);
 }
 function errorCallback(error) {
    //失敗のときの処理

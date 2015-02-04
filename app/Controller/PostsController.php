@@ -69,6 +69,8 @@ class PostsController extends AppController {
 		$this->Place->id = $update_place[0]['Place']['id'];
 		$flg1 = $this->Place->saveField('wifi_average_speed' , $wifi_average_speed);
 		$flg2 = $this->Place->saveField('payment_average' , $payment_average);
+		$flg3 = $this->Place->saveField('latitude' , $data['Post']['latitude']);
+		$flg4 = $this->Place->saveField('longitude' , $data['Post']['longitude']);
 
 	//ここから、ユーザーの平均Wifiスピードと平均支払額のアップデート処理
 		$past_post_user = $this->Post->find(
@@ -93,15 +95,15 @@ class PostsController extends AppController {
 			//何もしない
 		}
 		$payment_average_user = round($payment_sum_user / count($past_post_user) , 2);
-		//Placeへのwifi_average_speedの保存
+		//Placeへのpayment_averageとwifi_average_speedの保存
 		$update_user = $this->User->find('all' , array('conditions' => array('User.id' => $data['Post']['users_id'])));
 		$this->User->id = $update_user[0]['User']['id'];
-		$flg3 = $this->User->saveField('wifi_average_speed' , $wifi_average_speed_user, array('callbacks' => false));
-		$flg4 = $this->User->saveField('payment_average' , $payment_average_user , array('callbacks' => false));
+		$flg5 = $this->User->saveField('wifi_average_speed' , $wifi_average_speed_user, array('callbacks' => false));
+		$flg6 = $this->User->saveField('payment_average' , $payment_average_user , array('callbacks' => false));
 
 		//エラー表示
-		if($flg1 == false || $flg2 == false || $flg3 == false || $flg4 == false){
-			$this->Session->setFlash(__('wifiスピードの更新に失敗しました。'));
+		if($flg1 == false || $flg2 == false || $flg3 == false || $flg4 == false || $flg5 == false || $flg6 == false ){
+			$this->Session->setFlash(__('更新に失敗しました。'));
 		}
 
 	//リダイレクト
