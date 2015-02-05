@@ -6,10 +6,29 @@
 <?php echo $this->Html->script('SpeedTest'); ?>
 <!-- 緯度と経度をとるファイルを使用-->
 <?php echo $this->Html->script('GetLocation'); ?>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 <script>
 SpeedTest();
 startFunc();
+ 
+google.maps.event.addDomListener(window, 'load', function() { 
+    var lng = <?php echo $data[0]['Place']['longitude'] ;?>; 
+    var lat = <?php echo $data[0]['Place']['latitude'] ;?>; 
 
+    var latlng = new google.maps.LatLng(lat, lng); 
+    var mapOptions = { 
+        zoom: 18, 
+        center: latlng, 
+        mapTypeId: google.maps.MapTypeId.ROADMAP, 
+        scaleControl: true 
+    }; 
+    var mapObj = new google.maps.Map(document.getElementById('gmap'), mapOptions); 
+
+    var marker = new google.maps.Marker({ 
+        position: latlng, 
+        map: mapObj 
+    }); 
+});
 </script>
 
 <?php
@@ -204,4 +223,9 @@ $arr = $data;
 			</fieldset>
 		<?php echo $this->Form->end(); ?>
   	</div>
+</div>
+
+<!-- 地図の表示 -->
+<div class="container" style="margin:50px 0px 50px 30px;">
+	<div id="gmap" style="width: 1170px; height: 370px; border: 1px solid Gray;"> </div> 
 </div>
