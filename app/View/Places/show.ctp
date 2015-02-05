@@ -226,6 +226,8 @@ $arr = $data;
 </div>
 
 <!-- 地図の表示 -->
+<?php if(isset($data[0]['Place']['longitude'])): ?>
 <div class="container" style="margin:50px 0px 50px 30px;">
-	<div id="gmap" style="width: 1170px; height: 370px; border: 1px solid Gray;"> </div> 
+	<div id="gmap" style="width: 1170px; height: 600px; border: 1px solid Gray;"> </div> 
 </div>
+<?php endif ; ?>

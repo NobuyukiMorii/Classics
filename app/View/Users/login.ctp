@@ -11,9 +11,9 @@
     <title>Siimple - Free Bootstrap 3 Landing Page</title>
 
     <!-- Bootstrap -->
-    <link href="<?php echo $this->Html->webroot ;?>css/bootstrap3/bootstrap.css" rel="stylesheet">
-	<link href="<?php echo $this->Html->webroot ;?>css/bootstrap3/bootstrap-theme.css" rel="stylesheet">
-
+     <link href="<?php echo $this->Html->webroot ;?>css/bootstrap3/bootstrap.css" rel="stylesheet">
+	   <link href="<?php echo $this->Html->webroot ;?>css/bootstrap3/bootstrap-theme.css" rel="stylesheet">
+     <?php echo $this->Html->css('style'); ?>
     <!-- siimple style -->
     <link href="<?php echo $this->Html->webroot ;?>css/login.css" rel="stylesheet">
     
