@@ -76,7 +76,6 @@
 #kansou{
   width: 565px;
   text-align: center;
-  margin-bottom: 60px;
 }
 
 #toukou{
@@ -119,11 +118,22 @@
 
 .PlaceName {
   color: #33ccff;
-  font-size: 56px;
+  font-size: 47px;
   font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
 }
 
 .PlaceName:hover {
+  text-decoration: none;
+  color: gold;
+}
+
+.PlaceName2 {
+  color: #33ccff;
+  font-size: 47px;
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+}
+
+.PlaceName2:hover {
   text-decoration: none;
 }
 
@@ -140,7 +150,7 @@
 
 .WifiAverageSpeed {
   color: #fd680e;
-  font-size: 56px;
+  font-size: 40px;
   font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
   margin-bottom: 50px;
 }
@@ -158,7 +168,7 @@
 
 .VagueGrayVagueGrayWifiMbps {
   color :#999999;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .VagueGrayVagueGraySmall{
@@ -238,7 +248,7 @@
 }
 
 .AlignRight {
-  text-align: right;
+  text-align: left;
 }
 
 .IndexComment {
@@ -253,4 +263,55 @@
     font-size: 20px;
     color: #33ccff;
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    border-radius: 20px;
+    width: 400px;
+    text-align: center;
+}
+
+hr {
+  margin: 0px;
+  height: 1px;
+  background-color: #33ccff;
+}
+
+.panel {
+  background-color: #33ccff;
+  height: 30px;
+  padding-top:10px;
+}
+
+.white {
+  color: #ffffff;
+  font-size: 30px;
+  vertical-align:middle;
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  margin-left: 20px;
+}
+
+.BlueBorder{
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 5px;
+  border-bottom-width: 5px;
+  border-left-width: 5px;
+  border-color: #33ccff;
+  margin-bottom: 10px;
+}
+
+.img {
+  text-align: left;
+}
+
+.ImageLeft {
+  margin-left: -29px;
+}
+
+.MbspMargin{
+  margin-top: 20px;
+}
+
+.TextMargin {
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 30px;
 }
