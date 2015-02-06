@@ -104,7 +104,7 @@ class PlacesController extends AppController {
 		$this->paginate = array(
 				'conditions' => array('Post.places_id' => $param),
 				'order' => array('Post.created' => 'desc'),
-				'limit' => 3
+				'limit' => 5
 		);
 		$data = $this->paginate('Post');
 		//最後に投稿したユーザーを検索する
