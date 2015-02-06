@@ -49,6 +49,10 @@
   margin-bottom: 2px;
 }
 
+#AddPlaceButton:hover{
+  color: gold;
+}
+
 #PlaceSerch{
   width: 212px;
   text-align: center;
@@ -56,6 +60,7 @@
 }
 
 #FormTitle {
+  border-radius: 0px;
   width: 1162px;
   text-align: center;
   margin-top: 40px;
@@ -74,14 +79,18 @@
 }
 
 #kansou{
-  width: 565px;
+  margin-top: -2px;
+  width: 566px;
   text-align: center;
+  border-radius: 0px; 
 }
 
 #toukou{
+  height: 40px;
   width: 565px;
   text-align: center;
   margin-bottom: 60px;
+  border-radius: 0px; 
 }
 
 #toukouUserShow{
@@ -195,12 +204,19 @@
 }
 
 #fieldset {
-  border: 3px solid #33ccff;
+  border: 2px solid #33ccff;
   margin: -3px;
 }
 
 .form-box {
-  border: 1px solid #efefef;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-color: #33ccff;
+  padding-bottom: 1px;
+  height: 720;
 }
 
 .MarginButtom {
@@ -291,9 +307,9 @@ hr {
 .BlueBorder{
   border-style: solid;
   border-top-width: 0px;
-  border-right-width: 5px;
-  border-bottom-width: 5px;
-  border-left-width: 5px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
   border-color: #33ccff;
   margin-bottom: 10px;
 }
@@ -313,5 +329,19 @@ hr {
 .TextMargin {
   margin-top: 30px;
   margin-left: 20px;
-  margin-right: 30px;
+  margin-right: 40px;
+}
+
+.show-grid2 {
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-color: #33ccff;
+  padding-bottom: 1px;
+}
+
+.MaginLeftIndex{
+  margin-left: 28px;
 }

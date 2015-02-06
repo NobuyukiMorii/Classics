@@ -23,9 +23,13 @@ class PlacesController extends AppController {
 				//名前が検索条件だった場合
 				if($this->data['Place']['name'] !== ""){
 					//名前が入力されていた場合
-					$this->paginate = array('conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%")));
+					$this->paginate = array(
+						'conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%")),
+						'order' => array('Place.wifi_average_speed' => 'desc'),
+						'limit' => 5
+					);
 		    	} else {
-		    		//名前が入寮されていなかった場合
+		    		//名前が入力されていなかった場合
 					$conditions = array(
 						array(
 						'Place.wifi_existence' => 1,
@@ -40,35 +44,29 @@ class PlacesController extends AppController {
 		    	}
 			} elseif ($this->data['Place']['flg'] === "other_form"){
 				//それ以外の項目が検索条件だった場合
-					$conditions = array(
-					  	array( 'and' => 
-					  		array(
-					  				'Place.genre' => $this->data['Place']['genre'],
-					  				'Place.wifi_average_speed >=' => $this->data['Place']['wifi_average_speed'],
-					  				'Place.wifi_existence' => $this->data['Place']['wifi_existence']
-					  		)
-					  	)
-					);
-					$this->paginate = array(
-						'conditions' => $conditions,
-						'order' => array('Place.wifi_average_speed' => 'desc'),
-						'limit' => 5
-					);
-					//ビューのラジオの初期値をセットする
-					$this->set('value_genre' , $this->data['Place']['genre']);
-					$this->set('value_wifi_average_speed' , $this->data['Place']['wifi_average_speed']);
-					$this->set('value_wifi_existence' , $this->data['Place']['wifi_existence']);
+				$conditions = array(
+				  	array( 'and' => 
+				  		array(
+				  				'Place.genre' => $this->data['Place']['genre'],
+				  				'Place.wifi_average_speed >=' => $this->data['Place']['wifi_average_speed'],
+				  				'Place.wifi_existence' => $this->data['Place']['wifi_existence']
+				  		)
+				  	)
+				);
+				$this->paginate = array(
+					'conditions' => $conditions,
+					'order' => array('Place.wifi_average_speed' => 'desc'),
+					'limit' => 5
+				);
+				//ビューのラジオの初期値をセットする
+				$this->set('value_genre' , $this->data['Place']['genre']);
+				$this->set('value_wifi_average_speed' , $this->data['Place']['wifi_average_speed']);
+				$this->set('value_wifi_existence' , $this->data['Place']['wifi_existence']);
 			} 
 		} else {
-			$conditions = array(
-				array(
-				'Place.wifi_existence' => 1,
-				'Place.wifi_average_speed >' => 0
-				)
-			);
 			$this->paginate = array(
-				'conditions' => $conditions,
 				'order' => array('Place.wifi_average_speed' => 'desc'),
+				'limit' => 5
 			);
 		}
 		//検索結果のレコードがあるかないかの判定

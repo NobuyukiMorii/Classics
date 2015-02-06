@@ -122,7 +122,7 @@ $arr = $data;
 				$arr = $data[$i];
 
 				echo '<div class="bs-docs-grid">';
-					echo '<div class="row-fluid show-grid">';
+					echo '<div class="row-fluid show-grid2">';
 						echo '<div class="span3">';
 							//Photo
 							if($arr['Post']['avatar_file_name'] != null){
@@ -160,7 +160,6 @@ $arr = $data;
 						echo '</div>';
 					echo '</div>';
 				echo '</div>';
-				echo '<hr>';
 			}
 		}
 		?>

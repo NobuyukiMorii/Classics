@@ -104,6 +104,7 @@
   </ul>                                          
 </div>
 
+<div class="MaginLeftIndex">
 <?php
 for($i = 0; $i < count($data); $i++){
 	$arr = $data[$i];
@@ -180,4 +181,6 @@ for($i = 0; $i < count($data); $i++){
 		?>
 	  </ul>                                          
 	</div>
+</div>
+
 </div>
