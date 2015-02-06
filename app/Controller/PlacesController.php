@@ -23,21 +23,30 @@ class PlacesController extends AppController {
 				//名前が検索条件だった場合
 				if($this->data['Place']['name'] !== ""){
 					//名前が入力されていた場合
+					$conditions = array('Place.name like ?' => array("%{$this->data['Place']['name']}%"));
+
+			      	//セッションに保存
+			      	if($this->Session->check('conditions')){
+         				$this->Session->delete('conditions');
+      				}
+      				$this->Session->write('conditions', $conditions);
+      				//検索条件を指定
 					$this->paginate = array(
-						'conditions' => array('Place.name like ?' => array("%{$this->data['Place']['name']}%")),
+						'conditions' =>	$conditions,
 						'order' => array('Place.wifi_average_speed' => 'desc'),
 						'limit' => 5
 					);
 		    	} else {
 		    		//名前が入力されていなかった場合
-					$conditions = array(
-						array(
-						'Place.wifi_existence' => 1,
-						'Place.wifi_average_speed >' => 0
-						)
-					);
+		    		$conditions = array();
+			      	//セッションに保存
+			      	if($this->Session->check('conditions')){
+         				$this->Session->delete('conditions');
+      				}
+      				$this->Session->write('conditions', $conditions);
+      				//検索条件に指定
 					$this->paginate = array(
-						'conditions' => $conditions,
+						'conditions' =>	$conditions,
 						'order' => array('Place.wifi_average_speed' => 'desc'),
 						'limit' => 5
 					);
@@ -53,6 +62,12 @@ class PlacesController extends AppController {
 				  		)
 				  	)
 				);
+		      	//セッションに保存
+		      	if($this->Session->check('conditions')){
+     				$this->Session->delete('conditions');
+  				}
+  				$this->Session->write('conditions', $conditions);
+  				//検索条件に指定
 				$this->paginate = array(
 					'conditions' => $conditions,
 					'order' => array('Place.wifi_average_speed' => 'desc'),
@@ -64,7 +79,14 @@ class PlacesController extends AppController {
 				$this->set('value_wifi_existence' , $this->data['Place']['wifi_existence']);
 			} 
 		} else {
+			//セッションに情報があれば使う（ページングでの検索条件に引き継ぎのため）
+			$conditions = array();
+			if($this->Session->check('conditions')){
+				$conditions = $this->Session->read('conditions');
+			}
+			//検索条件に指定
 			$this->paginate = array(
+				'conditions' => $conditions,
 				'order' => array('Place.wifi_average_speed' => 'desc'),
 				'limit' => 5
 			);
