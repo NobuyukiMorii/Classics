@@ -104,49 +104,46 @@
   </ul>                                          
 </div>
 
-<hr>
-
-
 <?php
 for($i = 0; $i < count($data); $i++){
 	$arr = $data[$i];
-	echo '<div class="row">';
+	echo '<div class="row panel">';
+			echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName white">';
+			echo $arr['Place']['name'];
+			echo '&nbsp;&nbsp';
+			echo '(';
+			switch ($arr['Place']['genre']) {
+			case 0:
+				echo "カフェ";
+				break;
+			case 1:
+				echo "バー";
+				break;
+			case 2:
+				echo "レストラン";
+				break;
+			default:
+				echo "不明";
+				break;
+			}
+			echo ')';
+		echo "</a>";
+	echo '</div>';
+	echo '<div class="row BlueBorder">';
   		echo "<div class='span2'>";
   			//Photo
 			if($arr['Place']['avatar_file_name'] != null){
-				echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName">' . $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb')) . '</a>';
+				echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . '>' . $this->Upload->uploadImage($arr , 'Place.avatar', array('style' => 'thumb') , array('class' => 'ImageLeft')) . '</a>';
 			} else {
-				echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName"><img border="0" src="/Classics/img/NoImage.jpg" width="170"></a>';
+				echo "<a href=" . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' ><img border="0" src="/Classics/img/NoImage.jpg" width="170" class="ImageLeft"></a>';
 			}
   		echo "</div>";
-
   		echo '<div class="span5">';
 			echo '<div class="row">';
 	  			echo '<div class="span11">';
 	    			echo '<div class="row">';
-	      				echo '<div class="span6">';
-	      					echo '<h3>';
-	      					echo '<a href=' . $this->Html->url(array('controller' => 'Places' , 'action' => 'show')) . "/" . $arr['Place']['id'] . ' class="PlaceName">' . $arr['Place']['name'] . ' ';
-		      					echo '<span class="VagueGrayGenre">';
-									switch ($arr['Place']['genre']) {
-									case 0:
-										echo "カフェ";
-										break;
-									case 1:
-										echo "バー";
-										break;
-									case 2:
-										echo "レストラン";
-										break;
-									default:
-										echo "不明";
-										break;
-									}
-								echo '</a>';
-								echo '</span>';
-							echo '</h3>';
-	      				echo '</div>';
-						echo '<div class="span3 AlignRight">';
+
+						echo '<div class="span2 AlignRight MbspMargin">';
 							if($arr['Place']['wifi_existence'] == 0){
 								echo '<span class="VagueGrayVagueGrayWifiMbps">wifiなし</span>';
 							} else if($arr['Place']['wifi_average_speed'] == 0){
@@ -155,20 +152,16 @@ for($i = 0; $i < count($data); $i++){
 								echo '<h3 class="WifiAverageSpeed">' . $arr['Place']['wifi_average_speed'] . '<span class="VagueGrayVagueGrayWifiMbps">Mbps</span></h3>';
 							}
 						echo '</div>';
-	    			echo '</div>';
 
-	    			echo '<div class="row">';
-	      				echo '<div class="span9">';
-	      					echo '<p>' . $arr['Place']['comment'] . '</p>';
+						echo '<div class="span8">';
+	      					echo '<p class="TextMargin">' . $arr['Place']['comment'] . '</p>';
 	      				echo '</div>';
+
 	    			echo '</div>';
-	    			
 	  			echo '</div>';
 			echo '</div>';
   		echo '</div>';
 	echo '</div>';
-
-	echo '<hr>';
 
 }
 ?>
