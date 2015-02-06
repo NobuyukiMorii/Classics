@@ -346,3 +346,38 @@ hr {
 .MaginLeftIndex{
   margin-left: 28px;
 }
+
+.PlaceDetailForm{
+  border-style: solid;
+  border-top-width: 2px;
+  border-right-width: 2px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+  border-color: #fffffb;
+  padding-top: 25px;
+  margin-top: 20px;
+  margin-left: 50px;
+  background-color: #fffffb;
+}
+
+.AddEditTitle{
+  color: #fd680e;
+  font-size: 28px;
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  margin-bottom: 50px;
+}
+
+.AddEditTitleGray{
+  color :#999999;
+  font-size: 28px;
+}
+
+.form-actions{
+  background-color: #fffffb;
+  border-top: 0px;
+}
+
+.AddEditTitleMargin{
+  margin-top: 40px;
+  margin-left: 50px;
+}

@@ -11,10 +11,12 @@ SpeedTest();
 startFunc();
 console.log(location);
 </script>
-
+<div class="AddEditTitleMargin">
+<span class="AddEditTitleGray">おすすめの</span><span class="AddEditTitle">Wifiスポット</span><span class="AddEditTitleGray">を登録して下さい！</span>
+</div>
 <?php echo $this->Form->create('Place', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'add')); ?>
-	<fieldset>
-		<legend>お店情報登録フォーム</legend>
+	<fieldset class="PlaceDetailForm">
+		
 		<?php echo $this->Form->input('Place.name', array(
 			'label' => '店名',
 			'type' => 'text',
@@ -84,7 +86,7 @@ console.log(location);
 		<div class="form-actions">
 			<?php echo $this->Form->submit('登録する', array(
 				'div' => false,
-				'class' => 'btn btn-primary',
+				'class' => 'btn btn-orange',
 			)); ?>
 		</div>
 	</fieldset>
