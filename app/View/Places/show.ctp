@@ -38,7 +38,7 @@ $arr = $data;
 
 		echo '<div class="row">';
 			echo '<div class="span9">';
-			echo '<h1 class="PlaceName">';
+			echo '<h1 class="PlaceName2">';
 				echo  $arr['Place']['name']. ' ';
 				echo "<span class='VagueGrayGenre'>";
 					switch ($arr['Place']['genre']) {
