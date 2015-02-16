@@ -1,10 +1,22 @@
 <!-- ラジオボタンを横並びに設定 -->
 <?php echo $this->Html->css( 'radio-horizon'); ?>
-
+<!-- jQueryを使用 -->
+<?php echo $this->Html->script('jquery-1.11.2.min'); ?>
+<!-- Wifiの速度を図るファイルを使用-->
+<?php echo $this->Html->script('SpeedTest'); ?>
+<!-- 緯度と経度をとるファイルを使用-->
+<?php echo $this->Html->script('GetLocation'); ?>
+<script>
+SpeedTest();
+startFunc();
+console.log(location);
+</script>
+<div class="AddEditTitleMargin">
+<span class="AddEditTitle">Wifiスポット</span><span class="AddEditTitleGray">の情報をアップデートして下さい！</span>
+</div>
 <?php echo $this->Form->create('Place', array('class' => 'form-horizontal' , 'type' => 'file' , 'action' => 'edit')); ?>
-	<fieldset>
+	<fieldset class="PlaceDetailForm">
 		<?php $arr = $data; ?>
-		<legend>お店情報編集フォーム</legend>
 		<?php echo $this->Form->text('Place.id' , array('value' => $arr['Place']['id'] , 'type' => 'hidden'));?>
 		<?php echo $this->Form->input('Place.name', array(
 			'label' => '店名',
@@ -14,6 +26,7 @@
 			'value' => $arr['Place']['name']
 		)); ?>
 		<?php echo $this->Form->error('Place.name');?>
+
 		<?php echo $this->Form->input('Place.comment' , array(
 			'label' => '紹介文',
 			'type' => 'textarea',
@@ -40,12 +53,26 @@
 			'value' => $arr['Place']['wifi_existence'],
 			'style' => 'float:none;',
 		)); ?>
+
+		<?php echo $this->Form->input('Place.ConnectToShopFifi', array(
+			'label' => '今繋いでいるのは',
+			'type' => 'radio',
+			'div' => 'radio-horizontal',
+			'options' => array( 0 => "お店のWifi" , 1 => "その他" ),
+			'value' => 1,
+			'style' => 'float:none;',
+		)); ?>
+		<?php echo $this->Form->text('Place.wifi_average_speed' , array('value' => '' , 'type' => 'hidden' , 'id' => 'wifi_speed'));?>
+		<?php echo $this->Form->text('Place.latitude' , array('value' => '' , 'type' => 'hidden' , 'id' => 'latitude'));?>
+		<?php echo $this->Form->text('Place.longitude' , array('value' => '' , 'type' => 'hidden' , 'id' => 'longitude'));?>
+
 		<?php echo $this->Form->error('Place.wifi_existence');?>
 
 		<?php echo $this->Form->input('Place.open_time', array(
 			'label' => '開店時間',
 			'type' => 'time',
-			'class' => 'input-xlarge',
+			'interval' => 30,
+			'timeFormat' => '24',
 			'selected' => $arr['Place']['open_time'],
 		)); ?>
 		<?php echo $this->Form->error('Place.open_time'); ?>
@@ -53,8 +80,9 @@
 		<?php echo $this->Form->input('Place.close_time', array(
 			'label' => '閉店時間',
 			'type' => 'time',
-			'class' => 'input-xlarge',
-			'selected' => $arr['Place']['close_time']
+			'interval' => 30,
+			'timeFormat' => '24',
+			'selected' => $arr['Place']['close_time'],
 		)); ?>
 		<?php echo $this->Form->error('Place.close_time'); ?>
 
@@ -63,7 +91,7 @@
 		<div class="form-actions">
 			<?php echo $this->Form->submit('登録する', array(
 				'div' => false,
-				'class' => 'btn btn-primary',
+				'class' => 'btn btn-orange',
 			)); ?>
 		</div>
 	</fieldset>

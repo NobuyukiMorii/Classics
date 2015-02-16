@@ -313,6 +313,9 @@ hr {
   border-left-width: 2px;
   border-color: #33ccff;
   margin-bottom: 10px;
+  padding-bottom: 3px;
+  padding-left: 3px;
+  border-radius: 0px 0px 15px 15px;
 }
 
 .img {

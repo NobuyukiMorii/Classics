@@ -68,7 +68,8 @@ console.log(location);
 		<?php echo $this->Form->input('Place.open_time', array(
 			'label' => '開店時間',
 			'type' => 'time',
-			'class' => 'input-xlarge',
+			'interval' => 30,
+			'timeFormat' => '24',
 			'selected' => '08:00:00',
 		)); ?>
 		<?php echo $this->Form->error('Place.open_time'); ?>
@@ -76,7 +77,8 @@ console.log(location);
 		<?php echo $this->Form->input('Place.close_time', array(
 			'label' => '閉店時間',
 			'type' => 'time',
-			'class' => 'input-xlarge',
+			'interval' => 30,
+			'timeFormat' => '24',
 			'selected' => '22:00:00'
 		)); ?>
 		<?php echo $this->Form->error('Place.close_time'); ?>
