@@ -41,3 +41,6 @@
  * the built-in default routes.
  */
 	require CAKE . 'Config' . DS . 'routes.php';
+
+	//apiControllerでjsonを出力するように設定
+	Router::parseExtensions('json');
