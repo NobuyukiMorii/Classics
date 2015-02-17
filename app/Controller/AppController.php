@@ -60,6 +60,7 @@ class AppController extends Controller {
         //スマートフォン判定
         if($this->RequestHandler->isMobile()) {
             $this->theme = 'Mobile';
+            $this->layout = "mobile";
         }
 	}
 

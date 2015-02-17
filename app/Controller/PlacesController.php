@@ -17,6 +17,7 @@ class PlacesController extends AppController {
 
 	//場所情報を全件だし
 	public function index(){
+
 		if(!empty($this->data)){
 			//フォームが送信された場合の処理
 			if($this->data['Place']['flg'] === "name_form"){
