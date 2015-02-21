@@ -93,6 +93,14 @@ class UsersController extends AppController {
 		  			'Post.users_id' => $id
 		  		)
 			);
+
+			//検索件数を指定
+			if($this->RequestHandler->isMobile()) {
+				$limit = 15;
+			} else {
+				$limit = 5;
+			}
+			
 			$this->paginate = array(
 				'conditions' => $conditions_post,
 				'order' => array('Post.created' => 'desc'),

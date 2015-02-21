@@ -17,6 +17,12 @@ class PlacesController extends AppController {
 
 	//場所情報を全件だし
 	public function index(){
+		//検索件数を指定
+		if($this->RequestHandler->isMobile()) {
+			$limit = 15;
+		} else {
+			$limit = 5;
+		}
 
 		if(!empty($this->data)){
 			//フォームが送信された場合の処理
@@ -31,12 +37,6 @@ class PlacesController extends AppController {
          				$this->Session->delete('conditions');
       				}
       				$this->Session->write('conditions', $conditions);
-      				//検索条件を指定
-					$this->paginate = array(
-						'conditions' =>	$conditions,
-						'order' => array('Place.wifi_average_speed' => 'desc'),
-						'limit' => 5
-					);
 		    	} else {
 		    		//名前が入力されていなかった場合
 		    		$conditions = array();
@@ -45,13 +45,13 @@ class PlacesController extends AppController {
          				$this->Session->delete('conditions');
       				}
       				$this->Session->write('conditions', $conditions);
-      				//検索条件に指定
-					$this->paginate = array(
-						'conditions' =>	$conditions,
-						'order' => array('Place.wifi_average_speed' => 'desc'),
-						'limit' => 5
-					);
 		    	}
+  				//検索条件に指定
+				$this->paginate = array(
+					'conditions' =>	$conditions,
+					'order' => array('Place.wifi_average_speed' => 'desc'),
+					'limit' => $limit
+				);
 			} elseif ($this->data['Place']['flg'] === "other_form"){
 				//それ以外の項目が検索条件だった場合
 				$conditions = array(
@@ -72,7 +72,7 @@ class PlacesController extends AppController {
 				$this->paginate = array(
 					'conditions' => $conditions,
 					'order' => array('Place.wifi_average_speed' => 'desc'),
-					'limit' => 5
+					'limit' => $limit
 				);
 				//ビューのラジオの初期値をセットする
 				$this->set('value_genre' , $this->data['Place']['genre']);
@@ -89,7 +89,7 @@ class PlacesController extends AppController {
 			$this->paginate = array(
 				'conditions' => $conditions,
 				'order' => array('Place.wifi_average_speed' => 'desc'),
-				'limit' => 5
+				'limit' => $limit
 			);
 		}
 		//検索結果のレコードがあるかないかの判定
@@ -121,11 +121,19 @@ class PlacesController extends AppController {
 	
 	//場所情報を１件検索する
 	public function show($param){
+
+		//検索件数を指定
+		if($this->RequestHandler->isMobile()) {
+			$limit = 5;
+		} else {
+			$limit = 5;
+		}
+
 		//投稿の情報にページネーションをかけて渡す
 		$this->paginate = array(
 				'conditions' => array('Post.places_id' => $param),
 				'order' => array('Post.created' => 'desc'),
-				'limit' => 5
+				'limit' => $limit
 		);
 		$data = $this->paginate('Post');
 		//最後に投稿したユーザーを検索する

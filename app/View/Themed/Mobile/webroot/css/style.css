@@ -1,0 +1,188 @@
+.containing-element 
+.ui-slider-switch { width: 100% !important }
+
+.orange-submit {
+	background-color: #f39c12 !important;
+}
+
+.custom-size-flipswitch {
+	width: 45% !important;
+	float: left;
+	margin: 2%;
+}
+
+.ui-field-contain{
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.ui-input-text, .ui-input-search{
+	margin: 0px !important;
+	padding: 0px !important;
+	margin-bottom: -10px !important;
+}
+
+.pagination{
+	margin-top: 2px !important; 
+	margin-bottom: 2px !important;
+}
+
+.ui-header {
+	margin: 0px !important;
+	height: 40px;
+}
+
+#mobile-imageA {
+	margin-left: 0px;
+	width :170px;
+	background-color: #ffffff;
+	border: 0px;
+	padding-top: 15px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
+
+#mobile-imageB {
+	color: #33ccff;
+	background-color: #ffffff;
+	border: none;
+	margin-left: -25px;
+	border: 0px;
+}
+
+.mobile-spot-name {
+	font-size: 25px;
+}
+
+.VagueGrayVagueGrayWifiMbps {
+	color:gray;
+}
+
+.WifiAverageSpeed {
+	color:#f39c12;
+}
+.AveragePaymentNumber{
+	color:#f39c12;
+}
+
+.BlackSmall {
+	color:gray;
+}
+
+.OrangeSmall{
+	color:#33ccff !important;
+	text-decoration: none;
+}
+
+.IndexComment {
+	color: #333333;
+}
+
+.PlaceShowPlacePesoGray{
+	color:gray;
+}
+
+.switch-margin {
+	margin-left: 10px;
+	margin-top: -10px;
+}
+
+.listview-post {
+position: relative;
+padding: .0em 0em;
+overflow: hidden;
+display: block;
+clear: both;
+}
+
+.orange-button {
+	background-color: #33ccff !important;
+	color :#ffffff;
+}
+
+.margin-delete {
+	margin-bottom: -110px;
+}
+
+.Comment {
+	color:gray;
+	font-size: 1em;
+	margin-top: -40px;
+	margin-bottom: 5px;
+}
+
+.Comment2 {
+	color:gray;
+	font-size: 1em !important;
+	margin-bottom: 5px;
+}
+
+.Comment3 {
+	color:gray;
+	font-size: 1em !important;
+	margin-bottom: 5px;
+}
+
+.ShopName {
+	color :#33ccff;
+}
+
+div.outer {  
+    display: table;         /* ① */  
+    height: 100px;  
+    width: 100%;            /* ② */  
+    background: #ffffff;  
+}  
+    * html div.outer {  
+        position: relative; /* ③ */  
+    }  
+    *+html div.outer {  
+        position: relative; /* ③ */  
+    }  
+div.vertical_middle {  
+    display: table-cell;    /* ④ */  
+    vertical-align: middle; /* ⑤ */  
+}  
+    * html div.vertical_middle {  
+        position: absolute; /* ⑥ */  
+        top: 50%;           /* ⑥ */  
+    }  
+    *+html div.vertical_middle {  
+        position: absolute; /* ⑥ */  
+        top: 50%;           /* ⑥ */  
+    }  
+div.vertical_middle p.inner {  
+    margin: 0;  
+}  
+    * html div.vertical_middle p.inner {  
+        position: relative; /* ⑦ */  
+        top: -50%;          /* ⑦ */  
+    }  
+    *+html div.vertical_middle p.inner {  
+        position: relative; /* ⑦ */  
+        top: -50%;          /* ⑦ */  
+    } 
+
+.Edit-UserName {
+	color:gray;
+	font-size: 1em !important;
+	margin-bottom: 5px;
+}
+
+.Edit-UserPassword {
+	color:gray;
+	font-size: 1em !important;
+	margin-bottom: 5px;
+}
+
+.Edit-UserPhoto {
+	color:gray;
+	font-size: 1em !important;
+	margin-bottom: 5px;
+	margin-top:40px;
+}
+
+.PhotoEditMargin{
+	margin-bottom: 50px;
+}

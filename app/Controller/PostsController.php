@@ -10,7 +10,6 @@ class PostsController extends AppController {
 	
 	public function index(){
 		$data = $this->Post->find('all');
-		pr($data);
 	}
 
 	public function add(){
